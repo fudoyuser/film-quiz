@@ -154,36 +154,46 @@ const FILMS = [
   {
     id: "dau-xuan-tuoi-sang",
     title: "Đầu Xuân Tươi Sáng",
-    original: "The Early Spring · 2026",
+    original: "早春晴朗 · The Early Spring · 2026",
     meta: "Trung Quốc · 24 tập · Tỉnh Bách Nhiên, Tôn Thiên",
+    ordered: true,
     sources: [
-      ["VnExpress", "https://vnexpress.net/chuyen-tinh-cong-so-trong-dau-xuan-tuoi-sang-5117333.html"],
-      ["Tuổi Trẻ", "https://tuoitre.vn/dau-xuan-tuoi-sang-gay-sot-netflix-toan-cau-100260904082715751.htm"],
-      ["TV360", "https://tintuc.tv360.vn/blog/dau-xuan-tuoi-sang-tap-cuoi-loan-niem-cau-hon-thuong-chi-dao/"],
-      ["Vietnamnet", "https://vietnamnet.vn/dau-xuan-tuoi-sang-co-phan-2-tinh-bach-nhien-va-ton-thien-tai-xuat-2555742.html"]
+      ["Youku (tên các tập)", "https://v.youku.com/v_show/id_XNjU1NDk1NzcwNA==.html"],
+      ["TVmao (tóm tắt từng tập)", "https://www.tvmao.com/kanju/ZGFsIWFi"],
+      ["HK01", "https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/60382498/"],
+      ["TV360", "https://tintuc.tv360.vn/blog/dau-xuan-tuoi-sang/"]
     ],
     questions: [
-      { q: "Phim được chuyển thể từ tiểu thuyết của tác giả nào?", a: "Cô Nương Đừng Khóc", w: ["Đinh Mặc", "Cố Mạn", "Mặc Bảo Phi Bảo"], e: "Phim chuyển thể từ tiểu thuyết cùng tên của Cô Nương Đừng Khóc." },
-      { q: "Ai thủ vai nam chính Loan Niệm?", a: "Tỉnh Bách Nhiên", w: ["Lưu Tiểu Bắc", "Triệu Chấn Vũ", "Lý Xuyên"], e: "Tỉnh Bách Nhiên đóng Loan Niệm, đóng cặp với Tôn Thiên." },
-      { q: "Tôn Thiên vào vai nhân vật nào?", a: "Thượng Chi Đào", w: ["Tang Dao", "Tôn Vũ", "Loan Niệm Đào"], e: "Tôn Thiên là Thượng Chi Đào, cô gái trẻ mới đến Bắc Kinh lập nghiệp." },
-      { q: "Ai là đạo diễn của phim?", a: "Tưởng Kế Chính", w: ["Quách Kính Minh", "Lưu Tuấn Kiệt", "Trương Lê"], e: "Phim do Tưởng Kế Chính đạo diễn." },
-      { q: "Phim có tổng cộng bao nhiêu tập?", a: "24 tập", w: ["32 tập", "36 tập", "40 tập"], e: "Bản phát sóng có 24 tập. Một số tin trước khi lên sóng từng nhắc đến con số 32 tập theo kế hoạch." },
-      { q: "Câu chuyện diễn ra trong ngành nghề nào?", a: "Quảng cáo", w: ["Thời trang", "Luật", "Y khoa"], e: "Phim là chuyện tình công sở trong ngành quảng cáo ở Bắc Kinh." },
-      { q: "Loan Niệm giữ vị trí gì trong công ty?", a: "Giám đốc sáng tạo", w: ["Giám đốc tài chính", "Trưởng phòng nhân sự", "Nhiếp ảnh gia"], e: "Loan Niệm là giám đốc sáng tạo tài năng nhưng nổi tiếng độc miệng." },
-      { q: "Lúc đầu, Thượng Chi Đào và Loan Niệm có quan hệ gì ở công ty?", a: "Nhân viên mới và cấp trên", w: ["Hai đồng nghiệp ngang cấp", "Khách hàng và đối tác", "Hai giám đốc đối thủ"], e: "Chi Đào khởi đầu là nhân viên mới, còn Loan Niệm là sếp. Sự đối đầu dần chuyển thành thu hút." },
-      { q: "Thượng Chi Đào đến thành phố nào để lập nghiệp?", a: "Bắc Kinh", w: ["Thượng Hải", "Thâm Quyến", "Hàng Châu"], e: "Cô gái trẻ đến thủ đô Bắc Kinh và bắt đầu từ vị trí nhân viên mới." },
-      { q: "Ở tập 20–21, sau khi chia tay Loan Niệm, Chi Đào về đâu?", a: "Cáp Nhĩ Tân", w: ["Thành Đô", "Trùng Khánh", "Hạ Môn"], e: "Cô nghỉ việc, rời Bắc Kinh để về quê nhà Cáp Nhĩ Tân sống tự lập." },
-      { q: "Ở tập cuối, Loan Niệm cầu hôn Chi Đào tại đâu?", a: "Lhasa", w: ["Cáp Nhĩ Tân", "Đại Lý", "Bắc Kinh"], e: "Cảnh cầu hôn diễn ra tại Lhasa, Tây Tạng." },
-      { q: "Khi cầu hôn, Loan Niệm hứa cùng Chi Đào thực hiện danh sách gì?", a: "30 điều muốn làm trước tuổi 30", w: ["100 nơi muốn đến", "10 món muốn nấu", "12 tháng du lịch"], e: "Anh hứa sẽ cùng cô hoàn thành danh sách 30 điều muốn làm trước tuổi 30." },
-      { q: "Lưu Tiểu Bắc đảm nhận vai nào?", a: "Tôn Viễn Trữ", w: ["Alex", "Tôn Vũ", "Loan Niệm"], e: "Lưu Tiểu Bắc vào vai Tôn Viễn Trữ." },
-      { q: "Quách Hiểu Đình vào vai nhân vật nào?", a: "Tang Dao", w: ["Tôn Vũ", "Thượng Chi Đào", "Lumi"], e: "Quách Hiểu Đình đóng Tang Dao." },
-      { q: "Diễn viên Lý Xuyên đóng nhân vật nào?", a: "Alex", w: ["Tôn Viễn Trữ", "Kevin", "Luke"], e: "Lý Xuyên vào vai Alex." },
-      { q: "Phim lên sóng ngày nào?", a: "26/8/2026", w: ["14/2/2026", "1/6/2026", "1/10/2026"], e: "Phim ra mắt ngày 26/8/2026 và chiếu đến ngày 9/9/2026." },
-      { q: "Ở Trung Quốc, phim phát trên nền tảng nào?", a: "Youku", w: ["iQIYI", "Tencent Video", "Mango TV"], e: "Phim chiếu trên Youku, đồng thời Netflix phát hành song song." },
-      { q: "Phim tạo điểm mới gì trong khâu sản xuất?", a: "Có điều phối viên cảnh thân mật", w: ["Quay toàn bộ bằng điện thoại", "Không dùng kịch bản", "Lồng tiếng bằng AI"], e: "Phim được cho là phim truyền hình Trung Quốc đầu tiên mời điều phối viên cảnh thân mật, do chuyên gia Thái Gia Ân đảm nhận." },
-      { q: "Sau 5 ngày phát sóng, lượt phát của phim vượt mốc nào?", a: "200 triệu", w: ["50 triệu", "1 tỷ", "20 triệu"], e: "Phim vượt 200 triệu lượt phát sau 5 ngày. Tập cuối đưa tổng số lên hơn 900 triệu." },
-      { q: "Tuần đầu trên Netflix, phim xếp hạng mấy ở bảng series không nói tiếng Anh toàn cầu?", a: "Hạng 2", w: ["Hạng 1", "Hạng 5", "Hạng 10"], e: "Phim đạt 2,4 triệu lượt xem tuần đầu và đứng thứ hai toàn cầu, mức cao chưa từng có với phim Trung Quốc." },
-      { q: "Youku công bố phần tiếp theo với tên gì?", a: "Giữa Hạ Tươi Sáng", w: ["Cuối Thu Tươi Sáng", "Đầu Xuân Tươi Sáng 2", "Đông Về Rực Rỡ"], e: "Phần tiếp theo mang tên Giữa Hạ Tươi Sáng. Dàn diễn viên chính chưa được xác nhận." }
+      { q: "Phim chuyển thể từ tiểu thuyết của tác giả nào?", a: "Cô Nương Đừng Khóc", w: ["Đinh Mặc", "Cố Mạn", "Mặc Bảo Phi Bảo"], e: "Phim chuyển thể từ tiểu thuyết cùng tên (早春晴朗) của Cô Nương Đừng Khóc." },
+      { q: "Ai thủ vai Loan Niệm, và ai thủ vai Thượng Chi Đào?", a: "Tỉnh Bách Nhiên và Tôn Thiên", w: ["Lưu Tiểu Bắc và Quách Hiểu Đình", "Tỉnh Bách Nhiên và Quách Hiểu Đình", "Lý Xuyên và Tôn Thiên"], e: "Tỉnh Bách Nhiên đóng Loan Niệm, Tôn Thiên đóng Thượng Chi Đào." },
+      { q: "Tập 1: Thượng Chi Đào được nhận vào công ty quảng cáo nào ở Bắc Kinh?", a: "Lăng Mỹ", w: ["Duyệt Đằng", "Kỳ Bài", "Mộc Lan Thuyết"], e: "Chi Đào vào làm ở công ty quảng cáo Lăng Mỹ (翎美), nơi Loan Niệm là nhân vật chủ chốt." },
+      { q: "Tập 1: Ngày đầu đi làm, Chi Đào lỡ tay làm vỡ món đồ nào Loan Niệm rất quý?", a: "Chiếc máy đánh chữ cổ", w: ["Chiếc đồng hồ cổ", "Chiếc máy ảnh phim", "Chiếc bình gốm"], e: "Bị Loan Niệm mỉa mai, Chi Đào luống cuống làm vỡ chiếc máy đánh chữ cổ của anh khi ra về." },
+      { q: "Tập 2: Dự án Kỳ Bài của Loan Niệm bị ai giành mất?", a: "Alex", w: ["Kitty", "Trương Lĩnh", "Lư Mễ (Lumi)"], e: "Alex giành dự án Kỳ Bài, Loan Niệm chuyển sang dự án thương mại điện tử Mộc Lan Thuyết." },
+      { q: "Tập 2: Chi Đào theo đội đi công tác ở thành phố nào để bàn hợp tác với ê-kíp quay phim?", a: "Quảng Châu", w: ["Thượng Hải", "Thâm Quyến", "Thành Đô"], e: "Ở Quảng Châu, Loan Niệm chỉ đạo từ xa để Chi Đào tiếp cận đạo diễn và thuyết phục được Lý tổng." },
+      { q: "Tập 3: Khi Loan Niệm gặp nạn sạt lở núi, Chi Đào cứu anh bằng cách nào?", a: "Đập vỡ cửa kính xe", w: ["Gọi đội cứu hộ", "Kéo xe bằng mô tô", "Đào đất bằng tay"], e: "Chi Đào đập vỡ cửa kính để kéo Loan Niệm ra, rồi hai người băng bó vết thương cho nhau." },
+      { q: "Tập 4: Loan Niệm đưa Chi Đào đến nông trại của bạn mình là Đàm Miễn để ăn món gì?", a: "Cá kho tàu", w: ["Vịt quay", "Lẩu cay", "Sủi cảo"], e: "Hai người đến nông trại của Đàm Miễn ăn cá kho tàu (hồng thiêu ngư), rồi bị mất điện và bạn gái cũ của Loan Niệm xuất hiện." },
+      { q: "Tập 4: Ở quán bar, Chi Đào gọi nhầm bao nhiêu ly rượu?", a: "18 ly", w: ["8 ly", "12 ly", "24 ly"], e: "Cô gọi nhầm 18 ly và say khướt. Loan Niệm lên sân khấu hát, rồi bảo người nước ngoài định đưa cô đi rằng cô là bạn gái anh." },
+      { q: "Tập 5: Sáng hôm sau đêm say, Chi Đào làm gì?", a: "Để lại mẩu giấy rồi lặng lẽ rời đi", w: ["Đòi Loan Niệm chịu trách nhiệm", "Xin nghỉ việc ngay", "Kể với đồng nghiệp"], e: "Cô để lại mẩu giấy và đi. Sau đó cô khẳng định đêm ấy chỉ là tai nạn và từ chối nhận lại chiếc túi bỏ quên." },
+      { q: "Tập 6: Để giữ khoảng cách với Loan Niệm, Chi Đào xin chuyển sang nhóm nào?", a: "Nhóm 2 của Trương Lĩnh", w: ["Nhóm của Alex", "Phòng nhân sự của Lương Tâm", "Chi nhánh Hồng Kông"], e: "Cô chuyển sang nhóm 2 do Trương Lĩnh dẫn dắt, rồi lại bị cử đi xin file gốc của Loan Niệm." },
+      { q: "Tập 7: Vì sao Diêu Bội xin chuyển công tác sang Hồng Kông?", a: "Bạn trai ngoại tình", w: ["Được thăng chức", "Về chăm bố mẹ", "Bị Loan Niệm đuổi"], e: "Diêu Bội bị bạn trai phản bội nên xin đi Hồng Kông. Tiễn bạn, Chi Đào càng quyết tâm bám trụ ở Bắc Kinh." },
+      { q: "Tập 8: Email nặc danh gửi khắp công ty tố cáo Loan Niệm điều gì?", a: "Bạo lực gia đình", w: ["Gian lận thầu", "Đạo ý tưởng", "Nhận hối lộ"], e: "Email nhắm vào đời tư của Loan Niệm, tố anh bạo lực gia đình. Anh đưa ra bằng chứng rằng email không phải do bạn gái cũ gửi." },
+      { q: "Tập 9: Chi Đào tổ chức giải bóng rổ công ty với ngân sách bao nhiêu?", a: "5.000 tệ", w: ["500 tệ", "50.000 tệ", "10.000 tệ"], e: "Chỉ có 5.000 tệ, cô kéo được nhà tài trợ bằng lời hứa hợp tác sau này, và được cả công ty khen." },
+      { q: "Tập 10: Sau nụ hôn trong xe, quan hệ của hai người chuyển sang giai đoạn nào?", a: "Yêu nhau bí mật", w: ["Công khai hẹn hò", "Đính hôn", "Chia tay"], e: "Tên tập trên Youku là \"Loan Niệm và Chi Đào bắt đầu mối tình bí mật\"." },
+      { q: "Tập 10: Sau sự cố in sai logo thương hiệu, Loan Niệm tuyên bố hình phạt gì với Chi Đào?", a: "Một năm không thăng chức, tăng lương", w: ["Đuổi việc", "Trừ ba tháng lương", "Chuyển sang nhóm khác"], e: "Dù cả đêm cùng cô sửa tờ rơi, ở cuộc họp lớn anh vẫn công tư phân minh: một năm không thăng chức tăng lương." },
+      { q: "Tập 11: Tang Dao đăng ảnh thân mật với Loan Niệm chụp ở đâu?", a: "Thụy Sĩ", w: ["Pháp", "Nhật Bản", "Maldives"], e: "Dịp giao thừa, Chi Đào thấy ảnh Tang Dao chụp với Loan Niệm ở Thụy Sĩ, buồn đến phát sốt." },
+      { q: "Tập 12: Tết năm 2014, Loan Niệm thừa nhận với bố điều gì?", a: "Anh đã có bạn gái", w: ["Anh muốn nghỉ việc", "Anh sẽ ra nước ngoài", "Anh sắp kết hôn với Tang Dao"], e: "Cuối tập 12, phim chuyển sang Tết 2014 và Loan Niệm nói với bố rằng mình đã có bạn gái." },
+      { q: "Tập 13: Công ty tổ chức du lịch team building ở đâu?", a: "Phuket", w: ["Bali", "Tam Á", "Đà Nẵng"], e: "Ở bãi biển Phuket, Loan Niệm ghen khi thấy Chi Đào vui vẻ với Lumi và bị một anh chàng nước ngoài bắt chuyện." },
+      { q: "Tập 13: Sau trận cãi nhau, Loan Niệm phát hiện điều gì khi định xin lỗi?", a: "Bị chặn cả số điện thoại lẫn WeChat", w: ["Chi Đào đã nghỉ việc", "Chi Đào đã chuyển nhà", "Chi Đào đang hẹn hò người khác"], e: "Anh gọi thì số đã bị chặn, nhắn WeChat cũng bị chặn." },
+      { q: "Tập 14: Loan Niệm tìm Chi Đào xin lỗi và nhờ cô bỏ chặn ở đâu?", a: "Trạm xe buýt", w: ["Cửa nhà cô", "Văn phòng", "Ga tàu điện"], e: "Buổi tối, anh tìm cô ở trạm xe buýt để xin lỗi và xin được gỡ khỏi danh sách đen." },
+      { q: "Tập 15: Ai là tổng giám đốc mới đến nhận chức, người có hiềm khích cũ với Loan Niệm?", a: "Trần Đông", w: ["Trương Lĩnh", "Alex", "Tôn Vũ"], e: "Trần Đông nhậm chức tổng giám đốc. Chi Đào biết anh ta có thù cũ với Loan Niệm." },
+      { q: "Tập 15: Tôn Vũ làm gì khiến mọi người tụ tập ăn mừng?", a: "Nghỉ việc để tự khởi nghiệp", w: ["Kết hôn", "Được thăng chức", "Mua nhà"], e: "Tôn Vũ \"sa thải sếp\" để tự khởi nghiệp. Cả nhóm hẹn dù không ở chung vẫn thường xuyên gặp nhau." },
+      { q: "Tập 17: Chi Đào tố cáo Trần Đông trước toàn công ty về tội gì?", a: "Biển thủ công quỹ và quấy rối", w: ["Đạo phương án", "Làm giả bằng cấp", "Tiết lộ bí mật khách hàng"], e: "Nhờ Tôn Viễn Trữ giúp, cô ghi âm làm bằng chứng rồi đứng tên tố cáo. Loan Niệm dọa từ chức để công ty xử lý nghiêm." },
+      { q: "Tập 19: Hai người cùng lái xe đi du lịch ở đâu?", a: "Tây Tạng", w: ["Vân Nam", "Tân Cương", "Nội Mông"], e: "Trước đó Loan Niệm giả ốm ở nhà Chi Đào để được cô nấu cơm, rồi hai người tự lái xe đi Tây Tạng." },
+      { q: "Tập 20: Người bạn nào của Chi Đào qua đời, khiến cả nhóm đau buồn?", a: "Tôn Viễn Trữ", w: ["Tôn Vũ", "Lư Mễ (Lumi)", "Diêu Bội"], e: "Tôn Viễn Trữ vừa mất mẹ, lại mắc trầm cảm, và qua đời. Loan Niệm thấy cô an ủi anh ấy nên ghen." },
+      { q: "Tập 21: Ai thắng cuộc bình chọn chuyên gia mà Chi Đào trượt?", a: "Tống Oanh", w: ["Tang Dao", "Kitty", "Annie"], e: "Tống Oanh thắng nhờ gia đình đầu tư. Trần Đông còn dùng ảnh thân mật của hai người để đe dọa." },
+      { q: "Tập 21: Khi chia tay Loan Niệm, Chi Đào mang theo gì?", a: "Chú chó Luke", w: ["Chiếc máy đánh chữ", "Chiếc nhẫn", "Chiếc túi xách"], e: "Cô đề nghị chia tay và mang chú chó Luke đi theo." },
+      { q: "Tập 21: Rời Bắc Kinh, Chi Đào về đâu và làm gì?", a: "Về Cáp Nhĩ Tân, mở công ty riêng", w: ["Đi Hồng Kông làm cùng Diêu Bội", "Về Quảng Châu làm đạo diễn", "Sang Thụy Sĩ du học"], e: "Về quê Cáp Nhĩ Tân, có bố mẹ bên cạnh, cô gây dựng công ty mới. Loan Niệm từng lén theo cô nhưng không dám ra mặt." },
+      { q: "Tập 22 – 24: Loan Niệm tìm được địa chỉ nào để quyết tâm theo đuổi lại Chi Đào, và cuối phim anh làm gì?", a: "Quán rượu nhỏ của bố mẹ cô, rồi quỳ gối cầu hôn", w: ["Văn phòng Lăng Mỹ ở Hồng Kông, rồi chia tay hẳn", "Nhà Tang Dao, rồi cưới Tang Dao", "Quán cà phê của Tôn Vũ, rồi ra nước ngoài"], e: "Anh có địa chỉ quán rượu nhỏ của bố mẹ cô, âm thầm giúp cô tìm khách hàng, rồi ở tập cuối quỳ gối cầu hôn và cô đồng ý." }
     ]
   },
   {
@@ -272,7 +282,6 @@ const FILMS = [
   }
 ];
 const COMING = ["Bạn muốn phim nào tiếp theo?"];
-const ROUND = 12;
 const KEYS = ["A", "B", "C", "D"];
 
 const $ = (s) => document.querySelector(s);
@@ -292,8 +301,8 @@ function renderShelf() {
       <span class="label">${esc(f.original)}</span>
       <h3>${esc(f.title)}</h3>
       <span class="meta">${esc(f.meta)}</span>
-      <span class="row"><span class="pill">${f.questions.length} câu hỏi · mỗi lượt ${Math.min(ROUND, f.questions.length)}</span>
-      ${b ? `<span class="pill jade">Kỷ lục ${b}/${Math.min(ROUND, f.questions.length)}</span>` : ""}</span>
+      <span class="row"><span class="pill">${f.questions.length} câu hỏi</span>
+      ${b ? `<span class="pill jade">Kỷ lục ${b}/${f.questions.length}</span>` : ""}</span>
     </button>`;
   }).join("");
   const soon = COMING.map((t) => `<div class="film soon" aria-disabled="true"><span class="label">Sắp có</span><h3>${esc(t)}</h3><span class="meta">Câu đố mới sẽ được thêm vào thư viện.</span></div>`).join("");
@@ -304,7 +313,7 @@ function renderShelf() {
 function start(id) {
   const film = FILMS.find((f) => f.id === id);
   if (!film) return showLibrary();
-  const qs = shuffle(film.questions).slice(0, ROUND).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
+  const qs = (film.ordered ? film.questions : shuffle(film.questions)).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
   state = { film, qs, i: 0, picks: [] };
   $("#library").hidden = true;
   $("#game").hidden = false;
@@ -399,7 +408,7 @@ function renderResult() {
       }).join("")}</ul>
       <div class="actions">
         <button class="btn ghost" id="lib">Chọn phim khác</button>
-        <button class="btn" id="again">Chơi lại với câu hỏi mới</button>
+        <button class="btn" id="again">Chơi lại</button>
       </div>
     </article>`;
   $("#back").addEventListener("click", () => { location.hash = ""; });
@@ -411,7 +420,7 @@ function renderResult() {
 function renderFoot(film) {
   $("#foot").innerHTML = film
     ? `Dữ kiện tổng hợp từ báo chí: ${film.sources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
-    : `Mỗi lượt chơi lấy ngẫu nhiên ${ROUND} câu và xáo thứ tự đáp án. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
+    : `Mỗi lượt chơi hỏi toàn bộ câu hỏi của phim, thứ tự đáp án được xáo mỗi lần. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
 }
 
 function route() {
