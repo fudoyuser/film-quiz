@@ -7,131 +7,158 @@
 <title>Đố Vui Màn Ảnh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: một cột như bìa kịch bản; thư viện phim ở trên, màn chơi thay chỗ khi chọn phim */
-:root {
-  --bg: #f4f6f1;
-  --paper: #ffffff;
-  --ink: #1d2a24;
-  --muted: #5d6b64;
-  --line: #d9e0da;
-  --blossom: #d9506f;
-  --blossom-soft: #fbe3e8;
-  --jade: #2f7d64;
-  --jade-soft: #dcefe6;
-  --wrong: #b5452f;
-  --wrong-soft: #f8e1db;
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
-  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+/* Layout: một cột như tập kịch bản. Mỗi phim mang bảng màu riêng (data-film), trang thư viện là phòng chiếu tối */
+:root, [data-film="home"] {
+  --bg: #15121b; --bg-art: radial-gradient(1200px 500px at 50% -10%, #3a2a4a66, transparent 70%);
+  --card: #1f1a27; --opt: #262030; --ink: #f4eff8; --muted: #a79fb4; --line: #342c40;
+  --accent: #ffb547; --accent-ink: #1a1305; --accent2: #ff6b6b;
+  --ok: #5fd0a0; --ok-soft: #173a2e; --no: #ff7a6b; --no-soft: #3d1d1c;
+  --display: "Fraunces", Georgia, serif;
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #111714; --paper: #19221d; --ink: #e6ede8; --muted: #9aa9a1; --line: #2b3832;
-    --blossom: #f2849c; --blossom-soft: #3a1f27; --jade: #6cc4a3; --jade-soft: #173328;
-    --wrong: #ef8a73; --wrong-soft: #3a211b; color-scheme: dark;
-  }
+[data-film="dau-xuan-tuoi-sang"] {
+  --bg: #fdf4f3;
+  --bg-art: radial-gradient(700px 420px at 100% 0%, #f9cdd6aa, transparent 70%), radial-gradient(640px 420px at 0% 100%, #d5eddcaa, transparent 70%);
+  --card: #ffffff; --opt: #fff7f8; --ink: #3a2130; --muted: #8c6a79; --line: #f0d6dc;
+  --accent: #e0577a; --accent-ink: #ffffff; --accent2: #5fa774;
+  --ok: #3c9466; --ok-soft: #e1f2e6; --no: #cf4b3c; --no-soft: #fbe3de;
+  --display: "Fraunces", Georgia, serif;
+  color-scheme: light;
 }
-:root[data-theme="dark"] {
-  --bg: #111714; --paper: #19221d; --ink: #e6ede8; --muted: #9aa9a1; --line: #2b3832;
-  --blossom: #f2849c; --blossom-soft: #3a1f27; --jade: #6cc4a3; --jade-soft: #173328;
-  --wrong: #ef8a73; --wrong-soft: #3a211b; color-scheme: dark;
+[data-film="squid-game-1"] {
+  --bg: #0b0a0f;
+  --bg-art: radial-gradient(800px 380px at 50% -5%, #ff2e8840, transparent 70%), radial-gradient(600px 400px at 100% 100%, #1fa79a26, transparent 70%);
+  --card: #15131b; --opt: #1d1a25; --ink: #f5f2f7; --muted: #9c94a8; --line: #2b2634;
+  --accent: #ff2e88; --accent-ink: #ffffff; --accent2: #1fb5a5;
+  --ok: #1fb5a5; --ok-soft: #0f2f2c; --no: #ff4d5e; --no-soft: #3a1219;
+  --display: "Oswald", "Arial Narrow", sans-serif;
+  color-scheme: dark;
+}
+[data-film="crazy-rich-asians"] {
+  --bg: #0c2b22;
+  --bg-art: radial-gradient(800px 420px at 50% -10%, #d9b45a33, transparent 70%), repeating-linear-gradient(45deg, #ffffff05 0 2px, transparent 2px 14px);
+  --card: #11382c; --opt: #0e3127; --ink: #f7f0dd; --muted: #b8c3ae; --line: #295a49;
+  --accent: #dcb75c; --accent-ink: #0c2b22; --accent2: #c8473a;
+  --ok: #8ad8ab; --ok-soft: #1a4c3b; --no: #f3907f; --no-soft: #4a2521;
+  --display: "Playfair Display", Georgia, serif;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; }
-[hidden] { display: none !important; }
+html { background: var(--bg); }
 body {
-  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  margin: 0; min-height: 100vh;
+  background: var(--bg-art), var(--bg); background-attachment: fixed;
+  color: var(--ink); font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.6;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 32px 64px;
+  transition: background-color .4s, color .4s;
 }
+[hidden] { display: none !important; }
 .wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 32px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
-.label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.label { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 button { font: inherit; color: inherit; cursor: pointer; }
-button:focus-visible, a:focus-visible { outline: 3px solid var(--blossom); outline-offset: 2px; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 /* Masthead */
 .mast { display: grid; gap: 8px; }
-.mast h1 { font-size: clamp(36px, 8vw, 56px); }
-.mast h1 em { font-style: italic; font-weight: 500; color: var(--blossom); }
+.mast h1 { font-size: clamp(36px, 8vw, 56px); font-family: "Fraunces", Georgia, serif; }
+.mast h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
 .mast p { margin: 0; color: var(--muted); max-width: 56ch; }
+body:not([data-film="home"]) .mast { display: none; }
 
-/* Library */
-.shelf { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+/* Library: mỗi thẻ là một tấm poster nhỏ mang màu của phim */
+.shelf { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .film {
-  text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
-  padding: 20px; display: grid; gap: 10px; transition: border-color .15s, transform .15s;
+  position: relative; overflow: hidden; text-align: left; color: var(--ink);
+  background: var(--bg-art), var(--card); border: 1px solid var(--line); border-radius: 16px;
+  padding: 0; display: grid; grid-template-rows: auto 1fr; transition: transform .2s, box-shadow .2s;
 }
-.film:hover { border-color: var(--blossom); transform: translateY(-2px); }
-.film h3 { font-size: 24px; }
+.film:hover { transform: translateY(-3px); box-shadow: 0 14px 40px -18px var(--accent); }
+.film .poster {
+  height: 112px; display: grid; place-items: center; border-bottom: 1px solid var(--line);
+  font-family: var(--display); font-size: 40px; letter-spacing: .06em; color: var(--accent);
+  background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%), var(--opt);
+}
+[data-film="squid-game-1"] .poster { font-size: 46px; letter-spacing: .3em; }
+.film .body { padding: 18px 20px 20px; display: grid; gap: 8px; align-content: start; }
+.film h3 { font-size: 23px; }
 .film .meta { font-size: 14px; color: var(--muted); }
-.film .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
-.pill { font-family: var(--mono); font-size: 12px; padding: 3px 10px; border-radius: 99px; background: var(--blossom-soft); color: var(--blossom); }
-.pill.jade { background: var(--jade-soft); color: var(--jade); }
+.film .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.pill { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; padding: 3px 10px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
 .film.soon { cursor: default; border-style: dashed; background: transparent; }
-.film.soon:hover { transform: none; border-color: var(--line); }
+.film.soon:hover { transform: none; box-shadow: none; }
+.film.soon .poster { color: var(--muted); background: transparent; font-size: 32px; }
 .film.soon h3 { color: var(--muted); font-weight: 500; font-style: italic; }
 
 /* Game */
 .game { display: grid; gap: 20px; }
+.hero { display: grid; gap: 6px; }
+.hero .motif { font-family: var(--display); color: var(--accent); font-size: 15px; letter-spacing: .2em; }
+.hero h1 { font-size: clamp(32px, 7vw, 48px); }
+[data-film="squid-game-1"] .hero h1 { text-transform: uppercase; letter-spacing: .02em; }
+[data-film="crazy-rich-asians"] .hero h1 { font-style: italic; }
 .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .back { background: none; border: 0; padding: 0; color: var(--muted); font-size: 14px; }
-.back:hover { color: var(--ink); }
-.track { display: grid; grid-auto-flow: column; gap: 4px; }
+.back:hover { color: var(--accent); }
+.track { display: grid; grid-auto-flow: column; gap: 3px; }
 .track span { height: 6px; border-radius: 3px; background: var(--line); }
-.track span.ok { background: var(--jade); }
-.track span.no { background: var(--wrong); }
-.track span.now { background: var(--blossom); }
-.card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: clamp(20px, 5vw, 36px); display: grid; gap: 20px; }
+.track span.ok { background: var(--ok); }
+.track span.no { background: var(--no); }
+.track span.now { background: var(--accent); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 5vw, 36px); display: grid; gap: 20px; box-shadow: 0 20px 50px -30px color-mix(in srgb, var(--accent) 60%, transparent); }
+[data-film="crazy-rich-asians"] .card { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .qhead { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.num { font-family: var(--mono); font-size: 13px; color: var(--blossom); font-variant-numeric: tabular-nums; }
-.score { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.num { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.score { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .q { font-size: clamp(22px, 4.5vw, 28px); }
+[data-film="squid-game-1"] .q { font-weight: 500; }
 .opts { display: grid; gap: 10px; }
 .opt {
   display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: center; text-align: left;
-  background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px;
-  transition: border-color .12s, background .12s;
+  background: var(--opt); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink);
+  transition: border-color .12s, background .12s, transform .12s;
 }
-.opt:hover:not(:disabled) { border-color: var(--blossom); }
-.opt .key { font-family: var(--mono); font-size: 13px; width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); }
+.opt:hover:not(:disabled) { border-color: var(--accent); transform: translateX(2px); }
+.opt .key { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); }
+[data-film="squid-game-1"] .opt .key { border-radius: 50%; }
 .opt:disabled { cursor: default; }
-.opt.right { border-color: var(--jade); background: var(--jade-soft); }
-.opt.right .key { background: var(--jade); border-color: var(--jade); color: var(--paper); }
-.opt.wrong { border-color: var(--wrong); background: var(--wrong-soft); }
-.opt.wrong .key { background: var(--wrong); border-color: var(--wrong); color: var(--paper); }
+.opt.right { border-color: var(--ok); background: var(--ok-soft); }
+.opt.right .key { background: var(--ok); border-color: var(--ok); color: var(--card); }
+.opt.wrong { border-color: var(--no); background: var(--no-soft); }
+.opt.wrong .key { background: var(--no); border-color: var(--no); color: var(--card); }
 .explain { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 4px; }
-.explain strong { font-family: var(--display); font-size: 18px; }
-.explain.ok strong { color: var(--jade); }
-.explain.no strong { color: var(--wrong); }
+.explain strong { font-family: var(--display); font-size: 19px; }
+.explain.ok strong { color: var(--ok); }
+.explain.no strong { color: var(--no); }
 .explain p { margin: 0; color: var(--muted); }
 .actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
-.btn { border: 0; border-radius: 99px; padding: 11px 22px; background: var(--ink); color: var(--bg); font-weight: 600; }
-.btn:hover { background: var(--blossom); color: var(--paper); }
+.btn { border: 0; border-radius: 99px; padding: 11px 22px; background: var(--accent); color: var(--accent-ink); font-weight: 600; transition: filter .15s; }
+.btn:hover { filter: brightness(1.08); }
 .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
-.btn.ghost:hover { border-color: var(--ink); background: transparent; color: var(--ink); }
+.btn.ghost:hover { border-color: var(--accent); }
 
 /* Result */
-.result { text-align: left; }
-.big { font-family: var(--display); font-size: clamp(64px, 16vw, 104px); line-height: 1; font-variant-numeric: tabular-nums; }
+.big { font-family: var(--display); font-size: clamp(64px, 16vw, 104px); line-height: 1; font-variant-numeric: tabular-nums; color: var(--accent); }
 .big small { font-size: .4em; color: var(--muted); font-weight: 500; }
-.verdict { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--blossom); margin: 0; }
-.review { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.verdict { font-family: var(--display); font-style: italic; font-size: 22px; margin: 0; }
+.review { display: grid; margin: 0; padding: 0; list-style: none; }
 .review li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 .review li:last-child { border-bottom: 0; }
-.review .mark { font-family: var(--mono); font-weight: 500; }
-.review .mark.ok { color: var(--jade); }
-.review .mark.no { color: var(--wrong); }
+.review .mark { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.review .mark.ok { color: var(--ok); }
+.review .mark.no { color: var(--no); }
 .review .ans { color: var(--muted); }
 .foot { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
 .foot a { color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
-<body>
+<body data-film="home">
 
 <div class="wrap">
   <header class="mast">
@@ -153,6 +180,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--blossom); outli
 const FILMS = [
   {
     id: "dau-xuan-tuoi-sang",
+    motif: "早春晴朗",
     title: "Đầu Xuân Tươi Sáng",
     original: "早春晴朗 · The Early Spring · 2026",
     meta: "Trung Quốc · 24 tập · Tỉnh Bách Nhiên, Tôn Thiên",
@@ -198,6 +226,7 @@ const FILMS = [
   },
   {
     id: "squid-game-1",
+    motif: "○△□",
     title: "Squid Game (Phần 1)",
     original: "오징어 게임 · 2021",
     meta: "Hàn Quốc · Netflix · 9 tập · Lee Jung-jae, Park Hae-soo",
@@ -240,6 +269,7 @@ const FILMS = [
   },
   {
     id: "crazy-rich-asians",
+    motif: "摘金奇缘",
     title: "Crazy Rich Asians",
     original: "Con Nhà Siêu Giàu Châu Á · 2018",
     meta: "Mỹ · Warner Bros. · Constance Wu, Henry Golding, Michelle Yeoh",
@@ -297,15 +327,18 @@ let state = null;
 function renderShelf() {
   const films = FILMS.map((f) => {
     const b = best.get(f.id);
-    return `<button class="film" data-id="${f.id}">
-      <span class="label">${esc(f.original)}</span>
-      <h3>${esc(f.title)}</h3>
-      <span class="meta">${esc(f.meta)}</span>
-      <span class="row"><span class="pill">${f.questions.length} câu hỏi</span>
-      ${b ? `<span class="pill jade">Kỷ lục ${b}/${f.questions.length}</span>` : ""}</span>
+    return `<button class="film" data-id="${f.id}" data-film="${f.id}">
+      <span class="poster" aria-hidden="true">${esc(f.motif)}</span>
+      <span class="body">
+        <span class="label">${esc(f.original)}</span>
+        <h3>${esc(f.title)}</h3>
+        <span class="meta">${esc(f.meta)}</span>
+        <span class="row"><span class="pill">${f.questions.length} câu hỏi</span>
+        ${b ? `<span class="pill ok">Kỷ lục ${b}/${f.questions.length}</span>` : ""}</span>
+      </span>
     </button>`;
   }).join("");
-  const soon = COMING.map((t) => `<div class="film soon" aria-disabled="true"><span class="label">Sắp có</span><h3>${esc(t)}</h3><span class="meta">Câu đố mới sẽ được thêm vào thư viện.</span></div>`).join("");
+  const soon = COMING.map((t) => `<div class="film soon" aria-disabled="true"><span class="poster" aria-hidden="true">+</span><span class="body"><span class="label">Sắp có</span><h3>${esc(t)}</h3><span class="meta">Câu đố mới sẽ được thêm vào thư viện.</span></span></div>`).join("");
   $("#shelf").innerHTML = films + soon;
   $("#shelf").querySelectorAll(".film[data-id]").forEach((el) => el.addEventListener("click", () => { location.hash = el.dataset.id; }));
 }
@@ -315,6 +348,7 @@ function start(id) {
   if (!film) return showLibrary();
   const qs = (film.ordered ? film.questions : shuffle(film.questions)).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
   state = { film, qs, i: 0, picks: [] };
+  document.body.dataset.film = film.id;
   $("#library").hidden = true;
   $("#game").hidden = false;
   renderFoot(film);
@@ -324,6 +358,7 @@ function start(id) {
 
 function showLibrary() {
   state = null;
+  document.body.dataset.film = "home";
   $("#game").hidden = true;
   $("#library").hidden = false;
   renderShelf();
@@ -349,8 +384,9 @@ function renderQ() {
   $("#game").innerHTML = `
     <div class="topbar">
       <button class="back" id="back">← Thư viện phim</button>
-      <span class="label">${esc(film.title)}</span>
+      <span class="label">${esc(film.original)}</span>
     </div>
+    <div class="hero"><span class="motif" aria-hidden="true">${esc(film.motif)}</span><h1>${esc(film.title)}</h1></div>
     ${track()}
     <article class="card">
       <div class="qhead"><span class="num">Câu ${String(i + 1).padStart(2, "0")} / ${qs.length}</span><span class="score">Đúng ${correct()}</span></div>
@@ -395,8 +431,9 @@ function renderResult() {
   $("#game").innerHTML = `
     <div class="topbar">
       <button class="back" id="back">← Thư viện phim</button>
-      <span class="label">${esc(film.title)}</span>
+      <span class="label">${esc(film.original)}</span>
     </div>
+    <div class="hero"><span class="motif" aria-hidden="true">${esc(film.motif)}</span><h1>${esc(film.title)}</h1></div>
     ${track()}
     <article class="card result">
       <span class="label">Kết quả</span>
@@ -419,7 +456,7 @@ function renderResult() {
 
 function renderFoot(film) {
   $("#foot").innerHTML = film
-    ? `Dữ kiện tổng hợp từ báo chí: ${film.sources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
+    ? `Nguồn dữ kiện: ${film.sources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
     : `Mỗi lượt chơi hỏi toàn bộ câu hỏi của phim, thứ tự đáp án được xáo mỗi lần. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
 }
 
