@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Thư viện quiz kiến thức phim, mở đầu với Đầu Xuân Tươi Sáng.">
+<title>Đố Vui Màn Ảnh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: một cột như bìa kịch bản; thư viện phim ở trên, màn chơi thay chỗ khi chọn phim */
+:root {
+  --bg: #f4f6f1;
+  --paper: #ffffff;
+  --ink: #1d2a24;
+  --muted: #5d6b64;
+  --line: #d9e0da;
+  --blossom: #d9506f;
+  --blossom-soft: #fbe3e8;
+  --jade: #2f7d64;
+  --jade-soft: #dcefe6;
+  --wrong: #b5452f;
+  --wrong-soft: #f8e1db;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111714; --paper: #19221d; --ink: #e6ede8; --muted: #9aa9a1; --line: #2b3832;
+    --blossom: #f2849c; --blossom-soft: #3a1f27; --jade: #6cc4a3; --jade-soft: #173328;
+    --wrong: #ef8a73; --wrong-soft: #3a211b; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111714; --paper: #19221d; --ink: #e6ede8; --muted: #9aa9a1; --line: #2b3832;
+  --blossom: #f2849c; --blossom-soft: #3a1f27; --jade: #6cc4a3; --jade-soft: #173328;
+  --wrong: #ef8a73; --wrong-soft: #3a211b; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+.wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 32px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--blossom); outline-offset: 2px; }
+
+/* Masthead */
+.mast { display: grid; gap: 8px; }
+.mast h1 { font-size: clamp(36px, 8vw, 56px); }
+.mast h1 em { font-style: italic; font-weight: 500; color: var(--blossom); }
+.mast p { margin: 0; color: var(--muted); max-width: 56ch; }
+
+/* Library */
+.shelf { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.film {
+  text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 20px; display: grid; gap: 10px; transition: border-color .15s, transform .15s;
+}
+.film:hover { border-color: var(--blossom); transform: translateY(-2px); }
+.film h3 { font-size: 24px; }
+.film .meta { font-size: 14px; color: var(--muted); }
+.film .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pill { font-family: var(--mono); font-size: 12px; padding: 3px 10px; border-radius: 99px; background: var(--blossom-soft); color: var(--blossom); }
+.pill.jade { background: var(--jade-soft); color: var(--jade); }
+.film.soon { cursor: default; border-style: dashed; background: transparent; }
+.film.soon:hover { transform: none; border-color: var(--line); }
+.film.soon h3 { color: var(--muted); font-weight: 500; font-style: italic; }
+
+/* Game */
+.game { display: grid; gap: 20px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.back { background: none; border: 0; padding: 0; color: var(--muted); font-size: 14px; }
+.back:hover { color: var(--ink); }
+.track { display: grid; grid-auto-flow: column; gap: 4px; }
+.track span { height: 6px; border-radius: 3px; background: var(--line); }
+.track span.ok { background: var(--jade); }
+.track span.no { background: var(--wrong); }
+.track span.now { background: var(--blossom); }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: clamp(20px, 5vw, 36px); display: grid; gap: 20px; }
+.qhead { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.num { font-family: var(--mono); font-size: 13px; color: var(--blossom); font-variant-numeric: tabular-nums; }
+.score { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.q { font-size: clamp(22px, 4.5vw, 28px); }
+.opts { display: grid; gap: 10px; }
+.opt {
+  display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: center; text-align: left;
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px;
+  transition: border-color .12s, background .12s;
+}
+.opt:hover:not(:disabled) { border-color: var(--blossom); }
+.opt .key { font-family: var(--mono); font-size: 13px; width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); }
+.opt:disabled { cursor: default; }
+.opt.right { border-color: var(--jade); background: var(--jade-soft); }
+.opt.right .key { background: var(--jade); border-color: var(--jade); color: var(--paper); }
+.opt.wrong { border-color: var(--wrong); background: var(--wrong-soft); }
+.opt.wrong .key { background: var(--wrong); border-color: var(--wrong); color: var(--paper); }
+.explain { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 4px; }
+.explain strong { font-family: var(--display); font-size: 18px; }
+.explain.ok strong { color: var(--jade); }
+.explain.no strong { color: var(--wrong); }
+.explain p { margin: 0; color: var(--muted); }
+.actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+.btn { border: 0; border-radius: 99px; padding: 11px 22px; background: var(--ink); color: var(--bg); font-weight: 600; }
+.btn:hover { background: var(--blossom); color: var(--paper); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn.ghost:hover { border-color: var(--ink); background: transparent; color: var(--ink); }
+
+/* Result */
+.result { text-align: left; }
+.big { font-family: var(--display); font-size: clamp(64px, 16vw, 104px); line-height: 1; font-variant-numeric: tabular-nums; }
+.big small { font-size: .4em; color: var(--muted); font-weight: 500; }
+.verdict { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--blossom); margin: 0; }
+.review { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.review li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.review li:last-child { border-bottom: 0; }
+.review .mark { font-family: var(--mono); font-weight: 500; }
+.review .mark.ok { color: var(--jade); }
+.review .mark.no { color: var(--wrong); }
+.review .ans { color: var(--muted); }
+.foot { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+.foot a { color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <span class="label">Thư viện câu đố phim</span>
+    <h1>Đố Vui <em>Màn Ảnh</em></h1>
+    <p>Chọn một bộ phim, trả lời từng câu và xem bạn nhớ phim đến đâu. Mỗi đáp án đều có giải thích kèm theo.</p>
+  </header>
+
+  <section id="library" aria-label="Chọn phim">
+    <div class="shelf" id="shelf"></div>
+  </section>
+
+  <section id="game" class="game" hidden aria-live="polite"></section>
+
+  <footer class="foot" id="foot"></footer>
+</div>
+
+<script>
+const FILMS = [
+  {
+    id: "dau-xuan-tuoi-sang",
+    title: "Đầu Xuân Tươi Sáng",
+    original: "The Early Spring · 2026",
+    meta: "Trung Quốc · 24 tập · Tỉnh Bách Nhiên, Tôn Thiên",
+    sources: [
+      ["VnExpress", "https://vnexpress.net/chuyen-tinh-cong-so-trong-dau-xuan-tuoi-sang-5117333.html"],
+      ["Tuổi Trẻ", "https://tuoitre.vn/dau-xuan-tuoi-sang-gay-sot-netflix-toan-cau-100260904082715751.htm"],
+      ["TV360", "https://tintuc.tv360.vn/blog/dau-xuan-tuoi-sang-tap-cuoi-loan-niem-cau-hon-thuong-chi-dao/"],
+      ["Vietnamnet", "https://vietnamnet.vn/dau-xuan-tuoi-sang-co-phan-2-tinh-bach-nhien-va-ton-thien-tai-xuat-2555742.html"]
+    ],
+    questions: [
+      { q: "Phim được chuyển thể từ tiểu thuyết của tác giả nào?", a: "Cô Nương Đừng Khóc", w: ["Đinh Mặc", "Cố Mạn", "Mặc Bảo Phi Bảo"], e: "Phim chuyển thể từ tiểu thuyết cùng tên của Cô Nương Đừng Khóc." },
+      { q: "Ai thủ vai nam chính Loan Niệm?", a: "Tỉnh Bách Nhiên", w: ["Lưu Tiểu Bắc", "Triệu Chấn Vũ", "Lý Xuyên"], e: "Tỉnh Bách Nhiên đóng Loan Niệm, đóng cặp với Tôn Thiên." },
+      { q: "Tôn Thiên vào vai nhân vật nào?", a: "Thượng Chi Đào", w: ["Tang Dao", "Tôn Vũ", "Loan Niệm Đào"], e: "Tôn Thiên là Thượng Chi Đào, cô gái trẻ mới đến Bắc Kinh lập nghiệp." },
+      { q: "Ai là đạo diễn của phim?", a: "Tưởng Kế Chính", w: ["Quách Kính Minh", "Lưu Tuấn Kiệt", "Trương Lê"], e: "Phim do Tưởng Kế Chính đạo diễn." },
+      { q: "Phim có tổng cộng bao nhiêu tập?", a: "24 tập", w: ["32 tập", "36 tập", "40 tập"], e: "Bản phát sóng có 24 tập. Một số tin trước khi lên sóng từng nhắc đến con số 32 tập theo kế hoạch." },
+      { q: "Câu chuyện diễn ra trong ngành nghề nào?", a: "Quảng cáo", w: ["Thời trang", "Luật", "Y khoa"], e: "Phim là chuyện tình công sở trong ngành quảng cáo ở Bắc Kinh." },
+      { q: "Loan Niệm giữ vị trí gì trong công ty?", a: "Giám đốc sáng tạo", w: ["Giám đốc tài chính", "Trưởng phòng nhân sự", "Nhiếp ảnh gia"], e: "Loan Niệm là giám đốc sáng tạo tài năng nhưng nổi tiếng độc miệng." },
+      { q: "Lúc đầu, Thượng Chi Đào và Loan Niệm có quan hệ gì ở công ty?", a: "Nhân viên mới và cấp trên", w: ["Hai đồng nghiệp ngang cấp", "Khách hàng và đối tác", "Hai giám đốc đối thủ"], e: "Chi Đào khởi đầu là nhân viên mới, còn Loan Niệm là sếp. Sự đối đầu dần chuyển thành thu hút." },
+      { q: "Thượng Chi Đào đến thành phố nào để lập nghiệp?", a: "Bắc Kinh", w: ["Thượng Hải", "Thâm Quyến", "Hàng Châu"], e: "Cô gái trẻ đến thủ đô Bắc Kinh và bắt đầu từ vị trí nhân viên mới." },
+      { q: "Ở tập 20–21, sau khi chia tay Loan Niệm, Chi Đào về đâu?", a: "Cáp Nhĩ Tân", w: ["Thành Đô", "Trùng Khánh", "Hạ Môn"], e: "Cô nghỉ việc, rời Bắc Kinh để về quê nhà Cáp Nhĩ Tân sống tự lập." },
+      { q: "Ở tập cuối, Loan Niệm cầu hôn Chi Đào tại đâu?", a: "Lhasa", w: ["Cáp Nhĩ Tân", "Đại Lý", "Bắc Kinh"], e: "Cảnh cầu hôn diễn ra tại Lhasa, Tây Tạng." },
+      { q: "Khi cầu hôn, Loan Niệm hứa cùng Chi Đào thực hiện danh sách gì?", a: "30 điều muốn làm trước tuổi 30", w: ["100 nơi muốn đến", "10 món muốn nấu", "12 tháng du lịch"], e: "Anh hứa sẽ cùng cô hoàn thành danh sách 30 điều muốn làm trước tuổi 30." },
+      { q: "Lưu Tiểu Bắc đảm nhận vai nào?", a: "Tôn Viễn Trữ", w: ["Alex", "Tôn Vũ", "Loan Niệm"], e: "Lưu Tiểu Bắc vào vai Tôn Viễn Trữ." },
+      { q: "Quách Hiểu Đình vào vai nhân vật nào?", a: "Tang Dao", w: ["Tôn Vũ", "Thượng Chi Đào", "Lumi"], e: "Quách Hiểu Đình đóng Tang Dao." },
+      { q: "Diễn viên Lý Xuyên đóng nhân vật nào?", a: "Alex", w: ["Tôn Viễn Trữ", "Kevin", "Luke"], e: "Lý Xuyên vào vai Alex." },
+      { q: "Phim lên sóng ngày nào?", a: "26/8/2026", w: ["14/2/2026", "1/6/2026", "1/10/2026"], e: "Phim ra mắt ngày 26/8/2026 và chiếu đến ngày 9/9/2026." },
+      { q: "Ở Trung Quốc, phim phát trên nền tảng nào?", a: "Youku", w: ["iQIYI", "Tencent Video", "Mango TV"], e: "Phim chiếu trên Youku, đồng thời Netflix phát hành song song." },
+      { q: "Phim tạo điểm mới gì trong khâu sản xuất?", a: "Có điều phối viên cảnh thân mật", w: ["Quay toàn bộ bằng điện thoại", "Không dùng kịch bản", "Lồng tiếng bằng AI"], e: "Phim được cho là phim truyền hình Trung Quốc đầu tiên mời điều phối viên cảnh thân mật, do chuyên gia Thái Gia Ân đảm nhận." },
+      { q: "Sau 5 ngày phát sóng, lượt phát của phim vượt mốc nào?", a: "200 triệu", w: ["50 triệu", "1 tỷ", "20 triệu"], e: "Phim vượt 200 triệu lượt phát sau 5 ngày. Tập cuối đưa tổng số lên hơn 900 triệu." },
+      { q: "Tuần đầu trên Netflix, phim xếp hạng mấy ở bảng series không nói tiếng Anh toàn cầu?", a: "Hạng 2", w: ["Hạng 1", "Hạng 5", "Hạng 10"], e: "Phim đạt 2,4 triệu lượt xem tuần đầu và đứng thứ hai toàn cầu, mức cao chưa từng có với phim Trung Quốc." },
+      { q: "Youku công bố phần tiếp theo với tên gì?", a: "Giữa Hạ Tươi Sáng", w: ["Cuối Thu Tươi Sáng", "Đầu Xuân Tươi Sáng 2", "Đông Về Rực Rỡ"], e: "Phần tiếp theo mang tên Giữa Hạ Tươi Sáng. Dàn diễn viên chính chưa được xác nhận." }
+    ]
+  }
+];
+const COMING = ["Phim tiếp theo", "Bạn muốn phim nào?"];
+const ROUND = 12;
+const KEYS = ["A", "B", "C", "D"];
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const best = {
+  get(id) { try { return Number(localStorage.getItem("best:" + id)) || 0; } catch { return 0; } },
+  set(id, v) { try { if (v > this.get(id)) localStorage.setItem("best:" + id, v); } catch {} }
+};
+
+let state = null;
+
+function renderShelf() {
+  const films = FILMS.map((f) => {
+    const b = best.get(f.id);
+    return `<button class="film" data-id="${f.id}">
+      <span class="label">${esc(f.original)}</span>
+      <h3>${esc(f.title)}</h3>
+      <span class="meta">${esc(f.meta)}</span>
+      <span class="row"><span class="pill">${f.questions.length} câu hỏi · mỗi lượt ${Math.min(ROUND, f.questions.length)}</span>
+      ${b ? `<span class="pill jade">Kỷ lục ${b}/${Math.min(ROUND, f.questions.length)}</span>` : ""}</span>
+    </button>`;
+  }).join("");
+  const soon = COMING.map((t) => `<div class="film soon" aria-disabled="true"><span class="label">Sắp có</span><h3>${esc(t)}</h3><span class="meta">Câu đố mới sẽ được thêm vào thư viện.</span></div>`).join("");
+  $("#shelf").innerHTML = films + soon;
+  $("#shelf").querySelectorAll(".film[data-id]").forEach((el) => el.addEventListener("click", () => { location.hash = el.dataset.id; }));
+}
+
+function start(id) {
+  const film = FILMS.find((f) => f.id === id);
+  if (!film) return showLibrary();
+  const qs = shuffle(film.questions).slice(0, ROUND).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
+  state = { film, qs, i: 0, picks: [] };
+  $("#library").hidden = true;
+  $("#game").hidden = false;
+  renderFoot(film);
+  renderQ();
+  window.scrollTo(0, 0);
+}
+
+function showLibrary() {
+  state = null;
+  $("#game").hidden = true;
+  $("#library").hidden = false;
+  renderShelf();
+  renderFoot(null);
+}
+
+function track() {
+  return `<div class="track" aria-hidden="true">${state.qs.map((q, k) => {
+    const p = state.picks[k];
+    const cls = p === undefined ? (k === state.i ? "now" : "") : (p === q.a ? "ok" : "no");
+    return `<span class="${cls}"></span>`;
+  }).join("")}</div>`;
+}
+
+function correct() { return state.picks.filter((p, k) => p === state.qs[k].a).length; }
+
+function renderQ() {
+  const { film, qs, i } = state;
+  const q = qs[i];
+  const picked = state.picks[i];
+  const done = picked !== undefined;
+  const ok = picked === q.a;
+  $("#game").innerHTML = `
+    <div class="topbar">
+      <button class="back" id="back">← Thư viện phim</button>
+      <span class="label">${esc(film.title)}</span>
+    </div>
+    ${track()}
+    <article class="card">
+      <div class="qhead"><span class="num">Câu ${String(i + 1).padStart(2, "0")} / ${qs.length}</span><span class="score">Đúng ${correct()}</span></div>
+      <h2 class="q">${esc(q.q)}</h2>
+      <div class="opts">${q.opts.map((o, k) => {
+        let cls = "";
+        if (done && o === q.a) cls = "right";
+        else if (done && o === picked) cls = "wrong";
+        return `<button class="opt ${cls}" data-o="${esc(o)}" ${done ? "disabled" : ""}><span class="key">${KEYS[k]}</span><span>${esc(o)}</span></button>`;
+      }).join("")}</div>
+      ${done ? `<div class="explain ${ok ? "ok" : "no"}"><strong>${ok ? "Chính xác!" : "Chưa đúng. Đáp án: " + esc(q.a)}</strong><p>${esc(q.e)}</p></div>
+      <div class="actions"><button class="btn" id="next">${i + 1 < qs.length ? "Câu tiếp theo →" : "Xem kết quả"}</button></div>` : ""}
+    </article>`;
+  $("#back").addEventListener("click", () => { location.hash = ""; });
+  $("#game").querySelectorAll(".opt:not(:disabled)").forEach((b) => b.addEventListener("click", () => pick(b.dataset.o)));
+  const nx = $("#next");
+  if (nx) { nx.addEventListener("click", next); nx.focus({ preventScroll: true }); }
+}
+
+function pick(o) {
+  if (state.picks[state.i] !== undefined) return;
+  state.picks[state.i] = o;
+  renderQ();
+}
+
+function next() {
+  if (state.i + 1 < state.qs.length) { state.i++; renderQ(); }
+  else renderResult();
+}
+
+function verdict(r) {
+  if (r === 1) return "Fan cứng chính hiệu. Bạn nhớ phim từng chi tiết.";
+  if (r >= .75) return "Rất ấn tượng. Bạn đã xem phim kỹ.";
+  if (r >= .5) return "Khá ổn. Xem lại vài tập là thành fan cứng.";
+  return "Có lẽ đến lúc cày lại phim rồi.";
+}
+
+function renderResult() {
+  const { film, qs } = state;
+  const c = correct();
+  best.set(film.id, c);
+  $("#game").innerHTML = `
+    <div class="topbar">
+      <button class="back" id="back">← Thư viện phim</button>
+      <span class="label">${esc(film.title)}</span>
+    </div>
+    ${track()}
+    <article class="card result">
+      <span class="label">Kết quả</span>
+      <div class="big">${c}<small> / ${qs.length}</small></div>
+      <p class="verdict">${verdict(c / qs.length)}</p>
+      <ul class="review">${qs.map((q, k) => {
+        const ok = state.picks[k] === q.a;
+        return `<li><span class="mark ${ok ? "ok" : "no"}">${ok ? "✓" : "✗"}</span><span>${esc(q.q)}<br><span class="ans">${ok ? esc(q.a) : `Bạn chọn ${esc(state.picks[k])} · Đáp án ${esc(q.a)}`}</span></span></li>`;
+      }).join("")}</ul>
+      <div class="actions">
+        <button class="btn ghost" id="lib">Chọn phim khác</button>
+        <button class="btn" id="again">Chơi lại với câu hỏi mới</button>
+      </div>
+    </article>`;
+  $("#back").addEventListener("click", () => { location.hash = ""; });
+  $("#lib").addEventListener("click", () => { location.hash = ""; });
+  $("#again").addEventListener("click", () => start(film.id));
+  window.scrollTo(0, 0);
+}
+
+function renderFoot(film) {
+  $("#foot").innerHTML = film
+    ? `Dữ kiện tổng hợp từ báo chí: ${film.sources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
+    : `Mỗi lượt chơi lấy ngẫu nhiên ${ROUND} câu và xáo thứ tự đáp án. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
+}
+
+function route() {
+  const id = location.hash.slice(1);
+  if (id && FILMS.some((f) => f.id === id)) { if (!state || state.film.id !== id) start(id); }
+  else showLibrary();
+}
+
+document.addEventListener("keydown", (e) => {
+  if (!state || $("#game").hidden) return;
+  const k = KEYS.indexOf(e.key.toUpperCase());
+  const btns = $("#game").querySelectorAll(".opt:not(:disabled)");
+  if (k >= 0 && btns[k]) btns[k].click();
+});
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
