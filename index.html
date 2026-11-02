@@ -7,7 +7,7 @@
 <title>Đố Vui Màn Ảnh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Oswald:wght@500;700&family=Roboto+Slab:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: một cột như tập kịch bản. Mỗi phim mang bảng màu riêng (data-film), trang thư viện là phòng chiếu tối */
 :root, [data-film="home"] {
@@ -45,6 +45,19 @@
   --display: "Playfair Display", Georgia, serif;
   color-scheme: dark;
 }
+[data-film="madoff"] {
+  --bg: #0b1220;
+  --bg-art: radial-gradient(900px 420px at 80% -10%, #d6334033, transparent 70%), repeating-linear-gradient(0deg, #ffffff06 0 1px, transparent 1px 28px);
+  --card: #111b2d; --opt: #0e1726; --ink: #eef2f8; --muted: #94a3b8; --line: #23324a;
+  --accent: #e5484d; --accent-ink: #ffffff; --accent2: #3fa7f5;
+  --ok: #4cc38a; --ok-soft: #12302a; --no: #ff7b72; --no-soft: #3a1a1d;
+  --display: "Roboto Slab", Georgia, serif;
+  color-scheme: dark;
+}
+[data-film="madoff"] .poster { font-size: 40px; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.mode.terms { border-left: 4px solid var(--ok); }
+.mode.terms:hover { border-color: var(--ok); }
+.tag.terms { background: var(--ok); color: var(--card); }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
 body {
@@ -387,12 +400,103 @@ const FILMS = [
       { q: "Crazy Rich Asians nhận bao nhiêu đề cử Quả cầu vàng?", a: "2", w: ["0", "4", "6"], e: "Hai đề cử: Phim ca nhạc hoặc hài hay nhất và Nữ diễn viên chính (Constance Wu)." },
       { q: "Phim được coi là phim Hollywood lớn đầu tiên có dàn diễn viên chủ yếu gốc Á bối cảnh hiện đại kể từ phim nào?", a: "The Joy Luck Club (1993)", w: ["Mulan (1998)", "Memoirs of a Geisha (2005)", "Rush Hour (1998)"], e: "Khoảng cách 25 năm, kể từ The Joy Luck Club năm 1993." }
     ]
+  },
+  {
+    id: "madoff",
+    motif: "$64.8B",
+    title: "Madoff: Quái Vật Phố Wall",
+    original: "Madoff: The Monster of Wall Street · 2023",
+    meta: "Mỹ · Netflix · Phim tài liệu 4 tập · Joe Berlinger",
+    sources: [
+      ["Wikipedia: Madoff: The Monster of Wall Street", "https://en.wikipedia.org/wiki/Madoff:_The_Monster_of_Wall_Street"],
+      ["Wikipedia: Bernie Madoff", "https://en.wikipedia.org/wiki/Bernie_Madoff"],
+      ["Wikipedia: Madoff investment scandal", "https://en.wikipedia.org/wiki/Madoff_investment_scandal"],
+      ["Metacritic", "https://legacy.prod.metacritic.com/tv/madoff-the-monster-of-wall-street"]
+    ],
+    termSources: [
+      ["Wikipedia: Madoff investment scandal", "https://en.wikipedia.org/wiki/Madoff_investment_scandal"],
+      ["Wikipedia: Ponzi scheme", "https://en.wikipedia.org/wiki/Ponzi_scheme"],
+      ["Wikipedia: Affinity fraud", "https://en.wikipedia.org/wiki/Affinity_fraud"],
+      ["Wikipedia: Harry Markopolos", "https://en.wikipedia.org/wiki/Harry_Markopolos"],
+      ["NPR", "https://www.npr.org/transcripts/98674098"]
+    ],
+    emoSources: [
+      ["Metacritic", "https://legacy.prod.metacritic.com/tv/madoff-the-monster-of-wall-street/season-1/critic-reviews"],
+      ["Common Sense Media", "https://www.commonsensemedia.org/tv-reviews/madoff-the-monster-of-wall-street"],
+      ["Leisurebyte", "https://leisurebyte.com/madoff-the-monster-of-wall-street-review/"],
+      ["The JC", "https://www.thejc.com/life/madoff-the-monster-of-wall-street-tv-review-the-real-ogre-here-was-plain-greed-xsh74h3e"]
+    ],
+    questions: [
+      { q: "Ai là đạo diễn loạt phim tài liệu này?", a: "Joe Berlinger", w: ["Alex Gibney", "Errol Morris", "Ken Burns"], e: "Joe Berlinger, người cũng làm loạt phim tài liệu tội phạm Conversations with a Killer cho Netflix." },
+      { q: "Phim ra mắt trên Netflix ngày nào?", a: "4/1/2023", w: ["11/12/2018", "14/4/2021", "1/9/2022"], e: "Cả 4 tập phát hành cùng lúc ngày 4/1/2023." },
+      { q: "Phim có bao nhiêu tập?", a: "4 tập", w: ["3 tập", "6 tập", "8 tập"], e: "Đây là loạt phim tài liệu 4 tập, mỗi tập khoảng 55 phút." },
+      { q: "Phim dựa một phần vào cuốn sách nào?", a: "Madoff Talks của Jim Campbell", w: ["The Wizard of Lies của Diana Henriques", "No One Would Listen của Harry Markopolos", "Too Good to Be True của Erin Arvedlund"], e: "Phim dựa một phần vào cuốn Madoff Talks (2021) của Jim Campbell." },
+      { q: "Thủ pháp nào của phim bị nhiều nhà phê bình chê là gây xao nhãng?", a: "Cảnh tái hiện bằng diễn viên", w: ["Hoạt hình 3D", "Lồng tiếng AI", "Quay toàn bộ đen trắng"], e: "Phim xen cảnh diễn viên đóng Madoff, quay chậm, ánh sáng tối. Metacritic tóm tắt là gây xao nhãng nhưng phim vẫn rất nhiều thông tin." },
+      { q: "Tập 4 của phim có tên là gì?", a: "The Price of Trust", w: ["Don't Ask, Don't Tell", "See No Evil", "The Big Short"], e: "Tập 2 là \"Don't Ask, Don't Tell\", tập 3 là \"See No Evil\", tập 4 là \"The Price of Trust\"." },
+      { q: "Năm 1960 Madoff lập công ty với số vốn ban đầu khoảng bao nhiêu?", a: "5.000 USD", w: ["50.000 USD", "500.000 USD", "1 triệu USD"], e: "Ông kể số vốn 5.000 USD đến từ việc làm cứu hộ bể bơi và lắp hệ thống tưới nước." },
+      { q: "Madoff từng giữ chức vụ gì ở sàn NASDAQ?", a: "Chủ tịch", w: ["Kiểm toán viên", "Thanh tra", "Người sáng lập duy nhất"], e: "Madoff từng làm chủ tịch NASDAQ, điều khiến giới đầu tư càng tin tưởng ông." },
+      { q: "Công ty của Madoff đặt văn phòng ở tòa nhà nổi tiếng nào tại New York?", a: "Lipstick Building", w: ["Empire State Building", "Chrysler Building", "Trump Tower"], e: "Lipstick Building ở Manhattan, tên gọi do hình dáng giống thỏi son." },
+      { q: "Bộ phận quản lý đầu tư, nơi diễn ra lừa đảo, nằm ở tầng nào?", a: "Tầng 17", w: ["Tầng 1", "Tầng 19", "Tầng hầm"], e: "Tầng 17 tách biệt với bộ phận giao dịch thật, là nơi in ra các sao kê và giao dịch giả." },
+      { q: "Ai là cánh tay phải điều hành hoạt động giả mạo ở tầng 17?", a: "Frank DiPascali", w: ["Harry Markopolos", "Irving Picard", "Mark Madoff"], e: "Frank DiPascali quản lý việc dựng sao kê giả. Sau này ông nhận tội và hợp tác với công tố." },
+      { q: "Madoff tuyên bố mình dùng chiến lược đầu tư nào?", a: "Split-strike conversion", w: ["Bán khống", "Đầu tư mạo hiểm", "Mua bán tiền điện tử"], e: "Chiến lược kết hợp cổ phiếu lớn với quyền chọn. Thực tế ông gần như không giao dịch gì." },
+      { q: "Ai là người cảnh báo SEC về Madoff suốt nhiều năm nhưng bị phớt lờ?", a: "Harry Markopolos", w: ["Frank DiPascali", "Denny Chin", "Ezra Merkin"], e: "Nhà phân tích tài chính Harry Markopolos gửi cảnh báo từ năm 2000, nhưng SEC không vào cuộc nghiêm túc." },
+      { q: "Năm 2005, Markopolos gửi SEC bản ghi nhớ có tiêu đề gì?", a: "The World's Largest Hedge Fund is a Fraud", w: ["Too Good to Be True", "The Emperor Has No Clothes", "Follow the Money"], e: "Bản ghi nhớ dịch nghĩa là \"Quỹ phòng hộ lớn nhất thế giới là một vụ lừa đảo\", liệt kê hàng chục dấu hiệu bất thường." },
+      { q: "Madoff thú nhận vụ lừa đảo với ai đầu tiên?", a: "Hai con trai Mark và Andrew", w: ["Luật sư riêng", "Vợ ông, Ruth", "Nhân viên SEC"], e: "Ngày 10/12/2008 ông thú nhận với hai con trai, và họ báo cho nhà chức trách." },
+      { q: "Madoff bị FBI bắt vào ngày nào?", a: "11/12/2008", w: ["15/9/2008", "1/1/2009", "29/6/2009"], e: "Ông bị bắt một ngày sau khi thú nhận với các con." },
+      { q: "Thiệt hại trên giấy tờ của vụ lừa đảo được ước tính khoảng bao nhiêu?", a: "64,8 tỷ USD", w: ["6,48 tỷ USD", "648 triệu USD", "648 tỷ USD"], e: "Con số 64,8 tỷ USD gồm cả lợi nhuận ảo trên sao kê. Số tiền thật bị mất ít hơn, khoảng 17–20 tỷ USD." },
+      { q: "Madoff bị tuyên án bao nhiêu năm tù?", a: "150 năm", w: ["25 năm", "50 năm", "Chung thân có ân xá"], e: "Mức án tối đa, tuyên ngày 29/6/2009." },
+      { q: "Thẩm phán nào tuyên án Madoff?", a: "Denny Chin", w: ["Jed Rakoff", "Sonia Sotomayor", "Lewis Kaplan"], e: "Thẩm phán Denny Chin gọi tội ác của Madoff là \"cực kỳ xấu xa\"." },
+      { q: "Madoff qua đời năm nào?", a: "2021", w: ["2010", "2015", "2023"], e: "Ông mất ngày 14/4/2021 tại nhà tù liên bang Butner, Bắc Carolina, khi đang thụ án." },
+      { q: "Con trai Mark Madoff qua đời vào ngày đặc biệt nào?", a: "Đúng 2 năm sau ngày cha bị bắt", w: ["Ngày cha bị tuyên án", "Ngày cha qua đời", "Ngày sinh nhật cha"], e: "Mark mất ngày 11/12/2010, tròn hai năm sau vụ bắt giữ, cho thấy bi kịch lan sang cả gia đình." },
+      { q: "Ai được tòa chỉ định làm người thu hồi tài sản cho nạn nhân?", a: "Irving Picard", w: ["Harry Markopolos", "Ruth Madoff", "Frank DiPascali"], e: "Luật sư Irving Picard truy thu hàng tỷ USD để chia lại cho nạn nhân." },
+      { q: "Madoff giữ tài khoản chính của vụ lừa đảo ở ngân hàng nào?", a: "JPMorgan Chase", w: ["Goldman Sachs", "Citibank", "Bank of America"], e: "Tài khoản này nhận và chi hàng tỷ USD. Năm 2014 JPMorgan chấp nhận nộp khoảng 2,6 tỷ USD để dàn xếp." },
+      { q: "Quỹ trung gian lớn nhất đổ tiền vào Madoff là quỹ nào?", a: "Fairfield Greenwich Group", w: ["Berkshire Hathaway", "BlackRock", "Vanguard"], e: "Fairfield Greenwich chuyển hàng tỷ USD của khách hàng cho Madoff quản lý." },
+      { q: "Quỹ từ thiện của nhà văn đoạt Nobel Hòa bình nào mất tiền vì Madoff?", a: "Elie Wiesel", w: ["Toni Morrison", "Martin Luther King Jr.", "Kofi Annan"], e: "Quỹ Elie Wiesel Foundation for Humanity mất gần như toàn bộ tài sản." },
+      { q: "Vợ của Bernie Madoff tên là gì?", a: "Ruth", w: ["Eleanor", "Sarah", "Rachel"], e: "Ruth Madoff ở bên chồng từ thời trẻ và mất gần hết tài sản sau vụ bê bối." },
+      { q: "Madoff tiên phong mô hình kinh doanh hợp pháp nào trên sàn chứng khoán?", a: "Trả tiền để nhận lệnh giao dịch", w: ["Giao dịch tiền mã hóa", "Quỹ chỉ số", "Gọi vốn cộng đồng"], e: "Mô hình payment for order flow giúp công ty giao dịch thật của Madoff lớn mạnh và tạo uy tín cho ông." },
+      { q: "Andrew Madoff, con trai thứ hai, qua đời năm 2014 vì nguyên nhân gì?", a: "Bệnh ung thư", w: ["Tai nạn xe hơi", "Tự tử", "Đau tim"], e: "Andrew mất năm 2014 vì ung thư hạch." },
+      { q: "Phim lý giải vì sao nhà đầu tư tin Madoff lâu đến thế. Lý do nào sau đây đúng?", a: "Lợi nhuận đều đặn và uy tín của ông trong ngành", w: ["Ông công khai sổ sách mỗi tuần", "Chính phủ bảo lãnh quỹ", "Ông cam kết lãi 50% mỗi năm"], e: "Lãi không cao đột biến nhưng đều đặn hiếm thấy, cộng uy tín cựu chủ tịch NASDAQ, khiến người ta không nghi ngờ." },
+      { q: "Madoff thường làm gì khi nhà đầu tư hỏi chi tiết về chiến lược?", a: "Từ chối giải thích, coi đó là bí mật", w: ["Mời họ đến tầng 17 xem", "Đưa toàn bộ dữ liệu", "Giới thiệu kiểm toán lớn"], e: "Sự bí ẩn khiến quỹ có vẻ độc quyền và đáng mơ ước, đồng thời che giấu việc không hề có giao dịch." }
+    ],
+    terms: [
+      { q: "\"Palm Beach Country Club\" trong phim là gì?", a: "CLB thượng lưu ở Palm Beach, Florida, phần lớn thành viên là người Do Thái", w: ["Sân golf riêng của Madoff", "Tên quỹ đầu tư của Madoff", "Nhà tù nơi Madoff thụ án"], e: "Madoff là thành viên CLB này và nhiều hội viên giao tiền cho ông. Nhiều người mất phần lớn tài sản." },
+      { q: "Vì sao Palm Beach Country Club là \"mỏ vàng\" của Madoff?", a: "Hội viên giàu có và tin nhau, giới thiệu nhau đầu tư", w: ["CLB được miễn thuế", "Madoff là chủ sở hữu CLB", "CLB có ngân hàng riêng"], e: "Trong một cộng đồng khép kín, lời giới thiệu của bạn bè thay cho việc thẩm định. Được Madoff \"nhận tiền\" còn là một đặc quyền." },
+      { q: "\"Ponzi scheme\" (mô hình Ponzi) nghĩa là gì?", a: "Lấy tiền người đến sau trả \"lãi\" cho người đến trước", w: ["Bán khống cổ phiếu", "Vay ngân hàng để mua cổ phiếu", "Đầu tư vào bất động sản"], e: "Không có lợi nhuận thật. Hệ thống sụp khi tiền mới không đủ trả cho người muốn rút." },
+      { q: "Mô hình Ponzi được đặt theo tên ai?", a: "Charles Ponzi, kẻ lừa đảo những năm 1920", w: ["Một nhà toán học Ý", "Người sáng lập Phố Wall", "Một thẩm phán Mỹ"], e: "Charles Ponzi lừa nhà đầu tư ở Boston bằng lời hứa lãi lớn từ phiếu đổi tem thư quốc tế." },
+      { q: "\"Affinity fraud\" (lừa đảo dựa trên mối quan hệ) là gì?", a: "Lừa người trong cùng cộng đồng bằng niềm tin chung", w: ["Lừa đảo qua mạng xã hội", "Lừa đảo bảo hiểm", "Làm giả chữ ký"], e: "Madoff nhắm vào cộng đồng Do Thái của chính mình, từ CLB, quỹ từ thiện đến bạn bè của bố vợ." },
+      { q: "\"Feeder fund\" (quỹ trung gian) là gì?", a: "Quỹ gom tiền khách hàng rồi giao cho Madoff quản lý", w: ["Quỹ cứu trợ nạn nhân", "Quỹ hưu trí nhà nước", "Quỹ của SEC"], e: "Như Fairfield Greenwich, các quỹ này thu phí cao nhưng hầu như không kiểm tra Madoff làm gì với tiền." },
+      { q: "\"Split-strike conversion\" thực chất đóng vai trò gì trong vụ lừa đảo?", a: "Lớp vỏ nghe chuyên môn để che việc không giao dịch thật", w: ["Bí quyết giúp Madoff thắng lớn", "Phương pháp kiểm toán", "Tên phần mềm giao dịch"], e: "Chiến lược có thật, nhưng quy mô Madoff tuyên bố lớn hơn cả lượng quyền chọn trên thị trường, một điểm Markopolos chỉ ra." },
+      { q: "\"Clawback\" trong quá trình bồi thường nghĩa là gì?", a: "Đòi lại tiền từ người đã rút nhiều hơn số tiền góp", w: ["Phạt tiền SEC", "Tịch thu nhà Madoff", "Hoàn thuế cho nạn nhân"], e: "Picard kiện những người được lợi để lấy lại tiền \"lãi ảo\" chia cho người mất trắng." },
+      { q: "\"Net winner\" (người thắng ròng) là ai?", a: "Nhà đầu tư rút ra nhiều hơn số tiền đã gửi vào", w: ["Người phát hiện vụ lừa đảo", "Nạn nhân mất nhiều nhất", "Nhân viên được thưởng"], e: "Họ vô tình nhận tiền của người khác, nên là đối tượng của các vụ kiện clawback." },
+      { q: "\"SEC\" là cơ quan nào?", a: "Ủy ban Chứng khoán và Giao dịch Hoa Kỳ", w: ["Cục Điều tra Liên bang", "Ngân hàng Trung ương Mỹ", "Sở Giao dịch New York"], e: "SEC giám sát thị trường chứng khoán, và bị chỉ trích nặng vì nhiều lần bỏ qua cảnh báo về Madoff." },
+      { q: "\"Whistleblower\" như Harry Markopolos là gì?", a: "Người tố giác sai phạm", w: ["Người môi giới", "Người kiểm toán", "Người bảo lãnh"], e: "Markopolos tự tính toán và kết luận lợi nhuận của Madoff là bất khả thi, rồi kiên trì báo cho SEC." },
+      { q: "\"Due diligence\" mà các quỹ trung gian bỏ qua nghĩa là gì?", a: "Thẩm định kỹ trước khi đầu tư", w: ["Trả phí đúng hạn", "Ký hợp đồng bảo mật", "Rút tiền định kỳ"], e: "Nếu kiểm tra giao dịch và kiểm toán viên (một văn phòng nhỏ ba người), họ đã có thể phát hiện điều bất thường." },
+      { q: "\"Tầng 17\" trong phim mang ý nghĩa gì?", a: "Trung tâm của lừa đảo, nơi làm sao kê giả", w: ["Phòng làm việc của gia đình Madoff", "Phòng giao dịch thật", "Văn phòng SEC"], e: "Tầng 17 bị tách khỏi các tầng giao dịch thật. Nhân viên ở đây dùng máy tính cũ để in giao dịch bịa ra." },
+      { q: "Khi thú nhận, Madoff nói với các con: \"It's all just one big lie\". Câu này có nghĩa gì?", a: "Toàn bộ mảng quản lý đầu tư là giả, không có giao dịch thật", w: ["Ông chỉ khai gian thuế một lần", "Báo chí đang bịa chuyện về ông", "Ông nói dối về tuổi thật"], e: "\"Tất cả chỉ là một lời nói dối lớn.\" Ông thừa nhận thực chất đó là một mô hình Ponzi khổng lồ." },
+      { q: "Trước tòa, Madoff nói \"I have left a legacy of shame\". Ý ông là gì?", a: "Ông để lại di sản ô nhục cho gia đình và con cháu", w: ["Ông để lại tài sản cho con", "Ông tự hào về sự nghiệp", "Ông đổ lỗi cho nạn nhân"], e: "\"Tôi đã để lại một di sản ô nhục\", như chính các nạn nhân đã nói, cho gia đình và các cháu ông." },
+      { q: "Án 150 năm tù có ý nghĩa gì, dù Madoff đã ngoài 70 tuổi?", a: "Mang tính biểu tượng và răn đe, đảm bảo ông chết trong tù", w: ["Để ông có thể được ân xá sớm", "Do luật bắt buộc mỗi tội 10 năm", "Để bồi thường cho SEC"], e: "Thẩm phán Chin muốn thể hiện mức độ nghiêm trọng của tội ác và gửi thông điệp đến nạn nhân lẫn giới tài chính." },
+      { q: "Tên tập 2 \"Don't Ask, Don't Tell\" ám chỉ điều gì?", a: "Nhà đầu tư không hỏi, Madoff không kể, cùng im lặng vì lợi nhuận", w: ["Chính sách quân đội Mỹ", "Quy định bảo mật của SEC", "Lời khuyên của luật sư Madoff"], e: "\"Đừng hỏi, đừng kể\": miễn tiền lãi đều, không ai muốn đặt câu hỏi khó." },
+      { q: "Tên tập 3 \"See No Evil\" nói về ai?", a: "Cơ quan quản lý và ngân hàng làm ngơ trước dấu hiệu sai phạm", w: ["Madoff giả mù", "Nạn nhân không đọc sao kê", "Nhân chứng mất tích"], e: "\"Không thấy điều xấu\": SEC, ngân hàng và quỹ trung gian đều có dấu hiệu trước mắt nhưng không hành động." },
+      { q: "Tên tập 4 \"The Price of Trust\" muốn nói gì?", a: "Cái giá nạn nhân phải trả vì đã đặt niềm tin", w: ["Phí quản lý quỹ của Madoff", "Giá cổ phiếu sau khủng hoảng", "Tiền bảo lãnh tại ngoại"], e: "\"Cái giá của niềm tin\": gia đình, quỹ từ thiện và người về hưu mất trắng vì tin một người." },
+      { q: "Vì sao lợi nhuận \"đều đặn đến hoàn hảo\" lại là dấu hiệu đáng ngờ?", a: "Thị trường thật luôn biến động, không ai thắng đều mọi tháng", w: ["Vì lãi suất ngân hàng cao hơn", "Vì luật cấm lãi đều", "Vì Madoff đầu tư vào vàng"], e: "Markopolos chỉ ra đường lợi nhuận của Madoff đi lên gần như thẳng tắp, gần như không có tháng lỗ. Điều đó trái với toán học thống kê." },
+      { q: "Tên sách của Markopolos \"No One Would Listen\" thể hiện điều gì?", a: "Cảnh báo của ông bị phớt lờ suốt nhiều năm", w: ["Ông không muốn ai đọc sách", "Madoff từ chối phỏng vấn", "Tòa án xử kín"], e: "\"Không ai chịu nghe\": ông cảnh báo SEC nhiều lần từ năm 2000 nhưng vụ việc chỉ vỡ lở năm 2008." },
+      { q: "Tên phim \"Quái vật phố Wall\" ngụ ý điều gì về Madoff?", a: "Sự tàn phá của ông lên hàng nghìn cuộc đời, như một kẻ sát nhân tài chính", w: ["Ông là người khổng lồ của ngành", "Ông thích phim kinh dị", "Ông là biểu tượng thành công"], e: "Phim nhìn Madoff như tội phạm, nhấn vào nạn nhân thay vì chỉ kể một câu chuyện tài chính li kỳ." }
+    ],
+    emotions: [
+      { q: "Metacritic tóm tắt cảm nhận của giới phê bình thế nào?", a: "Cảnh tái hiện gây xao nhãng nhưng phim rất nhiều thông tin", w: ["Hoàn hảo, không có điểm trừ", "Nhàm chán và sai sự thật", "Chỉ hợp với chuyên gia tài chính"], e: "Phim giải thích rõ tâm lý Madoff và cách vụ lừa đảo vận hành, dù phần dựng lại bị chê." },
+      { q: "Điều The Guardian khen nhất ở phim là gì?", a: "Cho nạn nhân được lên tiếng", w: ["Phỏng vấn Madoff trực tiếp", "Hiệu ứng hình ảnh", "Nhạc phim"], e: "Ở tội phạm cổ cồn trắng, câu chuyện của nạn nhân thường bị bỏ qua. Phim cho họ thời lượng xứng đáng." },
+      { q: "Một bài review gọi Madoff bằng hình ảnh nào?", a: "Kẻ sát nhân hàng loạt về tài chính", w: ["Robin Hood của phố Wall", "Thiên tài bị hiểu lầm", "Nạn nhân của hệ thống"], e: "Cách gọi nhấn mạnh sự tàn phá rộng và có chủ đích lên rất nhiều người." },
+      { q: "Common Sense Media mô tả không khí hình ảnh của phim thế nào?", a: "Bộ lọc tối và cảnh tái hiện quay chậm đầy kịch tính", w: ["Màu sắc tươi sáng như phim hài", "Toàn bộ là hoạt hình", "Quay bằng camera giám sát"], e: "Tông tối, quay chậm khiến phim giống một bộ phim giật gân hơn là phim tài liệu truyền thống." },
+      { q: "Tờ The JC chê điều gì ở phim?", a: "Tên phim quá cường điệu", w: ["Phim quá ngắn", "Thiếu phỏng vấn", "Sai năm sự kiện"], e: "Tờ báo cho rằng \"quái vật\" là cách gọi phóng đại, và con quái vật thật sự là lòng tham." },
+      { q: "Biết SEC được cảnh báo từ năm 2000 mà không hành động, một bài review gọi phim là chân dung của điều gì?", a: "Một thất bại ngoạn mục của cơ quan nhà nước", w: ["Một chiến thắng của công lý", "Một câu chuyện cổ tích tài chính", "Một vụ án bị dựng lên"], e: "Người xem phẫn nộ khi thấy dấu hiệu đã rõ từ sớm nhưng cơ quan quản lý vẫn bỏ qua suốt 8 năm." }
+    ]
   }
 ];
 const COMING = ["Bạn muốn phim nào tiếp theo?"];
 const KEYS = ["A", "B", "C", "D"];
 const MODES = {
   facts: { suffix: "", label: "Kiến thức phim", list: (f) => f.questions, src: (f) => f.sources },
+  terms: { suffix: "--y-nghia", label: "Ý nghĩa & thuật ngữ", list: (f) => f.terms || [], src: (f) => f.termSources || [] },
   emo: { suffix: "--cam-xuc", label: "Cảm xúc khán giả", list: (f) => f.emotions || [], src: (f) => f.emoSources || [] }
 };
 
@@ -405,7 +509,7 @@ const best = {
 };
 const keyOf = (film, mode) => film.id + MODES[mode].suffix;
 function parseKey(key) {
-  for (const mode of ["emo", "facts"]) {
+  for (const mode of ["emo", "terms", "facts"]) {
     const sfx = MODES[mode].suffix;
     if (sfx && !key.endsWith(sfx)) continue;
     const film = FILMS.find((f) => f.id === key.slice(0, key.length - sfx.length));
@@ -474,9 +578,8 @@ function track() {
 
 function header() {
   const { film, mode } = state;
-  const other = mode === "facts" ? "emo" : "facts";
-  const switcher = MODES[other].list(film).length
-    ? `<button class="switch" id="switch">Chuyển sang ${MODES[other].label} →</button>` : "";
+  const switcher = Object.keys(MODES).filter((m) => m !== mode && MODES[m].list(film).length)
+    .map((m) => `<button class="switch" data-key="${keyOf(film, m)}">${MODES[m].label} →</button>`).join("");
   return `
     <div class="topbar">
       <button class="back" id="back">← Thư viện phim</button>
@@ -492,8 +595,7 @@ function header() {
 
 function bindHeader() {
   $("#back").addEventListener("click", () => { location.hash = ""; });
-  const sw = $("#switch");
-  if (sw) sw.addEventListener("click", () => { location.hash = keyOf(state.film, state.mode === "facts" ? "emo" : "facts"); });
+  $("#game").querySelectorAll(".switch").forEach((b) => b.addEventListener("click", () => { location.hash = b.dataset.key; }));
 }
 
 function correct() { return state.picks.filter((p, k) => p === state.qs[k].a).length; }
@@ -535,6 +637,12 @@ function next() {
 }
 
 function verdict(r, mode) {
+  if (mode === "terms") {
+    if (r === 1) return "Bạn nắm vững từng thuật ngữ và ẩn ý của phim.";
+    if (r >= .75) return "Bạn hiểu rất sâu những gì phim muốn nói.";
+    if (r >= .5) return "Khá ổn. Xem lại phim với từ điển tài chính bên cạnh nhé.";
+    return "Phim còn nhiều tầng nghĩa đang chờ bạn khám phá.";
+  }
   if (mode === "emo") {
     if (r === 1) return "Bạn đồng cảm với khán giả đến từng nhịp tim.";
     if (r >= .75) return "Bạn rất hiểu cộng đồng người xem.";
@@ -575,7 +683,7 @@ function renderFoot() {
   const src = state ? MODES[state.mode].src(state.film) : [];
   $("#foot").innerHTML = state
     ? `Nguồn dữ kiện: ${src.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
-    : `Mỗi phim có hai bộ câu hỏi: kiến thức về phim và cảm xúc của khán giả. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
+    : `Mỗi phim có các bộ câu hỏi riêng: kiến thức phim, cảm xúc khán giả, và với một số phim là ý nghĩa & thuật ngữ. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
 }
 
 function route() {
