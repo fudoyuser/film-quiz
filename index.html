@@ -61,6 +61,9 @@
 .mode.all:hover { border-color: var(--ink); }
 .tag.all { background: var(--ink); color: var(--card); }
 .cat { color: var(--muted); }
+.mode.eps { border-left: 4px solid var(--no); }
+.mode.eps:hover { border-color: var(--no); }
+.tag.eps { background: var(--no); color: var(--card); }
 .tag.terms { background: var(--ok); color: var(--card); }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -462,6 +465,41 @@ const FILMS = [
       { q: "Phim lý giải vì sao nhà đầu tư tin Madoff lâu đến thế. Lý do nào sau đây đúng?", a: "Lợi nhuận đều đặn và uy tín của ông trong ngành", w: ["Ông công khai sổ sách mỗi tuần", "Chính phủ bảo lãnh quỹ", "Ông cam kết lãi 50% mỗi năm"], e: "Lãi không cao đột biến nhưng đều đặn hiếm thấy, cộng uy tín cựu chủ tịch NASDAQ, khiến người ta không nghi ngờ." },
       { q: "Madoff thường làm gì khi nhà đầu tư hỏi chi tiết về chiến lược?", a: "Từ chối giải thích, coi đó là bí mật", w: ["Mời họ đến tầng 17 xem", "Đưa toàn bộ dữ liệu", "Giới thiệu kiểm toán lớn"], e: "Sự bí ẩn khiến quỹ có vẻ độc quyền và đáng mơ ước, đồng thời che giấu việc không hề có giao dịch." }
     ],
+    epSources: [
+      ["IMDb – danh sách tập", "https://www.imdb.com/title/tt23732458/episodes/?season=1"],
+      ["Rotten Tomatoes – tập 1", "https://www.rottentomatoes.com/tv/madoff_the_monster_of_wall_street/s01/e01"],
+      ["High On Films", "https://www.highonfilms.com/madoff-the-monster-of-wall-street-2023-netflix-docuseries-explained/"],
+      ["Metacritic – tập 2", "https://www.metacritic.com/tv/madoff-the-monster-of-wall-street/season-1/episode-2-dont-ask-dont-tell/"],
+      ["Metacritic – tập 3", "https://www.metacritic.com/tv/madoff-the-monster-of-wall-street/season-1/episode-3-see-no-evil/"],
+      ["Metacritic – tập 4", "https://www.metacritic.com/tv/madoff-the-monster-of-wall-street/season-1/episode-4-the-price-of-trust/"],
+      ["American Bar Association", "https://www.americanbar.org/groups/business_law/resources/business-law-today/2023-february/netflix-accurately-portrays-bernie-madoff/"]
+    ],
+    episodes: [
+      { q: "Tập 1: Tập mở màn có tên là gì?", a: "A Liar, Not a Failure", w: ["Don't Ask, Don't Tell", "See No Evil", "The Price of Trust"], e: "\"Kẻ nói dối, không phải kẻ thất bại\": cái tên tóm gọn lựa chọn đã định hình cả cuộc đời Madoff." },
+      { q: "Tập 1: Phim mở đầu bằng sự kiện nào trước khi quay ngược về quá khứ?", a: "Madoff bị bắt ngày 11/12/2008", w: ["Madoff ra tòa năm 2009", "Madoff qua đời năm 2021", "Madoff lập công ty năm 1960"], e: "Phim bắt đầu từ cú sụp đổ rồi mới kể lại con đường dẫn đến nó." },
+      { q: "Tập 1: Những năm đầu 1960, ai cùng Madoff giao dịch cổ phiếu phi tập trung (OTC)?", a: "Vợ ông, Ruth", w: ["Em trai Peter", "Con trai Mark", "Frank DiPascali"], e: "Phim tái hiện cảnh Bernie và Ruth cùng làm việc khi công ty còn nhỏ." },
+      { q: "Tập 1: Thời mới vào nghề, Madoff làm mất 30.000 USD của nhà đầu tư. Ông xử lý thế nào?", a: "Vay tiền bù lại và nói dối về khoản lỗ", w: ["Thừa nhận và xin lỗi khách hàng", "Tuyên bố phá sản", "Đổ lỗi cho thị trường trước báo chí"], e: "Thay vì nhận thất bại, ông che giấu nó. Đây là hạt giống của vụ lừa đảo sau này." },
+      { q: "Tập 1: Chi tiết khoản lỗ 30.000 USD giải thích tên tập \"A Liar, Not a Failure\" thế nào?", a: "Madoff thà làm kẻ nói dối còn hơn bị coi là kẻ thất bại", w: ["Madoff chưa bao giờ thua lỗ", "Madoff bị người khác lừa", "Madoff tự nhận mình là kẻ thất bại"], e: "Nỗi sợ thất bại khiến ông chọn lời nói dối, rồi phải dùng lời nói dối lớn hơn để che lời nói dối cũ." },
+      { q: "Tập 1: Mảng giao dịch thật của Madoff phát triển thành mô hình gì, góp phần vào sự ra đời của Nasdaq?", a: "Nhà tạo lập thị trường (market maker)", w: ["Ngân hàng đầu tư", "Công ty bảo hiểm", "Quỹ hưu trí"], e: "Vai trò market maker và công nghệ giao dịch điện tử đưa Madoff lên hàng tên tuổi lớn của Phố Wall." },
+      { q: "Tập 1: Công ty kế toán gắn với bố vợ Madoff, do hai người tiếp quản thập niên 1970, tên là gì?", a: "Avellino & Bienes", w: ["Fairfield Greenwich", "Friehling & Horowitz", "Bank Medici"], e: "Avellino & Bienes gom tiền khách hàng chuyển cho Madoff, trở thành một trong những kênh dẫn vốn sớm nhất." },
+      { q: "Tập 2: Netflix mô tả \"bàn tay vàng\" của Madoff lan từ Phố Wall tới đâu?", a: "Palm Beach", w: ["Las Vegas", "Hollywood", "Hồng Kông"], e: "Madoff tiếp cận giới giàu có ở Palm Beach, Florida, trong đó có hội viên Palm Beach Country Club." },
+      { q: "Tập 2: Ở giai đoạn này, công việc của Madoff mở rộng sang đâu và bắt đầu gặp chuyện gì?", a: "Sang giới quỹ phòng hộ, và bắt đầu bị soi xét", w: ["Sang bất động sản, và phá sản", "Sang chính trị, và trúng cử", "Sang ngân hàng, và bị đóng cửa"], e: "Tiền từ các quỹ phòng hộ đổ vào nhiều hơn, kéo theo những câu hỏi đầu tiên về con số của ông." },
+      { q: "Tập 2: Chủ đề chính của tập \"Don't Ask, Don't Tell\" là ai?", a: "Những người có thể đã nghi ngờ nhưng im lặng vì đang kiếm được tiền", w: ["Các nhân viên FBI", "Các nhà báo điều tra", "Gia đình Madoff"], e: "Lợi nhuận đều đặn khiến nhiều người chọn không hỏi, còn Madoff thì không kể." },
+      { q: "Tập 2: Ai đóng vai Madoff trong các cảnh tái hiện?", a: "Joseph Scotto", w: ["Robert De Niro", "Richard Dreyfuss", "Joe Berlinger"], e: "Robert De Niro và Richard Dreyfuss từng đóng Madoff ở các phim khác. Trong loạt phim tài liệu này, diễn viên là Joseph Scotto." },
+      { q: "Tập 2: Nhà báo nào, tác giả cuốn The Wizard of Lies, xuất hiện để phân tích vụ việc?", a: "Diana Henriques", w: ["Jim Campbell", "Erin Arvedlund", "Bethany McLean"], e: "Diana Henriques của New York Times là người từng phỏng vấn Madoff trong tù." },
+      { q: "Tập 3: Netflix tóm tắt tập \"See No Evil\": ai điều tra những con số bất khả thi của Madoff?", a: "Các đối thủ cạnh tranh trong ngành", w: ["FBI", "Gia đình Madoff", "Nhân viên tầng 17"], e: "Những người cùng ngành thử làm lại chiến lược của Madoff và không thể đạt kết quả như ông." },
+      { q: "Tập 3: SEC phản ứng thế nào với các cảnh báo?", a: "Bỏ qua nhiều dấu hiệu bất thường", w: ["Bắt giữ Madoff ngay", "Đóng cửa công ty", "Trao giải cho người tố giác"], e: "Tên tập \"See No Evil\" (không thấy điều xấu) nói đúng cách cơ quan quản lý đã nhắm mắt làm ngơ." },
+      { q: "Tập 3: Harry Markopolos kết luận gì sau khi tự tính toán?", a: "Các con số của Madoff là giả", w: ["Madoff là thiên tài thật", "Madoff đang thua lỗ nhẹ", "Madoff giao dịch nội gián"], e: "Ông cho rằng không chiến lược thật nào cho ra lợi nhuận như vậy, rồi kiên trì báo cho SEC suốt nhiều năm." },
+      { q: "Tập 3: Theo báo cáo nội bộ của SEC, khoản Madoff thật sự nắm giữ tại DTC so với số khách hàng tưởng mình có như thế nào?", a: "Ít hơn cả số tiền mà một khách hàng duy nhất tưởng mình có", w: ["Nhiều gấp đôi tổng tiền khách", "Bằng đúng tổng tiền khách", "Nhiều hơn một chút"], e: "Chỉ cần đối chiếu một tài khoản là đã có thể lật tẩy vụ lừa đảo, nhưng SEC không làm." },
+      { q: "Tập 4: Vụ lừa đảo bị lộ trong bối cảnh nào?", a: "Khủng hoảng tài chính 2008", w: ["Bong bóng dot-com 2000", "Sự kiện 11/9/2001", "Đại dịch năm 2020"], e: "Thị trường sụp đổ, nhà đầu tư đồng loạt rút tiền, và không còn tiền mới để trả." },
+      { q: "Tập 4: Vì sao mô hình của Madoff không thể trụ được nữa?", a: "Không đáp ứng nổi các yêu cầu rút tiền", w: ["Bị hacker tấn công", "Bị đối thủ mua lại", "Madoff tự nguyện nghỉ hưu"], e: "Mô hình Ponzi chỉ sống được khi tiền vào nhiều hơn tiền ra. Năm 2008, điều đó đảo ngược." },
+      { q: "Tập 4: Ai báo cho nhà chức trách sau khi Madoff thú nhận?", a: "Hai con trai Mark và Andrew", w: ["Vợ ông, Ruth", "Frank DiPascali", "Harry Markopolos"], e: "Các con trai báo cáo cha mình, và ngày hôm sau FBI đến bắt Madoff." },
+      { q: "Tập 4: Tin gì về nhà quản lý quỹ người Pháp có 1,5 tỷ USD tiền khách đặt ở Madoff được nhắc tới?", a: "Ông được phát hiện tử vong trong văn phòng ở Manhattan", w: ["Ông bỏ trốn sang châu Âu", "Ông được bồi thường đầy đủ", "Ông làm chứng chống lại Madoff"], e: "Cái chết cho thấy hậu quả của vụ lừa đảo lan đến cả những người trung gian." },
+      { q: "Tập 4: Tên tập \"The Price of Trust\" gắn với nội dung nào?", a: "Nạn nhân mất trắng và nhiều năm chật vật đòi lại tiền", w: ["Madoff được giảm án", "SEC được khen thưởng", "Các quỹ trung gian thắng kiện"], e: "Netflix tóm tắt: cuộc sống của nạn nhân bị đảo lộn, họ đối mặt với nhiều năm trở ngại để lấy lại tiền." },
+      { q: "Tập 4: Bi kịch nào xảy ra với gia đình Madoff tròn hai năm sau vụ bắt giữ?", a: "Con trai Mark Madoff tự tử", w: ["Ruth Madoff bị bắt", "Andrew Madoff vào tù", "Madoff vượt ngục"], e: "Mark mất ngày 11/12/2010. Vụ lừa đảo không chỉ hủy hoại nạn nhân mà cả chính gia đình Madoff." },
+      { q: "Xuyên suốt phim: Bộ phim nói gì về chuyện Madoff đăng ký mảng tư vấn đầu tư với SEC?", a: "Mãi đến năm 2006 ông mới đăng ký", w: ["Ông đăng ký từ năm 1960", "Ông chưa bao giờ phải đăng ký", "SEC từ chối hồ sơ của ông"], e: "Suốt hàng chục năm, mảng làm ăn lớn nhất của ông không chịu sự giám sát như luật yêu cầu." },
+      { q: "Xuyên suốt phim: SEC lần đầu nhận khiếu nại liên quan đến quỹ trung gian Avellino & Bienes vào năm nào?", a: "1992", w: ["1972", "2000", "2008"], e: "SEC có cơ hội phát hiện Madoff từ năm 1992, nhưng vụ việc khép lại mà không ai đào sâu vào nguồn tiền." }
+    ],
     terms: [
       { q: "\"Palm Beach Country Club\" trong phim là gì?", a: "CLB thượng lưu ở Palm Beach, Florida, phần lớn thành viên là người Do Thái", w: ["Sân golf riêng của Madoff", "Tên quỹ đầu tư của Madoff", "Nhà tù nơi Madoff thụ án"], e: "Madoff là thành viên CLB này và nhiều hội viên giao tiền cho ông. Nhiều người mất phần lớn tài sản." },
       { q: "Vì sao Palm Beach Country Club là \"mỏ vàng\" của Madoff?", a: "Hội viên giàu có và tin nhau, giới thiệu nhau đầu tư", w: ["CLB được miễn thuế", "Madoff là chủ sở hữu CLB", "CLB có ngân hàng riêng"], e: "Trong một cộng đồng khép kín, lời giới thiệu của bạn bè thay cho việc thẩm định. Được Madoff \"nhận tiền\" còn là một đặc quyền." },
@@ -500,15 +538,16 @@ const COMING = ["Bạn muốn phim nào tiếp theo?"];
 const KEYS = ["A", "B", "C", "D"];
 const MODES = {
   facts: { suffix: "", label: "Kiến thức phim", list: (f) => f.questions, src: (f) => f.sources },
+  eps: { suffix: "--tung-tap", label: "Mổ xẻ từng tập", list: (f) => f.episodes || [], src: (f) => f.epSources || [] },
   terms: { suffix: "--y-nghia", label: "Ý nghĩa & thuật ngữ", list: (f) => f.terms || [], src: (f) => f.termSources || [] },
   emo: { suffix: "--cam-xuc", label: "Cảm xúc khán giả", list: (f) => f.emotions || [], src: (f) => f.emoSources || [] },
   all: {
     suffix: "--tong-hop", label: "Ôn tập tổng hợp",
     list: (f) => {
-      const parts = ["facts", "terms", "emo"].filter((m) => MODES[m].list(f).length);
+      const parts = ["facts", "eps", "terms", "emo"].filter((m) => MODES[m].list(f).length);
       return parts.length > 1 ? parts.flatMap((m) => MODES[m].list(f).map((q) => ({ ...q, cat: MODES[m].label }))) : [];
     },
-    src: (f) => [...f.sources, ...(f.termSources || []), ...(f.emoSources || [])].filter((s, i, a) => a.findIndex((x) => x[1] === s[1]) === i)
+    src: (f) => [...f.sources, ...(f.epSources || []), ...(f.termSources || []), ...(f.emoSources || [])].filter((s, i, a) => a.findIndex((x) => x[1] === s[1]) === i)
   }
 };
 
@@ -521,7 +560,7 @@ const best = {
 };
 const keyOf = (film, mode) => film.id + MODES[mode].suffix;
 function parseKey(key) {
-  for (const mode of ["all", "emo", "terms", "facts"]) {
+  for (const mode of ["all", "eps", "emo", "terms", "facts"]) {
     const sfx = MODES[mode].suffix;
     if (sfx && !key.endsWith(sfx)) continue;
     const film = FILMS.find((f) => f.id === key.slice(0, key.length - sfx.length));
@@ -561,7 +600,7 @@ function start(key) {
   if (!p) return showLibrary();
   const { film, mode } = p;
   const list = MODES[mode].list(film);
-  const qs = (mode === "facts" && film.ordered ? list : shuffle(list)).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
+  const qs = ((mode === "facts" && film.ordered) || mode === "eps" ? list : shuffle(list)).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
   state = { film, mode, key, qs, i: 0, picks: [] };
   document.body.dataset.film = film.id;
   $("#library").hidden = true;
