@@ -57,6 +57,10 @@
 [data-film="madoff"] .poster { font-size: 40px; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
 .mode.terms { border-left: 4px solid var(--ok); }
 .mode.terms:hover { border-color: var(--ok); }
+.mode.all { border-left: 4px solid var(--ink); background: color-mix(in srgb, var(--accent) 10%, var(--opt)); }
+.mode.all:hover { border-color: var(--ink); }
+.tag.all { background: var(--ink); color: var(--card); }
+.cat { color: var(--muted); }
 .tag.terms { background: var(--ok); color: var(--card); }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -497,7 +501,15 @@ const KEYS = ["A", "B", "C", "D"];
 const MODES = {
   facts: { suffix: "", label: "Kiến thức phim", list: (f) => f.questions, src: (f) => f.sources },
   terms: { suffix: "--y-nghia", label: "Ý nghĩa & thuật ngữ", list: (f) => f.terms || [], src: (f) => f.termSources || [] },
-  emo: { suffix: "--cam-xuc", label: "Cảm xúc khán giả", list: (f) => f.emotions || [], src: (f) => f.emoSources || [] }
+  emo: { suffix: "--cam-xuc", label: "Cảm xúc khán giả", list: (f) => f.emotions || [], src: (f) => f.emoSources || [] },
+  all: {
+    suffix: "--tong-hop", label: "Ôn tập tổng hợp",
+    list: (f) => {
+      const parts = ["facts", "terms", "emo"].filter((m) => MODES[m].list(f).length);
+      return parts.length > 1 ? parts.flatMap((m) => MODES[m].list(f).map((q) => ({ ...q, cat: MODES[m].label }))) : [];
+    },
+    src: (f) => [...f.sources, ...(f.termSources || []), ...(f.emoSources || [])].filter((s, i, a) => a.findIndex((x) => x[1] === s[1]) === i)
+  }
 };
 
 const $ = (s) => document.querySelector(s);
@@ -509,7 +521,7 @@ const best = {
 };
 const keyOf = (film, mode) => film.id + MODES[mode].suffix;
 function parseKey(key) {
-  for (const mode of ["emo", "terms", "facts"]) {
+  for (const mode of ["all", "emo", "terms", "facts"]) {
     const sfx = MODES[mode].suffix;
     if (sfx && !key.endsWith(sfx)) continue;
     const film = FILMS.find((f) => f.id === key.slice(0, key.length - sfx.length));
@@ -608,7 +620,7 @@ function renderQ() {
   const ok = picked === q.a;
   $("#game").innerHTML = `${header()}
     <article class="card">
-      <div class="qhead"><span class="num">Câu ${String(i + 1).padStart(2, "0")} / ${qs.length}</span><span class="score">Đúng ${correct()}</span></div>
+      <div class="qhead"><span class="num">Câu ${String(i + 1).padStart(2, "0")} / ${qs.length}${q.cat ? ` · <span class="cat">${esc(q.cat)}</span>` : ""}</span><span class="score">Đúng ${correct()}</span></div>
       <h2 class="q">${esc(q.q)}</h2>
       <div class="opts">${q.opts.map((o, k) => {
         let cls = "";
@@ -637,6 +649,12 @@ function next() {
 }
 
 function verdict(r, mode) {
+  if (mode === "all") {
+    if (r === 1) return "Hoàn hảo. Bạn đã nắm trọn bộ phim từ mọi góc nhìn.";
+    if (r >= .75) return "Rất vững. Chỉ còn vài chỗ cần ôn lại.";
+    if (r >= .5) return "Nắm được phần chính. Xem lại các câu sai bên dưới để ôn.";
+    return "Hãy làm lại từng bộ quiz nhỏ trước rồi quay lại ôn tổng hợp.";
+  }
   if (mode === "terms") {
     if (r === 1) return "Bạn nắm vững từng thuật ngữ và ẩn ý của phim.";
     if (r >= .75) return "Bạn hiểu rất sâu những gì phim muốn nói.";
@@ -683,7 +701,7 @@ function renderFoot() {
   const src = state ? MODES[state.mode].src(state.film) : [];
   $("#foot").innerHTML = state
     ? `Nguồn dữ kiện: ${src.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
-    : `Mỗi phim có các bộ câu hỏi riêng: kiến thức phim, cảm xúc khán giả, và với một số phim là ý nghĩa & thuật ngữ. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
+    : `Mỗi phim có các bộ câu hỏi riêng (kiến thức phim, cảm xúc khán giả, với một số phim có thêm ý nghĩa & thuật ngữ) và một mục ôn tập tổng hợp gộp tất cả. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
 }
 
 function route() {
