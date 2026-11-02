@@ -155,6 +155,23 @@ body:not([data-film="home"]) .mast { display: none; }
 .review .ans { color: var(--muted); }
 .foot { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
 .foot a { color: var(--muted); }
+.modes { display: grid; gap: 8px; margin-top: 8px; }
+.mode {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; text-align: left;
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 14px; background: var(--opt); color: var(--ink);
+  transition: border-color .15s, transform .15s;
+}
+.mode:hover { border-color: var(--accent); transform: translateX(2px); }
+.mode .mode-name { font-weight: 600; font-size: 15px; }
+.mode .mode-meta { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); }
+.mode.facts { border-left: 4px solid var(--accent); }
+.mode.emo { border-left: 4px solid var(--accent2); }
+.mode.emo:hover { border-color: var(--accent2); }
+.hero-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.tag { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; padding: 4px 12px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); }
+.tag.emo { background: var(--accent2); color: #ffffff; }
+.switch { background: none; border: 0; padding: 0; font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.switch:hover { color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -190,6 +207,27 @@ const FILMS = [
       ["TVmao (tóm tắt từng tập)", "https://www.tvmao.com/kanju/ZGFsIWFi"],
       ["HK01", "https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/60382498/"],
       ["TV360", "https://tintuc.tv360.vn/blog/dau-xuan-tuoi-sang/"]
+    ],
+    emoSources: [
+      ["EVA", "https://eva.vn/lang-sao/dau-xuan-tuoi-sang-vuot-200-trieu-luot-xem-chuyen-tinh-tong-tai-doc-mieng-nu-than-chan-dai-xem-vua-buc-vua-cuon-c20a682374.html"],
+      ["Tuổi Trẻ", "https://tuoitre.vn/dan-quang-cao-khoc-rong-khi-xem-dau-xuan-tuoi-sang-10026090515281193.htm"],
+      ["VnExpress", "https://vnexpress.net/ket-phim-dau-xuan-tuoi-sang-gay-tranh-luan-5118683.html"],
+      ["Saostar", "https://www.saostar.vn/dien-anh/dau-xuan-tuoi-sang-cang-hot-cang-vuong-tranh-cai-202609111725230583.html"],
+      ["GamerSky (Douban)", "https://www.gamersky.com/news/202609/2208186.shtml"],
+      ["Sina (tập 17, 18)", "https://k.sina.com.cn/article_7879922982_1d5ae15260680bbkf6.html?from=ent"]
+    ],
+    emotions: [
+      { q: "Báo EVA tóm cảm giác của khán giả khi xem chuyện tình \"tổng tài độc miệng\" Loan Niệm bằng cụm từ nào?", a: "Vừa bực vừa cuốn", w: ["Vừa sợ vừa thương", "Nhẹ nhàng, chữa lành", "Buồn ngủ, nhạt nhẽo"], e: "Loan Niệm độc miệng khiến người xem bực, nhưng chuyện tình của hai người vẫn cuốn đến mức không dừng được." },
+      { q: "Theo Tuổi Trẻ, người làm nghề nào \"khóc ròng\" khi xem phim vì thấy quá giống đời thật?", a: "Dân quảng cáo", w: ["Bác sĩ", "Giáo viên", "Luật sư"], e: "Phim lấy bối cảnh công ty quảng cáo, nên người trong nghề thấy lại áp lực, sếp khó tính và những đêm sửa phương án của chính mình." },
+      { q: "Tập 17, khi Chi Đào đứng ra tố cáo Trần Đông và Loan Niệm bảo vệ cô, được khán giả Trung Quốc gọi là gì?", a: "\"Thần nhất tập\", tập phim thần thánh", w: ["\"Quỷ nhất tập\", tập ám ảnh", "Tập nhàm chán nhất", "Tập bị cắt nhiều nhất"], e: "Tập 17 vừa hả hê vì kẻ xấu bị trừng trị, vừa ngọt vì Loan Niệm đứng về phía cô, nên được khen là \"thần nhất tập\"." },
+      { q: "Ngay sau đó, tập 18 với chuỗi hiểu lầm và cãi vã lại bị khán giả gọi là gì?", a: "\"Quỷ nhất tập\", tập ngược tâm", w: ["\"Thần nhất tập\"", "Tập hài hước nhất", "Tập ngọt nhất"], e: "Tập 18 gần như ngược từ đầu đến cuối, hiểu lầm nối tiếp hiểu lầm, khiến người xem đau lòng." },
+      { q: "Phim mở điểm Douban 6,7. Đánh giá của khán giả được mô tả thế nào?", a: "Phân cực rõ rệt", w: ["Gần như tuyệt đối", "Ai cũng chê", "Không ai quan tâm"], e: "Khoảng 28,3% chấm 3 sao, còn 27,7% chấm từ 2 sao trở xuống. Thích thì rất thích, ghét thì rất ghét." },
+      { q: "Nhóm khán giả nào chấm phim thấp hơn hẳn?", a: "Fan đọc nguyên tác", w: ["Khán giả xem phim lần đầu", "Fan của Tôn Thiên", "Khán giả quốc tế"], e: "Fan phim chấm khoảng 7,2, còn fan đọc truyện chỉ chấm khoảng 4,4." },
+      { q: "Fan nguyên tác tiếc nhất điều gì khi phim thay đổi so với truyện?", a: "Mất đi cảm giác chua xót, ngược tâm của truyện", w: ["Phim có quá nhiều cảnh hành động", "Phim đổi kết thành bi kịch", "Phim bỏ nhân vật Thượng Chi Đào"], e: "Người đọc truyện thấy bản phim ngọt hơn, Loan Niệm bớt lạnh lùng, nên không còn cái day dứt nặng nề của nguyên tác." },
+      { q: "Khán giả thích phim thường khen tình cảm của hai nhân vật chính như thế nào?", a: "Kìm nén, thăm dò, chân thực như tình yêu người trưởng thành", w: ["Ngọt như kẹo, không có trắc trở", "Hài hước như sitcom", "Bi thảm như phim cổ trang"], e: "Nhiều người khen cách hai người vừa giữ khoảng cách vừa không buông được nhau, \"không có đường hóa học công nghiệp\"." },
+      { q: "Người không thích tính cách Loan Niệm thường gắn cho anh nhãn nào?", a: "\"PUA công sở\", gia trưởng", w: ["\"Soái ca hoàn hảo\"", "\"Chàng trai ấm áp\"", "\"Nam phụ quốc dân\""], e: "Kiểu sếp độc miệng, nắm quyền với nhân viên khiến một bộ phận người xem thấy giống thao túng tâm lý nơi công sở." },
+      { q: "Vì sao một bộ phận khán giả cho rằng phim \"lãng mạn hóa\" chuyện không nên?", a: "Quan hệ sếp và nhân viên chênh lệch quyền lực", w: ["Phim cổ vũ ngoại tình", "Phim xem nhẹ bạo lực học đường", "Phim quảng cáo lộ liễu"], e: "Saostar và Kênh14 ghi nhận nhiều người lo phim tô hồng mối quan hệ thiếu bình đẳng giữa cấp trên và cấp dưới." },
+      { q: "Kết phim có hậu, nhưng khán giả vẫn tiếc nuối điều gì?", a: "Muốn xem tiếp cuộc sống hôn nhân của hai người", w: ["Muốn Chi Đào chọn người khác", "Muốn phim kết buồn hơn", "Muốn Loan Niệm phá sản"], e: "Nhiều người thấy đoạn hàn gắn diễn ra nhanh, phim lược bớt bốn năm xa cách, nên muốn xem thêm đời sống sau khi cưới." }
     ],
     questions: [
       { q: "Phim chuyển thể từ tiểu thuyết của tác giả nào?", a: "Cô Nương Đừng Khóc", w: ["Đinh Mặc", "Cố Mạn", "Mặc Bảo Phi Bảo"], e: "Phim chuyển thể từ tiểu thuyết cùng tên (早春晴朗) của Cô Nương Đừng Khóc." },
@@ -245,6 +283,21 @@ const FILMS = [
       ["Wikipedia: Squid Game", "https://en.wikipedia.org/wiki/Squid_Game"],
       ["Wikipedia: Squid Game season 1", "https://en.wikipedia.org/wiki/Squid_Game_season_1"]
     ],
+    emoSources: [
+      ["Capital FM", "https://www.capitalfm.com/news/tv-film/squid-game-episode-6-recap-memes/"],
+      ["Looper", "https://www.looper.com/663287/the-squid-game-scene-that-had-fans-in-tears/"],
+      ["Screen Rant", "https://screenrant.com/squid-game-season-1-saddest-minutes/"]
+    ],
+    emotions: [
+      { q: "Tập nào được khán giả coi là khiến họ khóc nhiều nhất trong phần 1?", a: "Tập 6, \"Gganbu\"", w: ["Tập 1, \"Đèn xanh, đèn đỏ\"", "Tập 7, \"VIPS\"", "Tập 9, tập cuối"], e: "Trong tập 6, nhiều nhân vật được yêu thích lần lượt rời cuộc chơi trong trò bắn bi theo cặp." },
+      { q: "Cảnh nào trong tập 6 khiến nhiều người trên Reddit thừa nhận đã khóc nức nở?", a: "Gi-hun lừa ông Il-nam trong trò bắn bi", w: ["Gi-hun nhận tiền thưởng", "Búp bê khổng lồ quay đầu", "Cảnh kéo co"], e: "Ông Il-nam có vẻ lẫn, và Gi-hun vì sợ chết đã lợi dụng điều đó, khiến người xem day dứt." },
+      { q: "Vì sao xem lại cảnh bắn bi sau khi biết kết phim, khán giả lại thấy cảm xúc phức tạp hơn?", a: "Vì Il-nam hóa ra là người tạo ra trò chơi", w: ["Vì Gi-hun hóa ra là Front Man", "Vì cảnh đó bị cắt bớt", "Vì Il-nam là cảnh sát chìm"], e: "Biết Il-nam là kẻ đứng sau mọi thứ, khoảnh khắc \"gganbu\" tưởng chân thành bỗng mang nhiều tầng nghĩa." },
+      { q: "Cái chết của nhân vật nào được nhiều khán giả xếp là buồn nhất Squid Game?", a: "Ali Abdul", w: ["Jang Deok-su", "Han Mi-nyeo", "Người chơi làm kính"], e: "Ali tin tưởng Sang-woo hoàn toàn và bị lừa bằng túi sỏi, nên khán giả thấy cái chết của anh đau lòng nhất." },
+      { q: "Ji-yeong cố tình thua Sae-byeok trong trò bắn bi. Khán giả cảm nhận cảnh này ra sao?", a: "Xúc động vì sự hy sinh cho người bạn mới quen", w: ["Tức giận vì Ji-yeong gian lận", "Buồn cười vì quá vô lý", "Sợ hãi vì Ji-yeong là kẻ phản bội"], e: "Ji-yeong không còn gì để về, nên nhường cơ hội sống cho Sae-byeok, người còn em trai và mẹ đang chờ." },
+      { q: "Sau khi phim ra mắt, khán giả nhiều nước hưởng ứng trào lưu nào?", a: "Tự làm kẹo dalgona tại nhà", w: ["Nhuộm tóc xanh lá", "Chơi kéo co trên phố", "Xăm số báo danh"], e: "Kẹo đường dalgona trong trò thứ hai khiến nhiều người thử làm và thử tách hình kẹo ngay trong bếp nhà mình." },
+      { q: "Trò \"Đèn xanh, đèn đỏ\" ở tập 1 gây cảm giác gì cho người xem?", a: "Sốc vì trò chơi trẻ con biến thành cuộc thảm sát", w: ["Hài hước, nhẹ nhõm", "Buồn ngủ vì quá dài", "Lãng mạn"], e: "Tiếng hát trẻ con của con búp bê đi cùng tiếng súng tạo nên độ tương phản khiến khán giả choáng váng." },
+      { q: "Kết phần 1, Gi-hun nhuộm tóc đỏ và quay lưng với chuyến bay sang Mỹ. Khán giả phản ứng thế nào?", a: "Tranh cãi, nhiều người bối rối", w: ["Đồng loạt vui mừng", "Không ai để ý", "Đều cho là kết hoàn hảo"], e: "Mái tóc đỏ và quyết định ở lại để đối đầu với tổ chức khiến người xem chia phe và chờ đợi phần tiếp theo." }
+    ],
     questions: [
       { q: "Ai là người viết kịch bản và đạo diễn Squid Game?", a: "Hwang Dong-hyuk", w: ["Bong Joon-ho", "Park Chan-wook", "Yeon Sang-ho"], e: "Hwang Dong-hyuk vừa viết vừa đạo diễn. Ông ấp ủ ý tưởng từ năm 2008, hơn 10 năm trước khi phim được sản xuất." },
       { q: "Phần 1 có bao nhiêu tập?", a: "9 tập", w: ["8 tập", "10 tập", "12 tập"], e: "Phần 1 gồm 9 tập, phát hành cùng lúc trên Netflix." },
@@ -288,6 +341,20 @@ const FILMS = [
       ["Wikipedia: Crazy Rich Asians (film)", "https://en.wikipedia.org/wiki/Crazy_Rich_Asians_(film)"],
       ["Wikipedia: Crazy Rich Asians (novel)", "https://en.wikipedia.org/wiki/Crazy_Rich_Asians"]
     ],
+    emoSources: [
+      ["National Communication Association", "https://www.natcom.org/publications-library/asian-american-audience-members-reactions-crazy-rich-asians/"],
+      ["Gulf News", "https://gulfnews.com/leisure/movies/features/why-crazy-rich-asians-draws-tepid-response-in-singapore-1.2269088"],
+      ["Refinery29", "https://refinery29.com/amp/en-us/2018/08/207008/crazy-rich-asians-asian-american-representation"]
+    ],
+    emotions: [
+      { q: "Nhiều khán giả người Mỹ gốc Á phản ứng thế nào khi xem phim ngoài rạp?", a: "Rơi nước mắt vì lần đầu thấy mình được đại diện", w: ["Bỏ về giữa chừng", "Cười suốt từ đầu đến cuối", "Thờ ơ vì quá quen thuộc"], e: "Sau 25 năm mới có một phim Hollywood lớn với dàn diễn viên gốc Á, nhiều người xúc động thật sự trong rạp." },
+      { q: "Ủng hộ phim trở thành cảm giác gì với nhiều người Mỹ gốc Á?", a: "Một nghĩa vụ văn hóa phải đi xem", w: ["Một điều đáng xấu hổ", "Một trào lưu chỉ dành cho giới trẻ", "Một việc bắt buộc ở trường"], e: "Phim đạt tới trạng thái \"must-see\", tức người ta đi xem để chứng minh có khán giả cho phim của người gốc Á." },
+      { q: "Jon M. Chu nói thành công của phim chứng minh điều gì?", a: "Có khán giả cho phim Mỹ gốc Á", w: ["Phim tình cảm đã lỗi thời", "Khán giả chỉ thích phim siêu anh hùng", "Phim cần quay ở Mỹ mới thắng"], e: "Ông mong thành công này sẽ giúp nhiều dự án của người gốc Á được bật đèn xanh." },
+      { q: "Cảnh nào được khán giả gốc Á ở Mỹ thấy ấm lòng vì gợi nhớ truyền thống gia đình?", a: "Cả nhà gói sủi cảo và ván mạt chược", w: ["Tiệc độc thân trên tàu", "Cảnh mua sắm ở Paris", "Cảnh trên máy bay"], e: "Những khoảnh khắc này gợi lại ký ức sum họp quen thuộc, dù với khán giả Singapore chúng có thể lại khá xa lạ." },
+      { q: "Khán giả ở Singapore, nơi phim lấy bối cảnh, phản ứng ra sao?", a: "Khá hờ hững, có người chê thiếu đa dạng", w: ["Cuồng nhiệt hơn mọi nơi", "Biểu tình phản đối", "Không ai được xem vì phim bị cấm"], e: "Nhiều người Singapore thấy phim chỉ khắc họa giới siêu giàu gốc Hoa, bỏ qua sự đa dạng sắc tộc của đất nước." },
+      { q: "Một số nhà phê bình châu Á chê phim điều gì?", a: "Đánh đồng người châu Á với người gốc Hoa", w: ["Quá nhiều cảnh hành động", "Diễn viên nói tiếng Anh quá giỏi", "Phim quá ngắn"], e: "Họ cho rằng phim củng cố hình dung sai lầm rằng là người châu Á thì là người Hoa, và chỉ kể về giới giàu có Tây hóa." },
+      { q: "Jon M. Chu viết thư xin Coldplay cho dùng ca khúc \"Yellow\". Ông muốn khán giả cảm nhận từ \"yellow\" ra sao?", a: "Thành điều đẹp đẽ thay vì lời miệt thị", w: ["Thành màu của sự giàu có", "Thành biểu tượng của Singapore", "Thành lời nhắc về tình bạn"], e: "Từ \"yellow\" từng bị dùng để miệt thị người gốc Á. Chu muốn biến nó thành điều đẹp đẽ, và Coldplay đã đồng ý." }
+    ],
     questions: [
       { q: "Ai đạo diễn Crazy Rich Asians?", a: "Jon M. Chu", w: ["Ang Lee", "Justin Lin", "Wayne Wang"], e: "Jon M. Chu đạo diễn. Ông cũng làm Step Up 2, In the Heights và Wicked." },
       { q: "Phim chuyển thể từ tiểu thuyết của ai?", a: "Kevin Kwan", w: ["Amy Tan", "Celeste Ng", "Lisa See"], e: "Tiểu thuyết Crazy Rich Asians của Kevin Kwan xuất bản năm 2013." },
@@ -324,6 +391,10 @@ const FILMS = [
 ];
 const COMING = ["Bạn muốn phim nào tiếp theo?"];
 const KEYS = ["A", "B", "C", "D"];
+const MODES = {
+  facts: { suffix: "", label: "Kiến thức phim", list: (f) => f.questions, src: (f) => f.sources },
+  emo: { suffix: "--cam-xuc", label: "Cảm xúc khán giả", list: (f) => f.emotions || [], src: (f) => f.emoSources || [] }
+};
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -332,37 +403,54 @@ const best = {
   get(id) { try { return Number(localStorage.getItem("best:" + id)) || 0; } catch { return 0; } },
   set(id, v) { try { if (v > this.get(id)) localStorage.setItem("best:" + id, v); } catch {} }
 };
+const keyOf = (film, mode) => film.id + MODES[mode].suffix;
+function parseKey(key) {
+  for (const mode of ["emo", "facts"]) {
+    const sfx = MODES[mode].suffix;
+    if (sfx && !key.endsWith(sfx)) continue;
+    const film = FILMS.find((f) => f.id === key.slice(0, key.length - sfx.length));
+    if (film && MODES[mode].list(film).length) return { film, mode };
+  }
+  return null;
+}
 
 let state = null;
 
 function renderShelf() {
   const films = FILMS.map((f) => {
-    const b = best.get(f.id);
-    return `<button class="film" data-id="${f.id}" data-film="${f.id}">
+    const modes = Object.keys(MODES).filter((m) => MODES[m].list(f).length).map((m) => {
+      const n = MODES[m].list(f).length, b = best.get(keyOf(f, m));
+      return `<button class="mode ${m}" data-key="${keyOf(f, m)}">
+        <span class="mode-name">${MODES[m].label}</span>
+        <span class="mode-meta">${n} câu${b ? ` · kỷ lục ${b}/${n}` : ""}</span>
+      </button>`;
+    }).join("");
+    return `<article class="film" data-film="${f.id}">
       <span class="poster" aria-hidden="true">${esc(f.motif)}</span>
       <span class="body">
         <span class="label">${esc(f.original)}</span>
         <h3>${esc(f.title)}</h3>
         <span class="meta">${esc(f.meta)}</span>
-        <span class="row"><span class="pill">${f.questions.length} câu hỏi</span>
-        ${b ? `<span class="pill ok">Kỷ lục ${b}/${f.questions.length}</span>` : ""}</span>
+        <span class="modes">${modes}</span>
       </span>
-    </button>`;
+    </article>`;
   }).join("");
   const soon = COMING.map((t) => `<div class="film soon" aria-disabled="true"><span class="poster" aria-hidden="true">+</span><span class="body"><span class="label">Sắp có</span><h3>${esc(t)}</h3><span class="meta">Câu đố mới sẽ được thêm vào thư viện.</span></span></div>`).join("");
   $("#shelf").innerHTML = films + soon;
-  $("#shelf").querySelectorAll(".film[data-id]").forEach((el) => el.addEventListener("click", () => { location.hash = el.dataset.id; }));
+  $("#shelf").querySelectorAll(".mode[data-key]").forEach((el) => el.addEventListener("click", () => { location.hash = el.dataset.key; }));
 }
 
-function start(id) {
-  const film = FILMS.find((f) => f.id === id);
-  if (!film) return showLibrary();
-  const qs = (film.ordered ? film.questions : shuffle(film.questions)).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
-  state = { film, qs, i: 0, picks: [] };
+function start(key) {
+  const p = parseKey(key);
+  if (!p) return showLibrary();
+  const { film, mode } = p;
+  const list = MODES[mode].list(film);
+  const qs = (mode === "facts" && film.ordered ? list : shuffle(list)).map((x) => ({ ...x, opts: shuffle([x.a, ...x.w]) }));
+  state = { film, mode, key, qs, i: 0, picks: [] };
   document.body.dataset.film = film.id;
   $("#library").hidden = true;
   $("#game").hidden = false;
-  renderFoot(film);
+  renderFoot();
   renderQ();
   window.scrollTo(0, 0);
 }
@@ -373,7 +461,7 @@ function showLibrary() {
   $("#game").hidden = true;
   $("#library").hidden = false;
   renderShelf();
-  renderFoot(null);
+  renderFoot();
 }
 
 function track() {
@@ -384,21 +472,39 @@ function track() {
   }).join("")}</div>`;
 }
 
-function correct() { return state.picks.filter((p, k) => p === state.qs[k].a).length; }
-
-function renderQ() {
-  const { film, qs, i } = state;
-  const q = qs[i];
-  const picked = state.picks[i];
-  const done = picked !== undefined;
-  const ok = picked === q.a;
-  $("#game").innerHTML = `
+function header() {
+  const { film, mode } = state;
+  const other = mode === "facts" ? "emo" : "facts";
+  const switcher = MODES[other].list(film).length
+    ? `<button class="switch" id="switch">Chuyển sang ${MODES[other].label} →</button>` : "";
+  return `
     <div class="topbar">
       <button class="back" id="back">← Thư viện phim</button>
       <span class="label">${esc(film.original)}</span>
     </div>
-    <div class="hero"><span class="motif" aria-hidden="true">${esc(film.motif)}</span><h1>${esc(film.title)}</h1></div>
-    ${track()}
+    <div class="hero">
+      <span class="motif" aria-hidden="true">${esc(film.motif)}</span>
+      <h1>${esc(film.title)}</h1>
+      <div class="hero-row"><span class="tag ${mode}">${MODES[mode].label}</span>${switcher}</div>
+    </div>
+    ${track()}`;
+}
+
+function bindHeader() {
+  $("#back").addEventListener("click", () => { location.hash = ""; });
+  const sw = $("#switch");
+  if (sw) sw.addEventListener("click", () => { location.hash = keyOf(state.film, state.mode === "facts" ? "emo" : "facts"); });
+}
+
+function correct() { return state.picks.filter((p, k) => p === state.qs[k].a).length; }
+
+function renderQ() {
+  const { qs, i } = state;
+  const q = qs[i];
+  const picked = state.picks[i];
+  const done = picked !== undefined;
+  const ok = picked === q.a;
+  $("#game").innerHTML = `${header()}
     <article class="card">
       <div class="qhead"><span class="num">Câu ${String(i + 1).padStart(2, "0")} / ${qs.length}</span><span class="score">Đúng ${correct()}</span></div>
       <h2 class="q">${esc(q.q)}</h2>
@@ -411,7 +517,7 @@ function renderQ() {
       ${done ? `<div class="explain ${ok ? "ok" : "no"}"><strong>${ok ? "Chính xác!" : "Chưa đúng. Đáp án: " + esc(q.a)}</strong><p>${esc(q.e)}</p></div>
       <div class="actions"><button class="btn" id="next">${i + 1 < qs.length ? "Câu tiếp theo →" : "Xem kết quả"}</button></div>` : ""}
     </article>`;
-  $("#back").addEventListener("click", () => { location.hash = ""; });
+  bindHeader();
   $("#game").querySelectorAll(".opt:not(:disabled)").forEach((b) => b.addEventListener("click", () => pick(b.dataset.o)));
   const nx = $("#next");
   if (nx) { nx.addEventListener("click", next); nx.focus({ preventScroll: true }); }
@@ -428,7 +534,13 @@ function next() {
   else renderResult();
 }
 
-function verdict(r) {
+function verdict(r, mode) {
+  if (mode === "emo") {
+    if (r === 1) return "Bạn đồng cảm với khán giả đến từng nhịp tim.";
+    if (r >= .75) return "Bạn rất hiểu cộng đồng người xem.";
+    if (r >= .5) return "Khá hiểu ý khán giả, thử lướt thêm vài bài review.";
+    return "Có vẻ bạn xem phim một mình, chưa đọc bình luận nào.";
+  }
   if (r === 1) return "Fan cứng chính hiệu. Bạn nhớ phim từng chi tiết.";
   if (r >= .75) return "Rất ấn tượng. Bạn đã xem phim kỹ.";
   if (r >= .5) return "Khá ổn. Xem lại vài tập là thành fan cứng.";
@@ -436,20 +548,14 @@ function verdict(r) {
 }
 
 function renderResult() {
-  const { film, qs } = state;
+  const { qs, key, mode } = state;
   const c = correct();
-  best.set(film.id, c);
-  $("#game").innerHTML = `
-    <div class="topbar">
-      <button class="back" id="back">← Thư viện phim</button>
-      <span class="label">${esc(film.original)}</span>
-    </div>
-    <div class="hero"><span class="motif" aria-hidden="true">${esc(film.motif)}</span><h1>${esc(film.title)}</h1></div>
-    ${track()}
+  best.set(key, c);
+  $("#game").innerHTML = `${header()}
     <article class="card result">
-      <span class="label">Kết quả</span>
+      <span class="label">Kết quả · ${MODES[mode].label}</span>
       <div class="big">${c}<small> / ${qs.length}</small></div>
-      <p class="verdict">${verdict(c / qs.length)}</p>
+      <p class="verdict">${verdict(c / qs.length, mode)}</p>
       <ul class="review">${qs.map((q, k) => {
         const ok = state.picks[k] === q.a;
         return `<li><span class="mark ${ok ? "ok" : "no"}">${ok ? "✓" : "✗"}</span><span>${esc(q.q)}<br><span class="ans">${ok ? esc(q.a) : `Bạn chọn ${esc(state.picks[k])} · Đáp án ${esc(q.a)}`}</span></span></li>`;
@@ -459,21 +565,22 @@ function renderResult() {
         <button class="btn" id="again">Chơi lại</button>
       </div>
     </article>`;
-  $("#back").addEventListener("click", () => { location.hash = ""; });
+  bindHeader();
   $("#lib").addEventListener("click", () => { location.hash = ""; });
-  $("#again").addEventListener("click", () => start(film.id));
+  $("#again").addEventListener("click", () => start(key));
   window.scrollTo(0, 0);
 }
 
-function renderFoot(film) {
-  $("#foot").innerHTML = film
-    ? `Nguồn dữ kiện: ${film.sources.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
-    : `Mỗi lượt chơi hỏi toàn bộ câu hỏi của phim, thứ tự đáp án được xáo mỗi lần. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
+function renderFoot() {
+  const src = state ? MODES[state.mode].src(state.film) : [];
+  $("#foot").innerHTML = state
+    ? `Nguồn dữ kiện: ${src.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(", ")}.`
+    : `Mỗi phim có hai bộ câu hỏi: kiến thức về phim và cảm xúc của khán giả. Kỷ lục chỉ lưu trên trình duyệt của bạn.`;
 }
 
 function route() {
-  const id = location.hash.slice(1);
-  if (id && FILMS.some((f) => f.id === id)) { if (!state || state.film.id !== id) start(id); }
+  const key = location.hash.slice(1);
+  if (key && parseKey(key)) { if (!state || state.key !== key) start(key); }
   else showLibrary();
 }
 
