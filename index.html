@@ -75,6 +75,16 @@
   color-scheme: light;
 }
 [data-film="naruto"] .hero h1 { font-weight: 800; }
+[data-film="naruto-shippuden"] {
+  --bg: #15110f;
+  --bg-art: radial-gradient(800px 420px at 85% -10%, #f26b1d40, transparent 70%), radial-gradient(520px 360px at 0% 100%, #c8102e33, transparent 70%);
+  --card: #1f1916; --opt: #28201c; --ink: #f7efe8; --muted: #b3a59b; --line: #3a2e28;
+  --accent: #ff7a1a; --accent-ink: #1a0f08; --accent2: #e23a3a;
+  --ok: #57c78a; --ok-soft: #173327; --no: #ff6b5e; --no-soft: #3d1a17;
+  --display: "Baloo 2", "Trebuchet MS", sans-serif;
+  color-scheme: dark;
+}
+[data-film="naruto-shippuden"] .hero h1 { font-weight: 800; }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
 body {
@@ -657,6 +667,121 @@ const FILMS = [
       { q: "Bản nhạc nền nào thường gắn với những cảnh buồn trong Naruto?", a: "\"Sadness and Sorrow\"", w: ["\"Blue Bird\"", "\"Silhouette\"", "\"Unravel\""], e: "Bản sáo của Toshio Masuda vang lên ở nhiều khoảnh khắc buồn, đến giờ vẫn khiến fan xúc động." },
       { q: "Cảnh Naruto bé ngồi một mình trên xích đu trước học viện gợi cảm xúc gì?", a: "Nỗi cô đơn của đứa trẻ không ai công nhận", w: ["Sự vui vẻ hồn nhiên", "Sự giận dữ", "Sự kiêu ngạo"], e: "Hình ảnh chiếc xích đu trở thành biểu tượng tuổi thơ cô độc của Naruto." },
       { q: "Phản ứng phổ biến của fan với chuỗi tập độn cuối phần 1 là gì?", a: "Mệt mỏi, nhiều người bỏ qua để chờ Shippuden", w: ["Hào hứng hơn cả phần chính", "Đòi làm thêm tập độn", "Không ai biết đó là tập độn"], e: "Anime đã đuổi kịp manga nên phải độn nhiều tập không theo cốt truyện chính." }
+    ]
+  },
+  {
+    id: "naruto-shippuden",
+    motif: "疾風伝",
+    title: "Naruto Shippuden",
+    original: "ナルト 疾風伝 · 2007",
+    meta: "Nhật Bản · Studio Pierrot · 500 tập · Masashi Kishimoto",
+    epLabel: "Mổ xẻ từng arc",
+    sources: [
+      ["Wikipedia: Naruto: Shippuden", "https://en.wikipedia.org/wiki/Naruto:_Shippuden"],
+      ["Wikipedia: List of Naruto: Shippuden episodes", "https://en.wikipedia.org/wiki/List_of_Naruto:_Shippuden_episodes"],
+      ["Wikipedia: List of Naruto characters", "https://en.wikipedia.org/wiki/List_of_Naruto_characters"]
+    ],
+    epSources: [
+      ["Wikipedia: List of Naruto: Shippuden episodes", "https://en.wikipedia.org/wiki/List_of_Naruto:_Shippuden_episodes"],
+      ["Wikipedia: Itachi Uchiha", "https://en.wikipedia.org/wiki/Itachi_Uchiha"],
+      ["Wikipedia: Pain (Naruto)", "https://en.wikipedia.org/wiki/Pain_(Naruto)"]
+    ],
+    termSources: [
+      ["Wikipedia: Naruto: Shippuden", "https://en.wikipedia.org/wiki/Naruto:_Shippuden"],
+      ["Wikipedia: List of Naruto characters", "https://en.wikipedia.org/wiki/List_of_Naruto_characters"]
+    ],
+    emoSources: [
+      ["Wikipedia: Naruto: Shippuden (đón nhận)", "https://en.wikipedia.org/wiki/Naruto:_Shippuden#Reception"]
+    ],
+    questions: [
+      { q: "Naruto Shippuden phát sóng trong khoảng thời gian nào?", a: "2007 – 2017", w: ["2002 – 2007", "2005 – 2012", "2010 – 2020"], e: "Shippuden phát sóng 10 năm, nối tiếp ngay sau Naruto phần 1." },
+      { q: "Naruto Shippuden có bao nhiêu tập?", a: "500 tập", w: ["220 tập", "366 tập", "720 tập"], e: "Đúng 500 tập, kết thúc năm 2017." },
+      { q: "Shippuden bắt đầu sau phần 1 bao lâu?", a: "Khoảng hai năm rưỡi", w: ["Một tháng", "Mười năm", "Năm năm"], e: "Naruto đi tu luyện với Jiraiya khoảng hai năm rưỡi rồi trở về Làng Lá." },
+      { q: "Arc đầu tiên của Shippuden xoay quanh việc giải cứu ai?", a: "Gaara, lúc này đã là Kazekage", w: ["Sasuke", "Tsunade", "Hinata"], e: "Gaara trở thành Kazekage của Làng Cát và bị Akatsuki bắt để lấy Nhất Vĩ." },
+      { q: "Thành viên Akatsuki nào bắt Gaara bằng chim đất sét nổ?", a: "Deidara", w: ["Itachi", "Hidan", "Kisame"], e: "Deidara, kẻ coi nghệ thuật là \"một vụ nổ\", đi cùng Sasori." },
+      { q: "Sakura cùng ai đánh bại Sasori?", a: "Bà Chiyo", w: ["Tsunade", "Ino", "Temari"], e: "Bà Chiyo là bà nội của Sasori. Hai bà cháu đối đầu bằng thuật điều khiển con rối." },
+      { q: "Ai hy sinh mạng sống để hồi sinh Gaara?", a: "Bà Chiyo", w: ["Kankuro", "Naruto", "Sakura"], e: "Chiyo dùng nhẫn thuật chuyển sinh, đánh đổi sinh mạng của mình để Gaara sống lại." },
+      { q: "Hai thành viên mới của Đội Kakashi trong Shippuden là ai?", a: "Sai và Yamato", w: ["Neji và Lee", "Shikamaru và Choji", "Kiba và Shino"], e: "Sai thay chỗ Sasuke, còn Yamato tạm thay Kakashi làm đội trưởng." },
+      { q: "Asuma Sarutobi bị thành viên Akatsuki nào giết?", a: "Hidan", w: ["Kakuzu", "Itachi", "Deidara"], e: "Hidan, kẻ bất tử thờ thần Jashin. Shikamaru sau đó tự tay báo thù cho thầy." },
+      { q: "Naruto tự tạo ra kỹ thuật nào để đánh bại Kakuzu?", a: "Phong độn: Rasenshuriken", w: ["Chidori", "Rasengan thường", "Amaterasu"], e: "Naruto kết hợp chakra hệ Phong vào Rasengan, tạo ra chiêu hoàn thiện điều mà Hokage Đệ Tứ chưa làm được." },
+      { q: "Ai là người Sasuke đánh bại để thoát khỏi Orochimaru?", a: "Chính Orochimaru", w: ["Kabuto", "Itachi", "Danzo"], e: "Orochimaru định chiếm cơ thể Sasuke, nhưng Sasuke hấp thụ ngược lại hắn." },
+      { q: "Nhóm Sasuke lập ra sau khi rời Orochimaru ban đầu tên là gì?", a: "Hebi (Rắn), sau đổi thành Taka (Diều hâu)", w: ["Akatsuki", "Anbu", "Tứ Âm Nhẫn"], e: "Nhóm gồm Suigetsu, Karin và Jugo." },
+      { q: "Sự thật về Itachi được hé lộ sau khi anh chết là gì?", a: "Anh thảm sát gia tộc theo lệnh để bảo vệ làng và Sasuke", w: ["Anh bị Orochimaru điều khiển", "Anh không phải người Uchiha", "Anh vẫn còn sống"], e: "Gia tộc Uchiha định đảo chính. Itachi nhận nhiệm vụ kinh hoàng và gánh tội để Sasuke được sống." },
+      { q: "Jiraiya hy sinh trong trận đấu với ai?", a: "Pain", w: ["Orochimaru", "Itachi", "Madara"], e: "Trước khi chết, Jiraiya để lại mật mã trên lưng cóc Fukasaku để Làng Lá biết bí mật của Pain." },
+      { q: "Naruto học Tiên thuật ở đâu?", a: "Núi Myoboku, xứ sở của loài cóc", w: ["Làng Cát", "Hang rắn Ryuchi", "Đảo rùa"], e: "Các tiên cóc Fukasaku và Shima dạy Naruto hấp thụ năng lượng tự nhiên." },
+      { q: "Ai lao vào bảo vệ Naruto và tỏ tình khi Pain tấn công Làng Lá?", a: "Hinata", w: ["Sakura", "Ino", "Tsunade"], e: "Hinata nói cô yêu Naruto rồi đứng chắn trước Pain, khiến Naruto mất kiểm soát Cửu Vĩ." },
+      { q: "Người điều khiển sáu thân thể Pain là ai?", a: "Nagato", w: ["Yahiko", "Obito", "Kabuto"], e: "Nagato, học trò cũ của Jiraiya, mang Rinnegan và điều khiển sáu Pain từ xa." },
+      { q: "Sau khi nói chuyện với Naruto, Nagato làm gì?", a: "Dùng thuật hồi sinh những người dân Làng Lá đã chết", w: ["Tự sát ngay", "Bắt Naruto mang đi", "Phá hủy Làng Cát"], e: "Nagato tin vào Naruto và đánh đổi sinh mạng để hồi sinh những người Pain đã giết." },
+      { q: "Ai là cha của Naruto?", a: "Minato Namikaze, Hokage Đệ Tứ", w: ["Jiraiya", "Hokage Đệ Tam", "Kakashi"], e: "Naruto gặp linh hồn Minato trong phong ấn khi suýt giải phóng Cửu Vĩ trong trận với Pain." },
+      { q: "Mẹ của Naruto tên là gì?", a: "Kushina Uzumaki", w: ["Mikoto Uchiha", "Tsunade Senju", "Mito Uzumaki"], e: "Naruto gặp mẹ khi chiến đấu giành quyền kiểm soát Cửu Vĩ. Bà cũng là một jinchūriki trước đó." },
+      { q: "Tên thật của Cửu Vĩ mà Naruto cuối cùng làm bạn là gì?", a: "Kurama", w: ["Shukaku", "Gyuki", "Matatabi"], e: "Mối quan hệ giữa Naruto và Kurama đi từ thù địch đến đồng đội." },
+      { q: "Jinchūriki nào dạy Naruto kiểm soát vĩ thú, nổi tiếng hay nói vần rap?", a: "Killer Bee", w: ["Gaara", "Yugito", "Roshi"], e: "Killer Bee, em trai Raikage, là jinchūriki của Bát Vĩ." },
+      { q: "Danzo, kẻ đứng đầu tổ chức Root, bị ai giết?", a: "Sasuke", w: ["Naruto", "Kakashi", "Itachi"], e: "Sasuke truy sát Danzo sau Hội nghị Ngũ Kage vì Danzo có liên quan đến vụ thảm sát Uchiha." },
+      { q: "Kabuto dùng thuật gì để hồi sinh các ninja đã chết trong Đại chiến Ninja lần 4?", a: "Uế thổ chuyển sinh (Edo Tensei)", w: ["Tsukuyomi vô hạn", "Ảnh phân thân", "Thần uy"], e: "Nhiều nhân vật đã chết, kể cả Itachi và các Hokage, quay lại chiến trường." },
+      { q: "Tobi, kẻ đeo mặt nạ xoắn, thực chất là ai?", a: "Obito Uchiha", w: ["Madara Uchiha", "Shisui Uchiha", "Izuna Uchiha"], e: "Obito, đồng đội tưởng đã chết của Kakashi, được Madara cứu và thao túng." },
+      { q: "Neji hy sinh để bảo vệ ai?", a: "Naruto và Hinata", w: ["Lee và Tenten", "Sasuke", "Hokage Đệ Ngũ"], e: "Neji lao ra đỡ đòn tấn công nhắm vào Naruto, Hinata đang chắn trước cậu." },
+      { q: "Mục tiêu cuối cùng của Madara là gì?", a: "Tsukuyomi vô hạn, nhốt cả thế giới vào giấc mơ", w: ["Trở thành Hokage", "Tiêu diệt gia tộc Uchiha", "Phong ấn Kurama"], e: "Madara muốn dùng mặt trăng để đưa mọi người vào ảo thuật vĩnh viễn, gọi đó là hòa bình." },
+      { q: "Đối thủ cuối cùng của Naruto và Sasuke trong Đại chiến là ai?", a: "Kaguya Ōtsutsuki", w: ["Madara Uchiha", "Obito Uchiha", "Zetsu Đen"], e: "Kaguya, tổ mẫu của chakra, được Zetsu Đen hồi sinh qua thân thể Madara." },
+      { q: "Trận đấu cuối Naruto - Sasuke kết thúc thế nào?", a: "Cả hai mất một cánh tay và Sasuke chịu thua", w: ["Sasuke chết", "Naruto chết", "Kakashi chen vào ngăn lại"], e: "Ở Thung lũng Tận cùng, Sasuke cuối cùng thừa nhận Naruto, kết thúc vòng thù hận." },
+      { q: "Ai trở thành Hokage Đệ Lục?", a: "Kakashi Hatake", w: ["Naruto", "Shikamaru", "Tsunade"], e: "Kakashi nhận chức sau Đại chiến. Naruto sau này mới trở thành Hokage Đệ Thất." }
+    ],
+    episodes: [
+      { q: "Arc Giải cứu Kazekage: Akatsuki bắt Gaara để làm gì?", a: "Rút Nhất Vĩ Shukaku khỏi người cậu", w: ["Ép cậu gia nhập Akatsuki", "Đòi tiền chuộc", "Tráo đổi lấy Naruto"], e: "Akatsuki săn các jinchūriki để thu thập đủ chín vĩ thú." },
+      { q: "Arc Giải cứu Kazekage: Bí mật của Sasori là gì?", a: "Hắn đã biến chính mình thành con rối", w: ["Hắn là anh trai Gaara", "Hắn là gián điệp Làng Lá", "Hắn không có chakra"], e: "Sasori chỉ giữ lại trái tim trong cơ thể con rối để sống mãi." },
+      { q: "Arc Giải cứu Kazekage: Kết thúc arc, Gaara tỉnh lại và thấy điều gì?", a: "Cả Làng Cát đến đón cậu", w: ["Làng Cát bị phá hủy", "Naruto bị bắt", "Kankuro đã chết"], e: "Gaara, từng bị cả làng xa lánh, giờ được chính người dân ấy yêu thương." },
+      { q: "Arc Cầu Tenchi: Ban đầu Sai được Danzo giao nhiệm vụ bí mật gì?", a: "Ám sát Sasuke", w: ["Bảo vệ Naruto", "Bắt cóc Sakura", "Đánh cắp Rasengan"], e: "Sai thuộc Root, được lệnh của Danzo. Dần dần cậu học cách có cảm xúc nhờ Đội 7." },
+      { q: "Arc Cầu Tenchi: Đội 7 tìm thấy Sasuke ở đâu?", a: "Trong hang ổ của Orochimaru", w: ["Ở Làng Cát", "Ở Thung lũng Tận cùng", "Ở nhà Itachi"], e: "Sasuke từ chối trở về và suýt giết Naruto, cho thấy cậu đã đi rất xa." },
+      { q: "Arc Hidan & Kakuzu: Shikamaru báo thù cho Asuma bằng cách nào?", a: "Lừa Hidan rồi chôn sống hắn trong rừng gia tộc Nara", w: ["Dùng Rasengan", "Nhờ Kakashi giết hắn", "Phong ấn hắn vào cuộn giấy"], e: "Hidan bất tử nên không thể giết, Shikamaru vùi hắn dưới lòng đất mãi mãi." },
+      { q: "Arc Hidan & Kakuzu: Cái giá của Rasenshuriken với Naruto là gì?", a: "Làm tổn thương chính cánh tay cậu ở cấp tế bào", w: ["Làm cậu mất trí nhớ", "Làm Cửu Vĩ thoát ra", "Không có cái giá nào"], e: "Tsunade cấm Naruto dùng chiêu này cho đến khi cậu học Tiên thuật để ném nó đi." },
+      { q: "Arc Sasuke và Itachi: Itachi làm động tác gì với Sasuke trước khi chết?", a: "Chạm hai ngón tay vào trán Sasuke", w: ["Ôm Sasuke", "Trao băng trán", "Bắt tay Sasuke"], e: "Đó là cử chỉ yêu thương từ thuở nhỏ. Itachi nói \"Lần này là lần cuối\"." },
+      { q: "Arc Sasuke và Itachi: Ai kể cho Sasuke sự thật về Itachi?", a: "Tobi (Obito)", w: ["Kakashi", "Hokage Đệ Tam", "Kabuto"], e: "Tobi tiết lộ để kéo Sasuke vào thù hận với chính Làng Lá." },
+      { q: "Arc Sasuke và Itachi: Biết sự thật, Sasuke chuyển mục tiêu báo thù sang đâu?", a: "Làng Lá", w: ["Akatsuki", "Orochimaru", "Gia tộc Hyuga"], e: "Sasuke muốn trả thù những người đã ra lệnh cho Itachi." },
+      { q: "Arc Pain tấn công: Pain dùng chiêu gì để san phẳng Làng Lá?", a: "Thần la thiên chinh", w: ["Amaterasu", "Rasenshuriken", "Đại hỏa cầu"], e: "Một đòn lực đẩy khổng lồ biến cả làng thành hố sâu." },
+      { q: "Arc Pain tấn công: Ai chết dưới tay Pain trong lúc bảo vệ làng, sau đó được Nagato hồi sinh?", a: "Kakashi", w: ["Tsunade", "Shikamaru", "Iruka"], e: "Kakashi gặp lại cha mình ở thế giới bên kia trước khi sống lại." },
+      { q: "Arc Pain tấn công: Cuộc đối thoại giữa Naruto và Nagato xoay quanh câu hỏi nào?", a: "Làm sao phá vỡ vòng tuần hoàn thù hận", w: ["Ai mạnh hơn", "Ai sẽ làm Hokage", "Có nên giết Sasuke không"], e: "Naruto chọn không báo thù cho Jiraiya mà tin vào con đường hòa bình của thầy." },
+      { q: "Arc Pain tấn công: Kết thúc arc, dân Làng Lá chào đón Naruto thế nào?", a: "Tung hô cậu như người anh hùng", w: ["Đuổi cậu khỏi làng", "Thờ ơ như cũ", "Trách cậu làm làng bị phá"], e: "Đứa trẻ từng bị cả làng xa lánh giờ được công nhận, đúng điều cậu mơ từ tập 1." },
+      { q: "Arc Hội nghị Ngũ Kage: Tại hội nghị, Tobi tuyên bố điều gì?", a: "Tuyên chiến, mở ra Đại chiến Ninja lần thứ 4", w: ["Giải tán Akatsuki", "Đầu hàng", "Xin gia nhập Làng Lá"], e: "Tobi đòi giao Naruto và Killer Bee, các Kage từ chối, chiến tranh nổ ra." },
+      { q: "Arc Hội nghị Ngũ Kage: Để chống lại Akatsuki, năm làng lớn lập ra lực lượng gì?", a: "Liên quân Nhẫn giả", w: ["Akatsuki mới", "Hội Tam Nhẫn", "Liên minh Mây và Cát"], e: "Năm làng từng thù địch lần đầu cùng chiến đấu dưới một lá cờ." },
+      { q: "Arc Đại chiến lần 4: Itachi được hồi sinh bằng Uế thổ chuyển sinh đã làm gì?", a: "Cùng Sasuke ngăn chặn Kabuto và hủy thuật hồi sinh", w: ["Giết Naruto", "Chiến đấu cho Kabuto", "Bỏ trốn"], e: "Anh dùng Izanami để Kabuto đối diện chính mình, rồi giải trừ Uế thổ chuyển sinh." },
+      { q: "Arc Đại chiến lần 4: Itachi nói gì với Sasuke trước khi biến mất lần cuối?", a: "Dù Sasuke chọn con đường nào, anh vẫn sẽ yêu em mãi mãi", w: ["Hãy báo thù cho anh", "Hãy trở thành Hokage", "Hãy giết Naruto"], e: "Lời nói chân thành nhất mà Itachi chưa từng nói lúc còn sống." },
+      { q: "Arc Đại chiến lần 4: Naruto gặp lại cha Minato trên chiến trường nhờ đâu?", a: "Orochimaru hồi sinh bốn Hokage đời đầu", w: ["Nagato hồi sinh ông", "Ông chưa bao giờ chết", "Naruto dùng Tiên thuật"], e: "Hai cha con cùng chiến đấu bên nhau trong trận chiến cuối." },
+      { q: "Arc Đại chiến lần 4: Kakashi đối đầu ai trong không gian Kamui?", a: "Obito", w: ["Madara", "Kaguya", "Itachi"], e: "Hai người bạn cũ đấu với nhau ở chiều không gian riêng của Sharingan Vạn hoa." },
+      { q: "Arc Kaguya: Lục Đạo Tiên Nhân Hagoromo trao gì cho Naruto và Sasuke?", a: "Một nửa sức mạnh của ông cho mỗi người", w: ["Rinnegan cho cả hai", "Cửu Vĩ cho Sasuke", "Mũ Hokage"], e: "Naruto nhận dấu mặt trời, Sasuke nhận dấu mặt trăng để phong ấn Kaguya." },
+      { q: "Arc Thung lũng Tận cùng (lần cuối): Sasuke muốn làm gì sau chiến tranh?", a: "Giết các Kage và tự gánh mọi thù hận thế giới", w: ["Trở thành Hokage", "Rời làng đi tu", "Kết hôn với Sakura"], e: "Sasuke tin một mình mình gánh hận sẽ giữ được hòa bình. Naruto không chấp nhận điều đó." },
+      { q: "Arc Thung lũng Tận cùng: Kết thúc trận, hai người cùng làm gì?", a: "Kết ấn hòa giải bằng hai bàn tay còn lại", w: ["Hôn nhau", "Đi uống ramen", "Thề tử chiến lần nữa"], e: "Ấn hòa giải là ký hiệu của hai ninja tôn trọng nhau sau trận đấu, gắn với thời học viện." },
+      { q: "Arc Truyện Làng Lá (cuối phim): Arc kết thúc bằng sự kiện gì?", a: "Đám cưới của Naruto và Hinata", w: ["Naruto nhậm chức Hokage", "Sasuke trở về làng", "Lễ tang Jiraiya"], e: "Các bạn bè lo quà cưới cho Naruto và Hinata, khép lại hành trình 500 tập." }
+    ],
+    terms: [
+      { q: "\"Shippuden\" (疾風伝) nghĩa là gì?", a: "Truyền thuyết cơn gió lốc", w: ["Hỏa ảnh truyền kỳ", "Trận chiến cuối cùng", "Vĩ thú ký"], e: "Cái tên nói về chặng đường trưởng thành mạnh mẽ như gió của Naruto." },
+      { q: "\"Tiên thuật\" (Sage Mode) là gì?", a: "Hấp thụ năng lượng tự nhiên hòa với chakra bản thân", w: ["Nhẫn thuật chữa bệnh", "Thuật hóa thân thành cóc", "Thuật điều khiển thời gian"], e: "Khi dùng, Naruto có quầng mắt màu cam và đồng tử như mắt cóc." },
+      { q: "\"Uế thổ chuyển sinh\" (Edo Tensei) là thuật gì?", a: "Hồi sinh người chết vào thân xác tạm và điều khiển họ", w: ["Biến thân thành đất", "Chữa thương tức thì", "Dịch chuyển tức thời"], e: "Do Hokage Đệ Nhị sáng tạo, Orochimaru và Kabuto dùng nó." },
+      { q: "\"Mangekyō Sharingan\" (Vạn hoa đồng) có được khi nào?", a: "Khi người Uchiha trải qua nỗi đau mất người thân yêu", w: ["Khi đủ 18 tuổi", "Khi trở thành Hokage", "Khi ăn trái cấm"], e: "Itachi, Sasuke, Kakashi và Obito đều có. Sức mạnh đi cùng nỗi đau." },
+      { q: "\"Amaterasu\" là gì?", a: "Ngọn lửa đen không thể dập tắt của Mangekyō Sharingan", w: ["Một loại kiếm", "Thuật chữa trị", "Tên con cóc"], e: "Đặt theo tên nữ thần mặt trời trong thần thoại Nhật." },
+      { q: "\"Susanoo\" là gì?", a: "Chiến binh chakra khổng lồ bao quanh người dùng Mangekyō", w: ["Một vĩ thú", "Tên làng của Pain", "Thuật phong ấn"], e: "Đặt theo tên thần bão tố, anh em của Amaterasu và Tsukuyomi." },
+      { q: "\"Tsukuyomi vô hạn\" là gì?", a: "Ảo thuật chiếu lên mặt trăng, nhốt cả thế giới vào giấc mơ", w: ["Thuật du hành không gian", "Thuật phong ấn Kurama", "Một trận chiến"], e: "Kế hoạch \"Mắt Trăng\" của Madara và Obito." },
+      { q: "\"Rinnegan\" là gì?", a: "Đôi mắt huyền thoại với vòng xoáy tròn đồng tâm", w: ["Mắt của gia tộc Hyuga", "Mắt của Cửu Vĩ", "Mắt giả của Danzo"], e: "Gắn với Lục Đạo Tiên Nhân. Nagato, Madara và sau cùng Sasuke có Rinnegan." },
+      { q: "\"Root\" (Gốc rễ) là tổ chức nào?", a: "Lực lượng Anbu bí mật do Danzo lập", w: ["Một nhánh Akatsuki", "Nhóm của Sasuke", "Gia tộc Senju"], e: "Thành viên như Sai được huấn luyện để xóa bỏ cảm xúc." },
+      { q: "\"Bijū\" là gì?", a: "Chín con vĩ thú khổng lồ làm từ chakra", w: ["Một loại vũ khí", "Thành viên Akatsuki", "Ninja đào tẩu"], e: "Từ Nhất Vĩ đến Cửu Vĩ, được Lục Đạo Tiên Nhân chia ra từ Thập Vĩ." },
+      { q: "\"Izanagi\" có khả năng gì?", a: "Biến một sự thật bất lợi thành ảo ảnh, đổi bằng một con mắt", w: ["Hồi sinh cả làng", "Bay lên trời", "Tạo phân thân"], e: "Danzo dùng các Sharingan cấy trên tay để sống sót nhiều lần." },
+      { q: "Tên \"Naruto\" có nguồn gốc từ đâu trong truyện?", a: "Từ nhân vật chính trong cuốn tiểu thuyết đầu tiên của Jiraiya", w: ["Từ tên một món ramen", "Từ tên Hokage Đệ Nhất", "Từ tên một ngọn núi"], e: "Minato và Kushina đặt tên con theo nhân vật trong \"Truyền kỳ ninja kiên cường\" của Jiraiya." },
+      { q: "Pain nói \"Hãy cảm nhận đau đớn\". Hắn muốn ám chỉ điều gì?", a: "Chỉ khi chung nỗi đau, thế giới mới hiểu nhau và có hòa bình", w: ["Hắn thích hành hạ người khác", "Hắn đang bị thương", "Hắn muốn Naruto mạnh lên"], e: "Pain muốn tạo ra nỗi sợ chung để ép thế giới vào hòa bình." },
+      { q: "\"Vòng tuần hoàn thù hận\" trong Shippuden muốn nói điều gì?", a: "Trả thù chỉ sinh ra thêm trả thù, nối dài chiến tranh", w: ["Một kỹ thuật phong ấn", "Lịch sử Làng Cát", "Quy tắc của Akatsuki"], e: "Naruto chọn không trả thù Pain, phá vỡ vòng lặp mà Jiraiya mong muốn." },
+      { q: "Cử chỉ chạm hai ngón tay vào trán của Itachi mang ý nghĩa gì?", a: "Tình yêu thương và lời xin lỗi của người anh", w: ["Một lời đe dọa", "Một ấn phong ấn", "Một trò đùa"], e: "\"Xin lỗi Sasuke, lần sau nhé\": câu nói thuở nhỏ, và lần cuối trước khi chết." },
+      { q: "Dấu mặt trời và mặt trăng trên tay Naruto và Sasuke tượng trưng cho gì?", a: "Hai nửa sức mạnh của Lục Đạo Tiên Nhân, cần nhau để trọn vẹn", w: ["Ngày và đêm chiến đấu", "Hai làng khác nhau", "Hai vĩ thú"], e: "Chỉ khi hợp sức, hai người mới phong ấn được Kaguya." },
+      { q: "Ấn hòa giải (Seal of Reconciliation) có ý nghĩa gì?", a: "Hai ninja tôn trọng nhau và trở thành đồng đội sau trận đấu", w: ["Ấn để triệu hồi", "Ấn để phong ấn vĩ thú", "Ấn tuyên chiến"], e: "Hashirama đưa tay ra với Madara, Madara từ chối. Đến Naruto và Sasuke, ấn mới được hoàn thành." },
+      { q: "\"Ōtsutsuki\" là gì?", a: "Gia tộc ngoài hành tinh, tổ tiên của chakra", w: ["Một làng ninja", "Tên vĩ thú", "Một loại nhẫn cụ"], e: "Kaguya và con trai Hagoromo thuộc gia tộc này." },
+      { q: "Sau chiến tranh, Sasuke rời làng lên đường. Hành trình ấy mang ý nghĩa gì?", a: "Chuộc lỗi và tự mình nhìn lại thế giới", w: ["Lật đổ Naruto", "Lập làng mới", "Gia nhập Akatsuki"], e: "Sasuke được tha tội và chọn đi khắp nơi để hiểu những gì mình từng chối bỏ." },
+      { q: "Vì sao Itachi được nhiều người gọi là \"anh hùng thầm lặng\"?", a: "Anh hy sinh danh dự, gia đình và mạng sống để bảo vệ làng", w: ["Anh chưa từng giết ai", "Anh là Hokage bí mật", "Anh cứu Naruto nhiều lần"], e: "Thế giới coi anh là kẻ phản bội, nhưng anh làm tất cả vì hòa bình và vì em trai." }
+    ],
+    emotions: [
+      { q: "Cái chết của Jiraiya khiến fan cảm thấy thế nào?", a: "Đau đớn, như mất đi người thầy, người cha của Naruto", w: ["Nhẹ nhõm", "Không ai bất ngờ", "Buồn cười"], e: "Cảnh Naruto ngồi một mình trên ghế với que kem chia đôi là một trong những cảnh buồn nhất phim." },
+      { q: "Khi sự thật về Itachi được tiết lộ, khán giả phản ứng ra sao?", a: "Từ căm ghét chuyển sang thương cảm và kính trọng", w: ["Càng ghét Itachi hơn", "Thấy vô lý", "Không quan tâm"], e: "Itachi trở thành một trong những nhân vật được yêu thích nhất toàn bộ series." },
+      { q: "Arc Pain tấn công thường được fan đánh giá thế nào?", a: "Một trong những arc hay nhất Naruto", w: ["Arc nhạt nhất", "Một arc độn", "Arc bị cắt khỏi anime"], e: "Arc có trận chiến mãn nhãn, lời tỏ tình của Hinata và cuộc đối thoại về hòa bình." },
+      { q: "Cảnh Naruto gặp mẹ Kushina khiến khán giả cảm thấy gì?", a: "Xúc động khi cậu bé mồ côi cuối cùng biết mình được yêu thương", w: ["Sợ hãi", "Chán nản", "Tức giận"], e: "Kushina kể chuyện yêu Minato và nói bà hạnh phúc khi là mẹ của Naruto." },
+      { q: "Cái chết của Neji gây phản ứng gì trong cộng đồng fan?", a: "Sốc và tranh cãi, nhiều người thấy quá đột ngột", w: ["Ai cũng hài lòng", "Không ai để ý", "Fan vui mừng"], e: "Neji là nhân vật được yêu thích, nên cái chết giữa chiến trường gây tiếc nuối lớn." },
+      { q: "Trận cuối Naruto - Sasuke ở Thung lũng Tận cùng để lại cảm xúc gì?", a: "Nghẹn ngào, khép lại mối quan hệ kéo dài suốt hai phần", w: ["Thất vọng vì quá ngắn", "Thờ ơ", "Buồn cười"], e: "Sau gần 700 tập của cả hai phần, hai người bạn cuối cùng hiểu nhau." },
+      { q: "Đám cưới Naruto và Hinata ở cuối phim mang lại cảm giác gì cho fan?", a: "Ấm áp, như được chứng kiến người bạn lâu năm hạnh phúc", w: ["Tức giận", "Sợ hãi", "Không ai quan tâm"], e: "Cậu bé cô đơn trên chiếc xích đu giờ đã có gia đình của riêng mình." },
+      { q: "Như phần 1, phản ứng phổ biến của fan với các tập độn trong Shippuden là gì?", a: "Nhiều người tra danh sách để bỏ qua các tập độn", w: ["Ai cũng xem đủ 500 tập", "Tập độn được yêu thích nhất", "Không có tập độn"], e: "Shippuden có rất nhiều tập độn, nên danh sách tập nên xem trở thành thứ fan chia sẻ nhiều." }
     ]
   }
 ];
