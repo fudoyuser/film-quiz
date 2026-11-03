@@ -7,7 +7,7 @@
 <title>Đố Vui Màn Ảnh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Oswald:wght@500;700&family=Roboto+Slab:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Oswald:wght@500;700&family=Baloo+2:wght@600;800&family=Roboto+Slab:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: một cột như tập kịch bản. Mỗi phim mang bảng màu riêng (data-film), trang thư viện là phòng chiếu tối */
 :root, [data-film="home"] {
@@ -65,6 +65,16 @@
 .mode.eps:hover { border-color: var(--no); }
 .tag.eps { background: var(--no); color: var(--card); }
 .tag.terms { background: var(--ok); color: var(--card); }
+[data-film="naruto"] {
+  --bg: #fff3e6;
+  --bg-art: radial-gradient(700px 420px at 100% 0%, #ffb27a88, transparent 70%), radial-gradient(600px 420px at 0% 100%, #bcd3f3aa, transparent 70%);
+  --card: #ffffff; --opt: #fff8f1; --ink: #1d2340; --muted: #66688a; --line: #f3d9c2;
+  --accent: #f26b1d; --accent-ink: #ffffff; --accent2: #2b5daa;
+  --ok: #2f8f5b; --ok-soft: #e2f3e8; --no: #d23c32; --no-soft: #fbe2dd;
+  --display: "Baloo 2", "Trebuchet MS", sans-serif;
+  color-scheme: light;
+}
+[data-film="naruto"] .hero h1 { font-weight: 800; }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
 body {
@@ -532,6 +542,122 @@ const FILMS = [
       { q: "Tờ The JC chê điều gì ở phim?", a: "Tên phim quá cường điệu", w: ["Phim quá ngắn", "Thiếu phỏng vấn", "Sai năm sự kiện"], e: "Tờ báo cho rằng \"quái vật\" là cách gọi phóng đại, và con quái vật thật sự là lòng tham." },
       { q: "Biết SEC được cảnh báo từ năm 2000 mà không hành động, một bài review gọi phim là chân dung của điều gì?", a: "Một thất bại ngoạn mục của cơ quan nhà nước", w: ["Một chiến thắng của công lý", "Một câu chuyện cổ tích tài chính", "Một vụ án bị dựng lên"], e: "Người xem phẫn nộ khi thấy dấu hiệu đã rõ từ sớm nhưng cơ quan quản lý vẫn bỏ qua suốt 8 năm." }
     ]
+  },
+  {
+    id: "naruto",
+    motif: "木ノ葉",
+    title: "Naruto",
+    original: "ナルト · 2002",
+    meta: "Nhật Bản · Studio Pierrot · 220 tập · Masashi Kishimoto",
+    epLabel: "Mổ xẻ từng arc",
+    sources: [
+      ["Wikipedia: Naruto", "https://en.wikipedia.org/wiki/Naruto"],
+      ["Wikipedia: List of Naruto episodes", "https://en.wikipedia.org/wiki/List_of_Naruto_episodes"],
+      ["Wikipedia: List of Naruto characters", "https://en.wikipedia.org/wiki/List_of_Naruto_characters"]
+    ],
+    epSources: [
+      ["Wikipedia: List of Naruto episodes", "https://en.wikipedia.org/wiki/List_of_Naruto_episodes"],
+      ["Wikipedia: Naruto Uzumaki", "https://en.wikipedia.org/wiki/Naruto_Uzumaki"],
+      ["Wikipedia: Sasuke Uchiha", "https://en.wikipedia.org/wiki/Sasuke_Uchiha"]
+    ],
+    termSources: [
+      ["Wikipedia: Naruto", "https://en.wikipedia.org/wiki/Naruto"],
+      ["Wikipedia: List of Naruto characters", "https://en.wikipedia.org/wiki/List_of_Naruto_characters"]
+    ],
+    emoSources: [
+      ["Wikipedia: Naruto (anime, đón nhận)", "https://en.wikipedia.org/wiki/Naruto#Reception"],
+      ["Wikipedia: Music of Naruto", "https://en.wikipedia.org/wiki/Music_of_Naruto"]
+    ],
+    questions: [
+      { q: "Ai là tác giả manga Naruto?", a: "Masashi Kishimoto", w: ["Eiichiro Oda", "Akira Toriyama", "Tite Kubo"], e: "Masashi Kishimoto sáng tác Naruto, đăng từ năm 1999 đến 2014." },
+      { q: "Manga Naruto được đăng trên tạp chí nào?", a: "Weekly Shōnen Jump", w: ["Weekly Shōnen Magazine", "Monthly Shōnen Gangan", "Weekly Young Jump"], e: "Naruto là một trong những bộ truyện trụ cột của Weekly Shōnen Jump, cùng thời với One Piece và Bleach." },
+      { q: "Studio nào sản xuất anime Naruto?", a: "Studio Pierrot", w: ["Toei Animation", "Madhouse", "MAPPA"], e: "Studio Pierrot làm cả Naruto lẫn Naruto Shippuden." },
+      { q: "Anime Naruto (phần 1) bắt đầu phát sóng năm nào?", a: "2002", w: ["1999", "2005", "2007"], e: "Anime phát sóng từ năm 2002 đến 2007, sau đó là Naruto Shippuden." },
+      { q: "Anime Naruto phần 1 có bao nhiêu tập?", a: "220 tập", w: ["124 tập", "366 tập", "500 tập"], e: "220 tập. Phần tiếp theo, Naruto Shippuden, có 500 tập." },
+      { q: "Naruto sống ở làng nào?", a: "Làng Lá (Konohagakure)", w: ["Làng Cát", "Làng Sương Mù", "Làng Mây"], e: "Konohagakure, làng ẩn trong lá ở Hỏa Quốc." },
+      { q: "Con vĩ thú nào bị phong ấn trong người Naruto?", a: "Cửu Vĩ Hồ Ly", w: ["Nhất Vĩ Shukaku", "Bát Vĩ", "Thất Vĩ"], e: "Con cáo chín đuôi từng tấn công Làng Lá vào đúng ngày Naruto chào đời." },
+      { q: "Ai đã phong ấn Cửu Vĩ vào Naruto khi cậu mới sinh?", a: "Hokage Đệ Tứ", w: ["Hokage Đệ Tam", "Jiraiya", "Kakashi"], e: "Hokage Đệ Tứ hy sinh để phong ấn Cửu Vĩ vào cậu bé sơ sinh Naruto." },
+      { q: "Đội 7 gồm những ai?", a: "Naruto, Sasuke, Sakura và thầy Kakashi", w: ["Naruto, Shikamaru, Ino và thầy Asuma", "Naruto, Neji, Tenten và thầy Guy", "Naruto, Kiba, Hinata và thầy Kurenai"], e: "Đội 7 do Kakashi Hatake dẫn dắt." },
+      { q: "Món ăn khoái khẩu của Naruto là gì, ăn ở đâu?", a: "Mì ramen ở quán Ichiraku", w: ["Sushi ở nhà Hinata", "Dango ở quán trà", "Cơm nắm ở học viện"], e: "Quán Ichiraku Ramen là nơi Naruto ghé thường xuyên, nhiều khi được thầy Iruka đãi." },
+      { q: "Câu cửa miệng nổi tiếng của Naruto là gì?", a: "Dattebayo!", w: ["Mendokusē", "Yosh!", "Shannaro!"], e: "\"Dattebayo\" là câu đệm Naruto gắn vào cuối câu. \"Mendokusē\" là của Shikamaru, \"Shannaro\" là của Sakura." },
+      { q: "Ước mơ lớn nhất của Naruto là gì?", a: "Trở thành Hokage", w: ["Trở thành Sannin", "Mở quán ramen", "Rời khỏi Làng Lá"], e: "Cậu muốn trở thành Hokage để cả làng công nhận mình." },
+      { q: "Kỹ thuật đặc trưng Naruto học từ cuộn giấy phong ấn ở tập đầu là gì?", a: "Ảnh phân thân (Kage Bunshin)", w: ["Rasengan", "Chidori", "Hỏa độn"], e: "Ảnh phân thân tạo ra bản sao có thật, khác với phân thân ảo mà Naruto luôn làm hỏng." },
+      { q: "Ai là thầy dạy Naruto ở học viện, người luôn quan tâm cậu?", a: "Iruka", w: ["Mizuki", "Ebisu", "Kakashi"], e: "Iruka hiểu nỗi cô đơn của Naruto vì cũng mất cha mẹ trong vụ Cửu Vĩ tấn công." },
+      { q: "Ai lừa Naruto đánh cắp cuộn giấy phong ấn ở tập 1?", a: "Mizuki", w: ["Iruka", "Orochimaru", "Kabuto"], e: "Mizuki lợi dụng Naruto để lấy cuộn giấy, rồi bị Naruto hạ bằng Ảnh phân thân." },
+      { q: "Kakashi được biết đến với biệt danh gì?", a: "Ninja sao chép", w: ["Tia chớp vàng", "Quái thú xanh", "Ninja bất tử"], e: "Nhờ con mắt Sharingan, Kakashi sao chép được hơn một nghìn nhẫn thuật." },
+      { q: "Nhiệm vụ lớn đầu tiên của Đội 7 là bảo vệ ai?", a: "Ông thợ cầu Tazuna", w: ["Công chúa xứ Tuyết", "Hokage Đệ Tam", "Một thương nhân làng Cát"], e: "Đội 7 hộ tống Tazuna về Đất nước Sóng để hoàn thành cây cầu." },
+      { q: "Kẻ thù của Đội 7 ở Đất nước Sóng là ai?", a: "Zabuza và Haku", w: ["Itachi và Kisame", "Orochimaru và Kabuto", "Gaara và Kankuro"], e: "Zabuza, \"Quỷ của Làng Sương Mù\", cùng cậu bé Haku trung thành tuyệt đối." },
+      { q: "Vòng thi thứ hai của kỳ thi Chunin diễn ra ở đâu?", a: "Khu rừng Tử thần", w: ["Thung lũng Tận cùng", "Đấu trường Làng Lá", "Núi Hokage"], e: "Khu rừng Tử thần (Forest of Death) là nơi Orochimaru xuất hiện." },
+      { q: "Ai đặt ấn chú lên cổ Sasuke?", a: "Orochimaru", w: ["Itachi", "Kabuto", "Gaara"], e: "Orochimaru cắn vào cổ Sasuke trong Khu rừng Tử thần, để lại ấn chú thiên địa." },
+      { q: "Ở vòng chung kết thi Chunin, Naruto đánh bại ai?", a: "Neji Hyuga", w: ["Sasuke Uchiha", "Kiba Inuzuka", "Shino Aburame"], e: "Naruto thắng Neji và phá bỏ niềm tin \"số phận đã định\" của Neji." },
+      { q: "Ai là người duy nhất được thăng cấp Chunin sau kỳ thi?", a: "Shikamaru Nara", w: ["Naruto", "Sasuke", "Neji"], e: "Dù chủ động bỏ cuộc trận đấu với Temari, Shikamaru được công nhận nhờ tư duy chiến thuật." },
+      { q: "Thầy của Rock Lee là ai?", a: "Might Guy", w: ["Kakashi", "Asuma", "Iruka"], e: "Might Guy, \"Quái thú xanh\" của Làng Lá, đối thủ truyền kiếp của Kakashi." },
+      { q: "Gaara đến từ làng nào và mang vĩ thú nào?", a: "Làng Cát, mang Nhất Vĩ Shukaku", w: ["Làng Sương Mù, mang Tam Vĩ", "Làng Mây, mang Bát Vĩ", "Làng Đá, mang Tứ Vĩ"], e: "Gaara là jinchūriki của Shukaku, giống Naruto mang trong mình một vĩ thú." },
+      { q: "Hokage Đệ Tam hy sinh trong trận đấu với ai?", a: "Orochimaru", w: ["Itachi", "Gaara", "Kabuto"], e: "Đệ Tam dùng nhẫn thuật phong ấn hai tay Orochimaru, đánh đổi bằng mạng sống." },
+      { q: "Jiraiya và Naruto đi tìm ai về làm Hokage Đệ Ngũ?", a: "Tsunade", w: ["Kakashi", "Orochimaru", "Shizune"], e: "Tsunade, một trong Tam Nhẫn huyền thoại, trở thành Hokage Đệ Ngũ." },
+      { q: "Jiraiya dạy Naruto kỹ thuật nào?", a: "Rasengan", w: ["Chidori", "Ảnh phân thân", "Khẩu dẫn chi thuật bằng rắn"], e: "Rasengan là quả cầu chakra xoay, kỹ thuật của Hokage Đệ Tứ." },
+      { q: "Tsunade cược gì với Naruto khi cậu học Rasengan?", a: "Chiếc vòng cổ của bà", w: ["Chiếc mũ Hokage", "Một tô ramen", "Cuộn giấy phong ấn"], e: "Naruto thắng cược, Tsunade trao cậu chiếc vòng cổ quý của Hokage Đệ Nhất." },
+      { q: "Ai đã thảm sát gia tộc Uchiha?", a: "Itachi, anh trai Sasuke", w: ["Orochimaru", "Kakashi", "Hokage Đệ Tam"], e: "Itachi chỉ chừa lại Sasuke, khiến Sasuke sống để báo thù." },
+      { q: "Trận chiến cuối cùng giữa Naruto và Sasuke ở phần 1 diễn ra ở đâu?", a: "Thung lũng Tận cùng", w: ["Khu rừng Tử thần", "Đất nước Sóng", "Làng Cát"], e: "Thung lũng Tận cùng có tượng Hashirama và Madara, nơi Sasuke thắng rồi bỏ đi theo Orochimaru." }
+    ],
+    episodes: [
+      { q: "Arc Học viện (tập 1): Vì sao dân làng xa lánh Naruto từ nhỏ?", a: "Vì Cửu Vĩ bị phong ấn trong cậu", w: ["Vì cậu là con của kẻ phản bội", "Vì cậu đến từ làng khác", "Vì cậu từng đốt nhà người khác"], e: "Người lớn nhìn Naruto như hiện thân của con cáo đã tàn phá làng, nên cậu lớn lên trong cô đơn." },
+      { q: "Arc Học viện: Naruto biết bí mật về Cửu Vĩ trong người mình từ ai?", a: "Mizuki", w: ["Iruka", "Hokage Đệ Tam", "Kakashi"], e: "Mizuki tiết lộ để làm cậu tổn thương, nhưng chính lúc đó Iruka đứng ra bảo vệ cậu." },
+      { q: "Arc Bài kiểm tra chuông: Kakashi kiểm tra Đội 7 bằng cách nào?", a: "Bắt ba học trò giành hai chiếc chuông từ thầy", w: ["Bắt họ leo núi Hokage", "Cho họ thi viết", "Cho họ đánh nhau với nhau"], e: "Chỉ có hai chuông cho ba người, để xem họ có biết làm việc nhóm hay không." },
+      { q: "Arc Bài kiểm tra chuông: Bài học Kakashi muốn dạy là gì?", a: "Tinh thần đồng đội", w: ["Tốc độ là tất cả", "Phải biết lừa dối", "Phải giỏi nhẫn thuật"], e: "Đội 7 qua bài kiểm tra vì cùng chia cơm cho Naruto dù bị cấm." },
+      { q: "Arc Đất nước Sóng: Ai đỡ đòn chết thay Zabuza trước chiêu Lôi thiết của Kakashi?", a: "Haku", w: ["Sasuke", "Tazuna", "Inari"], e: "Haku lao vào đỡ đòn vì coi việc là công cụ của Zabuza là lẽ sống của mình." },
+      { q: "Arc Đất nước Sóng: Cây cầu cuối cùng được đặt tên là gì?", a: "Cầu Naruto Vĩ đại", w: ["Cầu Tazuna", "Cầu Hy vọng", "Cầu Làng Lá"], e: "Dân làng đặt tên cầu theo Naruto, người đã truyền lại niềm tin cho họ." },
+      { q: "Arc Đất nước Sóng: Sasuke lần đầu thức tỉnh khả năng gì?", a: "Sharingan", w: ["Byakugan", "Rinnegan", "Ấn chú"], e: "Trong trận đấu với Haku, Sasuke thức tỉnh Sharingan của gia tộc Uchiha." },
+      { q: "Arc Thi Chunin: Vòng thi viết thực chất kiểm tra điều gì?", a: "Khả năng thu thập thông tin mà không bị phát hiện", w: ["Kiến thức lịch sử", "Khả năng tính toán", "Chữ viết đẹp"], e: "Đề bài khó đến mức buộc thí sinh phải gian lận khéo, giống công việc tình báo của ninja." },
+      { q: "Arc Thi Chunin: Câu hỏi thứ mười của Ibiki thật ra đánh giá điều gì?", a: "Sự can đảm dám chấp nhận rủi ro", w: ["Kiến thức về chakra", "Trí nhớ", "Khả năng tàng hình"], e: "Ai dám ở lại nhận câu hỏi thứ mười, dù có thể bị cấm thi mãi mãi, đều qua vòng. Naruto đập bàn tuyên bố không bỏ cuộc." },
+      { q: "Arc Thi Chunin: Trong trận Rock Lee đấu Gaara, Lee làm gì khiến khán giả sửng sốt?", a: "Tháo tạ ở chân rồi tăng tốc khủng khiếp", w: ["Dùng Rasengan", "Triệu hồi cóc", "Mở Sharingan"], e: "Lee không dùng được nhẫn thuật nên luyện thể thuật. Khi bỏ tạ, cậu nhanh đến mức Gaara suýt không đỡ kịp." },
+      { q: "Arc Thi Chunin: Trận Naruto - Neji xoay quanh xung đột tư tưởng nào?", a: "Số phận đã định sẵn hay có thể thay đổi", w: ["Giàu hay nghèo", "Làng Lá hay Làng Cát", "Ramen hay sushi"], e: "Neji tin mọi thứ do số phận quyết định. Naruto, kẻ \"thất bại\", thắng và chứng minh điều ngược lại." },
+      { q: "Arc Làng Lá bị tấn công: Hai làng nào liên minh tấn công Làng Lá?", a: "Làng Cát và Làng Âm Thanh", w: ["Làng Mây và Làng Đá", "Làng Sương Mù và Làng Mưa", "Làng Thác và Làng Cỏ"], e: "Orochimaru, kẻ đứng sau Làng Âm Thanh, lừa Làng Cát tham gia cuộc tấn công giữa kỳ thi Chunin." },
+      { q: "Arc Làng Lá bị tấn công: Naruto chặn Gaara ở dạng Shukaku bằng cách nào?", a: "Triệu hồi Cóc trưởng Gamabunta", w: ["Dùng Chidori", "Nhờ Hokage Đệ Tam", "Phong ấn Gaara vào cuộn giấy"], e: "Naruto triệu hồi Gamabunta, một kỹ thuật học từ Jiraiya, để đấu với con chồn khổng lồ Shukaku." },
+      { q: "Arc Làng Lá bị tấn công: Sau khi thua Naruto, Gaara thay đổi ra sao?", a: "Bắt đầu hiểu giá trị của sự gắn kết với người khác", w: ["Trở nên tàn bạo hơn", "Bỏ trốn khỏi làng", "Gia nhập Akatsuki"], e: "Gaara nhận ra Naruto mạnh vì có người để bảo vệ, khởi đầu con đường thay đổi của cậu." },
+      { q: "Arc Tìm Tsunade: Hai thành viên Akatsuki nào đến Làng Lá để bắt Naruto?", a: "Itachi và Kisame", w: ["Deidara và Sasori", "Hidan và Kakuzu", "Pain và Konan"], e: "Itachi và Kisame xuất hiện ngay sau cái chết của Hokage Đệ Tam." },
+      { q: "Arc Tìm Tsunade: Ai được Tsunade chữa khỏi để có thể làm ninja trở lại?", a: "Rock Lee", w: ["Kakashi", "Sasuke", "Jiraiya"], e: "Lee bị thương nặng sau trận với Gaara. Tsunade phẫu thuật để cậu tiếp tục con đường ninja." },
+      { q: "Arc Tìm Tsunade: Vì sao Tsunade ban đầu không muốn làm Hokage?", a: "Vì bà mất em trai và người yêu, đều mơ làm Hokage", w: ["Vì bà ghét Làng Lá", "Vì bà đang bị truy nã", "Vì bà muốn theo Orochimaru"], e: "Bà cho rằng danh hiệu Hokage là giấc mơ của kẻ ngốc, cho đến khi gặp Naruto." },
+      { q: "Arc Truy đuổi Sasuke: Vì sao Sasuke rời Làng Lá?", a: "Để theo Orochimaru tìm sức mạnh báo thù Itachi", w: ["Để đi tìm cha mẹ", "Để làm Hokage làng khác", "Vì bị trục xuất"], e: "Sau khi thua Itachi, Sasuke tin ở lại làng không giúp mình mạnh đủ để trả thù." },
+      { q: "Arc Truy đuổi Sasuke: Ai dẫn đầu nhóm ninja đuổi theo Sasuke?", a: "Shikamaru", w: ["Kakashi", "Neji", "Naruto"], e: "Shikamaru, Chunin duy nhất, lần đầu làm đội trưởng một nhiệm vụ sống còn." },
+      { q: "Arc Truy đuổi Sasuke: Bốn ninja âm thanh hộ tống Sasuke được gọi là gì?", a: "Tứ Âm Nhẫn", w: ["Thất Kiếm Sương Mù", "Tam Nhẫn", "Bát Môn"], e: "Nhóm Tứ Âm Nhẫn (cộng thêm Kimimaro) chặn từng thành viên đội truy đuổi." },
+      { q: "Arc Truy đuổi Sasuke: Ai bất ngờ đến cứu Rock Lee khỏi Kimimaro?", a: "Gaara", w: ["Kakashi", "Might Guy", "Neji"], e: "Gaara, kẻ thù cũ ở kỳ thi Chunin, giờ đứng về phía Làng Lá. Đây là khoảnh khắc cho thấy cậu đã thay đổi." },
+      { q: "Arc Truy đuổi Sasuke: Kết thúc trận ở Thung lũng Tận cùng như thế nào?", a: "Sasuke thắng, bỏ lại Naruto bất tỉnh rồi đi tiếp", w: ["Naruto thắng và đưa Sasuke về", "Cả hai cùng chết", "Kakashi bắt được Sasuke"], e: "Sasuke không giết Naruto, đi theo Orochimaru. Kakashi đến muộn và đưa Naruto về." },
+      { q: "Arc Truy đuổi Sasuke: Naruto hứa gì với Sakura?", a: "Sẽ đưa Sasuke trở về", w: ["Sẽ trở thành Hokage ngay", "Sẽ không bao giờ gặp Sasuke", "Sẽ rời làng cùng cô"], e: "Lời hứa trọn đời này trở thành động lực của Naruto suốt Shippuden." },
+      { q: "Sau arc Truy đuổi Sasuke, phần lớn các tập còn lại đến tập 220 thuộc loại gì?", a: "Tập độn (filler) không có trong manga", w: ["Tập tổng kết", "Tập chiếu lại", "Tập Shippuden"], e: "Anime đã đuổi kịp manga nên làm nhiều tập độn, kéo dài đến khi chuyển sang Shippuden." }
+    ],
+    terms: [
+      { q: "\"Hokage\" nghĩa là gì?", a: "Hỏa Ảnh, người đứng đầu Làng Lá", w: ["Ninja mạnh nhất thế giới", "Thầy dạy học viện", "Tên một vĩ thú"], e: "Mỗi làng lớn có một Kage. Hokage là \"bóng lửa\" của Hỏa Quốc." },
+      { q: "\"Jinchūriki\" (nhân trụ lực) là ai?", a: "Người bị phong ấn vĩ thú trong cơ thể", w: ["Ninja đào tẩu", "Người đứng đầu gia tộc", "Thợ rèn vũ khí"], e: "Naruto và Gaara đều là jinchūriki, và đều bị người đời xa lánh vì điều đó." },
+      { q: "\"Chakra\" trong Naruto là gì?", a: "Năng lượng kết hợp thể chất và tinh thần để thi triển nhẫn thuật", w: ["Một loại vũ khí", "Tên ngôi làng", "Một món ăn"], e: "Mọi nhẫn thuật đều cần chakra. Naruto có lượng chakra khổng lồ nhờ Cửu Vĩ." },
+      { q: "Ba cấp bậc ninja chính theo thứ tự từ thấp lên là gì?", a: "Genin, Chunin, Jonin", w: ["Chunin, Genin, Jonin", "Jonin, Chunin, Genin", "Genin, Jonin, Kage"], e: "Genin là ninja mới, Chunin là cấp trung (dẫn đội), Jonin là ninja tinh nhuệ." },
+      { q: "\"Sharingan\" là gì?", a: "Huyết kế mắt của gia tộc Uchiha, đọc và sao chép nhẫn thuật", w: ["Mắt nhìn xuyên của Hyuga", "Một loại kiếm", "Tên tổ chức Akatsuki"], e: "Sasuke và Itachi có Sharingan bẩm sinh. Kakashi có được nhờ người bạn Obito." },
+      { q: "\"Byakugan\" thuộc về gia tộc nào?", a: "Gia tộc Hyuga", w: ["Gia tộc Uchiha", "Gia tộc Nara", "Gia tộc Akimichi"], e: "Đôi mắt trắng của Neji và Hinata nhìn xuyên vật thể và thấy các điểm chakra." },
+      { q: "\"Kekkei Genkai\" (huyết kế giới hạn) nghĩa là gì?", a: "Năng lực di truyền theo dòng máu, không học được", w: ["Kỹ thuật cấm", "Luật lệ của làng", "Lời nguyền của vĩ thú"], e: "Sharingan, Byakugan hay Băng độn của Haku đều là huyết kế giới hạn." },
+      { q: "\"Akatsuki\" nghĩa là gì?", a: "\"Bình minh\", tên tổ chức ninja đào tẩu săn vĩ thú", w: ["\"Hoàng hôn\", tên một ngôi làng", "\"Lửa\", tên nhẫn thuật", "\"Lá\", biểu tượng Làng Lá"], e: "Thành viên mặc áo choàng đen có mây đỏ. Itachi và Kisame xuất hiện đầu tiên." },
+      { q: "\"Sannin\" (Tam Nhẫn huyền thoại) gồm những ai?", a: "Jiraiya, Tsunade và Orochimaru", w: ["Kakashi, Guy và Asuma", "Naruto, Sasuke và Sakura", "Đệ Nhất, Đệ Nhị và Đệ Tam"], e: "Ba học trò của Hokage Đệ Tam, cũng là thầy của Naruto, Sakura (sau này) và Sasuke." },
+      { q: "Băng trán (hitai-ate) bị gạch một đường ngang có ý nghĩa gì?", a: "Ninja đã phản bội, rời bỏ làng của mình", w: ["Ninja đã lên Jonin", "Ninja bị thương", "Ninja đang làm nhiệm vụ mật"], e: "Zabuza và Itachi đều đeo băng trán bị gạch, dấu hiệu của ninja đào tẩu." },
+      { q: "\"Rasengan\" có nghĩa đen là gì?", a: "Hoàn xoắn ốc, quả cầu chakra xoáy", w: ["Nghìn con chim", "Ánh sáng sấm sét", "Rồng lửa"], e: "Rasengan nén chakra xoay theo nhiều hướng trong lòng bàn tay." },
+      { q: "\"Chidori\" có nghĩa đen là gì?", a: "Nghìn con chim, theo tiếng rít của chakra sấm", w: ["Hoàn xoắn ốc", "Hỏa cầu", "Thủy long"], e: "Tiếng chakra sấm tập trung ở tay nghe như tiếng ríu rít của nghìn con chim." },
+      { q: "\"Konohagakure\" nghĩa là gì?", a: "Ngôi làng ẩn trong lá", w: ["Ngôi làng của lửa", "Ngôi làng trên mây", "Ngôi làng dưới cát"], e: "Tên các làng ninja đều có đuôi \"-gakure\", nghĩa là \"ẩn trong\"." },
+      { q: "\"Ý chí Lửa\" mà Hokage Đệ Tam nói đến là gì?", a: "Tinh thần coi cả làng như gia đình và sẵn sàng bảo vệ nhau", w: ["Một nhẫn thuật Hỏa độn", "Cuộn giấy cấm", "Tên một gia tộc"], e: "Đệ Tam tin mọi người dân Làng Lá đều mang ngọn lửa này và truyền nó cho thế hệ sau." },
+      { q: "\"Nhẫn đạo\" của Naruto là gì?", a: "Không bao giờ nuốt lời, không bao giờ bỏ cuộc", w: ["Thắng bằng mọi giá", "Sống một mình", "Chỉ tin vào sức mạnh"], e: "\"Tôi không bao giờ rút lại lời mình nói. Đó là nhẫn đạo của tôi.\"" },
+      { q: "Câu của Kakashi \"Kẻ phá luật là rác rưởi, nhưng kẻ bỏ rơi đồng đội còn tệ hơn rác rưởi\" mang ý nghĩa gì?", a: "Đồng đội quan trọng hơn quy tắc", w: ["Phải tuân lệnh tuyệt đối", "Ninja không cần bạn bè", "Luật lệ là trên hết"], e: "Đây là bài học Kakashi học được từ người bạn Obito và truyền lại cho Đội 7." },
+      { q: "Haku nói con người trở nên mạnh thật sự khi nào?", a: "Khi có người quan trọng cần bảo vệ", w: ["Khi có nhiều chakra", "Khi luyện tập một mình", "Khi đánh bại kẻ thù"], e: "Câu nói này đi theo Naruto suốt hành trình và giải thích sức mạnh của cậu." },
+      { q: "Shikamaru hay nói \"Mendokusē\". Câu này nghĩa là gì?", a: "\"Phiền phức quá\"", w: ["\"Tớ sẽ thắng\"", "\"Cảm ơn\"", "\"Tạm biệt\""], e: "Câu cửa miệng của thiên tài lười biếng, IQ trên 200 nhưng chỉ muốn ngắm mây." },
+      { q: "Thông điệp của Rock Lee khi đấu với những \"thiên tài\" là gì?", a: "Nỗ lực có thể vượt qua tài năng bẩm sinh", w: ["Thiên tài luôn thắng", "Nhẫn thuật là tất cả", "Không nên cố gắng"], e: "Lee không dùng được nhẫn thuật nhưng luyện thể thuật đến mức đối đầu được với các thiên tài." },
+      { q: "Khi Mizuki nói Naruto là Cửu Vĩ, Iruka khẳng định điều gì?", a: "Naruto là học trò của ông, là một ninja Làng Lá", w: ["Naruto là kẻ nguy hiểm", "Naruto nên rời làng", "Naruto chính là hồ ly"], e: "Lần đầu tiên có người lớn công nhận Naruto là chính cậu, không phải con quái vật trong người cậu." }
+    ],
+    emotions: [
+      { q: "Cái chết của Haku và Zabuza ở arc Đất nước Sóng gây cảm xúc gì cho khán giả?", a: "Rất đau lòng, dù họ là phản diện", w: ["Hả hê vì kẻ xấu bị trừng trị", "Thờ ơ vì là nhân vật phụ", "Buồn cười"], e: "Zabuza khóc trước khi chết bên Haku. Nhiều người coi đây là cảnh buồn đầu tiên khiến họ khóc khi xem Naruto." },
+      { q: "Cảnh Rock Lee tháo tạ ở chân khi đấu Gaara khiến khán giả cảm thấy thế nào?", a: "Phấn khích tột độ, rồi xót xa khi Lee bị thương nặng", w: ["Chán nản vì trận đánh quá dài", "Sợ hãi vì Lee là phản diện", "Không quan tâm"], e: "Trận đấu thường được nhắc đến như một trong những trận hay nhất phần 1." },
+      { q: "Trận Naruto thắng Neji truyền cảm hứng gì cho người xem?", a: "Kẻ bị coi là thất bại vẫn có thể thay đổi số phận", w: ["Thiên tài luôn thắng", "Gia tộc quyết định tất cả", "Không nên thi đấu"], e: "Đó là chiến thắng của người bị cả làng coi thường." },
+      { q: "Đám tang Hokage Đệ Tam dưới mưa gợi cảm xúc gì?", a: "Tiếc thương và cảm giác cả làng mất đi người cha", w: ["Vui mừng vì có Hokage mới", "Tức giận với Naruto", "Nhẹ nhõm"], e: "Naruto lần đầu hiểu Ý chí Lửa: Hokage hy sinh vì những người ông coi là gia đình." },
+      { q: "Trận đấu ở Thung lũng Tận cùng thường được khán giả nhớ như thế nào?", a: "Một trong những trận đấu cảm xúc và đẹp nhất phần 1", w: ["Trận đấu nhạt nhất", "Trận đấu bị cắt khỏi anime", "Một tập độn"], e: "Hai người bạn thân như anh em đánh nhau ở nơi hai người sáng lập làng từng đấu, khiến khán giả nghẹn ngào." },
+      { q: "Bản nhạc nền nào thường gắn với những cảnh buồn trong Naruto?", a: "\"Sadness and Sorrow\"", w: ["\"Blue Bird\"", "\"Silhouette\"", "\"Unravel\""], e: "Bản sáo của Toshio Masuda vang lên ở nhiều khoảnh khắc buồn, đến giờ vẫn khiến fan xúc động." },
+      { q: "Cảnh Naruto bé ngồi một mình trên xích đu trước học viện gợi cảm xúc gì?", a: "Nỗi cô đơn của đứa trẻ không ai công nhận", w: ["Sự vui vẻ hồn nhiên", "Sự giận dữ", "Sự kiêu ngạo"], e: "Hình ảnh chiếc xích đu trở thành biểu tượng tuổi thơ cô độc của Naruto." },
+      { q: "Phản ứng phổ biến của fan với chuỗi tập độn cuối phần 1 là gì?", a: "Mệt mỏi, nhiều người bỏ qua để chờ Shippuden", w: ["Hào hứng hơn cả phần chính", "Đòi làm thêm tập độn", "Không ai biết đó là tập độn"], e: "Anime đã đuổi kịp manga nên phải độn nhiều tập không theo cốt truyện chính." }
+    ]
   }
 ];
 const COMING = ["Bạn muốn phim nào tiếp theo?"];
@@ -545,7 +671,7 @@ const MODES = {
     suffix: "--tong-hop", label: "Ôn tập tổng hợp",
     list: (f) => {
       const parts = ["facts", "eps", "terms", "emo"].filter((m) => MODES[m].list(f).length);
-      return parts.length > 1 ? parts.flatMap((m) => MODES[m].list(f).map((q) => ({ ...q, cat: MODES[m].label }))) : [];
+      return parts.length > 1 ? parts.flatMap((m) => MODES[m].list(f).map((q) => ({ ...q, cat: labelOf(f, m) }))) : [];
     },
     src: (f) => [...f.sources, ...(f.epSources || []), ...(f.termSources || []), ...(f.emoSources || [])].filter((s, i, a) => a.findIndex((x) => x[1] === s[1]) === i)
   }
@@ -558,6 +684,7 @@ const best = {
   get(id) { try { return Number(localStorage.getItem("best:" + id)) || 0; } catch { return 0; } },
   set(id, v) { try { if (v > this.get(id)) localStorage.setItem("best:" + id, v); } catch {} }
 };
+const labelOf = (f, m) => (m === "eps" && f.epLabel) || MODES[m].label;
 const keyOf = (film, mode) => film.id + MODES[mode].suffix;
 function parseKey(key) {
   for (const mode of ["all", "eps", "emo", "terms", "facts"]) {
@@ -576,7 +703,7 @@ function renderShelf() {
     const modes = Object.keys(MODES).filter((m) => MODES[m].list(f).length).map((m) => {
       const n = MODES[m].list(f).length, b = best.get(keyOf(f, m));
       return `<button class="mode ${m}" data-key="${keyOf(f, m)}">
-        <span class="mode-name">${MODES[m].label}</span>
+        <span class="mode-name">${labelOf(f, m)}</span>
         <span class="mode-meta">${n} câu${b ? ` · kỷ lục ${b}/${n}` : ""}</span>
       </button>`;
     }).join("");
@@ -630,7 +757,7 @@ function track() {
 function header() {
   const { film, mode } = state;
   const switcher = Object.keys(MODES).filter((m) => m !== mode && MODES[m].list(film).length)
-    .map((m) => `<button class="switch" data-key="${keyOf(film, m)}">${MODES[m].label} →</button>`).join("");
+    .map((m) => `<button class="switch" data-key="${keyOf(film, m)}">${labelOf(film, m)} →</button>`).join("");
   return `
     <div class="topbar">
       <button class="back" id="back">← Thư viện phim</button>
@@ -639,7 +766,7 @@ function header() {
     <div class="hero">
       <span class="motif" aria-hidden="true">${esc(film.motif)}</span>
       <h1>${esc(film.title)}</h1>
-      <div class="hero-row"><span class="tag ${mode}">${MODES[mode].label}</span>${switcher}</div>
+      <div class="hero-row"><span class="tag ${mode}">${labelOf(film, mode)}</span>${switcher}</div>
     </div>
     ${track()}`;
 }
@@ -718,7 +845,7 @@ function renderResult() {
   best.set(key, c);
   $("#game").innerHTML = `${header()}
     <article class="card result">
-      <span class="label">Kết quả · ${MODES[mode].label}</span>
+      <span class="label">Kết quả · ${labelOf(state.film, mode)}</span>
       <div class="big">${c}<small> / ${qs.length}</small></div>
       <p class="verdict">${verdict(c / qs.length, mode)}</p>
       <ul class="review">${qs.map((q, k) => {
